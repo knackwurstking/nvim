@@ -9,6 +9,6 @@ vim.o.wrap = true
 vim.o.colorcolumn = "80"
 
 vim.o.foldmethod = "expr"
-vim.o.foldmarker = "{{{,}}}"
+vim.o.foldmarker = "{,}"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldenable = true
