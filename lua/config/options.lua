@@ -12,3 +12,5 @@ vim.o.foldmethod = "expr"
 vim.o.foldmarker = "{,}"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldenable = true
+
+vim.o.conceallevel = 0
