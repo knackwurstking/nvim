@@ -277,18 +277,20 @@ return {
     },
     {
         "iamcco/markdown-preview.nvim",
-        ft = "markdown",
 
-        build = function()
-            vim.fn["mkdp#util#install"]()
+        cmd = {
+            "MarkdownPreviewToggle",
+            "MarkdownPreview",
+            "MarkdownPreviewStop",
+        },
+
+        build = "cd app && npm install",
+
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
         end,
 
-        config = function()
-            vim.g.mkdp_open_ip = "127.0.0.1"
-            vim.g.mkdp_port = 8888
-        end,
-
-        cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewToggle" },
+        ft = { "markdown" },
     },
     {
         "stevearc/conform.nvim",
