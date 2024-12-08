@@ -1,5 +1,7 @@
 --if true then return {} end
 
+local HOME = os.getenv("HOME")
+
 return {
     -- add gruvbox
     {
@@ -280,6 +282,14 @@ return {
                         return #diag > 0
                     end,
                 },
+                ["prettier"] = {
+                    prepend_args = {
+                        "--print-width",
+                        "100",
+                        "--tab-width",
+                        "4",
+                    },
+                },
             },
 
             formatters_by_ft = {
@@ -293,6 +303,11 @@ return {
         "mfussenegger/nvim-lint",
         optional = true,
         opts = {
+            linters = {
+                ["markdownlint-cli2"] = {
+                    args = { "--config", HOME .. "/.config/nvim/.markdownlint-cli2.yaml", "--" },
+                },
+            },
             linters_by_ft = {
                 markdown = { "markdownlint-cli2" },
             },
