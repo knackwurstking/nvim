@@ -1,13 +1,5 @@
--- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
 --if true then return {} end
 
--- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
 return {
     -- add gruvbox
     {
@@ -30,36 +22,36 @@ return {
         opts = { use_diagnostic_signs = true },
         cmd = "Trouble",
         keys = {
-        {
-            "<leader>xx",
-            "<cmd>Trouble diagnostics toggle<cr>",
-            desc = "Diagnostics (Trouble)",
-        },
-        {
-            "<leader>xX",
-            "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-            desc = "Buffer Diagnostics (Trouble)",
-        },
-        {
-            "<leader>cs",
-            "<cmd>Trouble symbols toggle focus=false<cr>",
-            desc = "Symbols (Trouble)",
-        },
-        {
-            "<leader>cl",
-            "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-            desc = "LSP Definitions / references / ... (Trouble)",
-        },
-        {
-            "<leader>xL",
-            "<cmd>Trouble loclist toggle<cr>",
-            desc = "Location List (Trouble)",
-        },
-        {
-            "<leader>xQ",
-            "<cmd>Trouble qflist toggle<cr>",
-            desc = "Quickfix List (Trouble)",
-        },
+            {
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Diagnostics (Trouble)",
+            },
+            {
+                "<leader>xX",
+                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                desc = "Buffer Diagnostics (Trouble)",
+            },
+            {
+                "<leader>cs",
+                "<cmd>Trouble symbols toggle focus=false<cr>",
+                desc = "Symbols (Trouble)",
+            },
+            {
+                "<leader>cl",
+                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                desc = "LSP Definitions / references / ... (Trouble)",
+            },
+            {
+                "<leader>xL",
+                "<cmd>Trouble loclist toggle<cr>",
+                desc = "Location List (Trouble)",
+            },
+            {
+                "<leader>xQ",
+                "<cmd>Trouble qflist toggle<cr>",
+                desc = "Quickfix List (Trouble)",
+            },
         },
     },
 
@@ -70,9 +62,10 @@ return {
     {
         "hrsh7th/nvim-cmp",
         dependencies = { "hrsh7th/cmp-emoji" },
+        ---@diagnostic disable-next-line: undefined-doc-name
         ---@param opts cmp.ConfigSchema
         opts = function(_, opts)
-        table.insert(opts.sources, { name = "emoji" })
+            table.insert(opts.sources, { name = "emoji" })
         end,
     },
 
@@ -84,7 +77,11 @@ return {
         -- stylua: ignore
         {
             "<leader>fp",
-            function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+            function()
+                require("telescope.builtin").find_files({
+                    cwd = require("lazy.core.config").options.root
+                })
+            end,
             desc = "Find Plugin File",
         },
         },
@@ -107,13 +104,24 @@ return {
             "jose-elias-alvarez/typescript.nvim",
             init = function()
                 require("lazyvim.util").lsp.on_attach(function(_, buffer)
-                -- stylua: ignore
-                vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
-                vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
+                    vim.keymap.set(
+                        "n",
+                        "<leader>co",
+                        "TypescriptOrganizeImports",
+                        { buffer = buffer, desc = "Organize Imports" }
+                    )
+
+                    vim.keymap.set(
+                        "n",
+                        "<leader>cR",
+                        "TypescriptRenameFile",
+                        { desc = "Rename File", buffer = buffer }
+                    )
                 end)
             end,
         },
         opts = {
+            ---@diagnostic disable-next-line: undefined-doc-name
             ---@type lspconfig.options
             servers = {
                 -- pyright will be automatically installed with mason and loaded with lspconfig
@@ -121,12 +129,15 @@ return {
 
                 -- tsserver will be automatically installed with mason and loaded with lspconfig
                 tsserver = {},
+
+                marksman = {},
             },
 
             inlay_hints = { enabled = false },
 
             -- you can do any additional lsp server setup here
             -- return true if you don't want this server to be setup with lspconfig
+            ---@diagnostic disable-next-line: undefined-doc-name
             ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
             setup = {
                 -- example to setup with typescript.nvim
@@ -220,84 +231,81 @@ return {
                 "shellcheck",
                 "shfmt",
                 "flake8",
+                "markdownlint-cli2",
+                "markdown-toc",
             },
         },
     },
 
-    -- Use <tab> for completion and snippets (supertab)
-    --{
-    --    "hrsh7th/nvim-cmp",
-    --    dependencies = {
-    --        "hrsh7th/cmp-emoji",
-    --    },
-    --    ---@param opts cmp.ConfigSchema
-    --    opts = function(_, opts)
-    --        local has_words_before = function()
-    --            unpack = unpack or table.unpack
-    --            local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    --            return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-    --        end
-
-    --        local cmp = require("cmp")
-
-    --        opts.mapping = vim.tbl_extend("force", opts.mapping, {
-    --            ["<Tab>"] = cmp.mapping(
-    --                function(fallback)
-    --                    if cmp.visible() then
-    --                        cmp.select_next_item()
-    --                    elseif vim.snippet.active({ direction = 1 }) then
-    --                        vim.schedule(function()
-    --                            vim.snippet.jump(1)
-    --                        end)
-    --                    elseif has_words_before() then
-    --                        cmp.complete()
-    --                    else
-    --                        fallback()
-    --                    end
-    --                end,
-    --                { "i", "s" }
-    --            ),
-
-    --            ["<S-Tab>"] = cmp.mapping(
-    --                function(fallback)
-    --                    if cmp.visible() then
-    --                        cmp.select_prev_item()
-    --                    elseif vim.snippet.active({ direction = -1 }) then
-    --                        vim.schedule(function()
-    --                            vim.snippet.jump(-1)
-    --                        end)
-    --                    else
-    --                        fallback()
-    --                    end
-    --                end,
-    --                { "i", "s" }
-    --            ),
-    --        })
-    --    end,
-    --},
     {
         "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 
-        cmd = {
-            "MarkdownPreviewToggle",
-            "MarkdownPreview",
-            "MarkdownPreviewStop",
-        },
-
-        build = "cd app && npm install",
-
-        init = function()
-            vim.g.mkdp_filetypes = { "markdown" }
+        build = function()
+            require("lazy").load({ plugins = { "markdown-preview.nvim" } })
+            vim.fn["mkdp#util#install"]()
         end,
 
-        ft = { "markdown" },
+        keys = {
+            {
+                "<leader>cp",
+                ft = "markdown",
+                "<cmd>MarkdownPreviewToggle<cr>",
+                desc = "Markdown Preview",
+            },
+        },
+
+        config = function()
+            vim.cmd([[do FileType]])
+        end,
     },
     {
         "stevearc/conform.nvim",
         opts = {
+            formatters = {
+                ["markdown-toc"] = {
+                    condition = function(_, ctx)
+                        for _, line in ipairs(vim.api.nvim_buf_get_lines(ctx.buf, 0, -1, false)) do
+                            if line:find("<!%-%- toc %-%->") then
+                                return true
+                            end
+                        end
+                    end,
+                },
+                ["markdownlint-cli2"] = {
+                    condition = function(_, ctx)
+                        local diag = vim.tbl_filter(function(d)
+                            return d.source == "markdownlint"
+                        end, vim.diagnostic.get(ctx.buf))
+                        return #diag > 0
+                    end,
+                },
+            },
+
             formatters_by_ft = {
-                templ = { "templ" },
+                ["templ"] = { "templ" },
+                ["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+                ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
             },
         },
-    }
+    },
+    {
+        "mfussenegger/nvim-lint",
+        optional = true,
+        opts = {
+            linters_by_ft = {
+                markdown = { "markdownlint-cli2" },
+            },
+        },
+    },
+    {
+        "nvimtools/none-ls.nvim",
+        optional = true,
+        opts = function(_, opts)
+            local nls = require("null-ls")
+            opts.sources = vim.list_extend(opts.sources or {}, {
+                nls.builtins.diagnostics.markdownlint_cli2,
+            })
+        end,
+    },
 }
