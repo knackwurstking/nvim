@@ -4,7 +4,7 @@ local HOME = os.getenv("HOME")
 
 return {
     -- add gruvbox
-    {
+    { -- "ellisonleao/gruvbox.nvim"
         "ellisonleao/gruvbox.nvim",
         opts = {
             transparent_mode = true,
@@ -12,14 +12,14 @@ return {
     },
 
     -- Configure LazyVim to load gruvbox
-    {
+    { -- "LazyVim/LazyVim"
         "LazyVim/LazyVim",
         opts = {
             colorscheme = "gruvbox",
         },
     },
 
-    {
+    { -- "folke/trouble.nvim"
         "folke/trouble.nvim",
         opts = { use_diagnostic_signs = true },
         cmd = "Trouble",
@@ -61,7 +61,7 @@ return {
     --{ "folke/trouble.nvim", enabled = false },
 
     -- override nvim-cmp and add cmp-emoji
-    {
+    { -- "hrsh7th/nvim-cmp"
         "hrsh7th/nvim-cmp",
         dependencies = { "hrsh7th/cmp-emoji" },
         ---@diagnostic disable-next-line: undefined-doc-name
@@ -72,7 +72,7 @@ return {
     },
 
     -- change some telescope options and a keymap to browse plugin files
-    {
+    { -- "nvim-telescope/telescope.nvim"
         "nvim-telescope/telescope.nvim",
         keys = {
         -- add a keymap to browse plugin files
@@ -99,7 +99,7 @@ return {
     },
 
     -- add pyright to lspconfig
-    {
+    { -- "neovim/nvim-lspconfig"
         "neovim/nvim-lspconfig",
         ---@class PluginLspOpts
         dependencies = {
@@ -159,10 +159,12 @@ return {
 
     -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
     -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
-    { import = "lazyvim.plugins.extras.lang.typescript" },
+    { -- "lazyvim.plugins.extras.lang.typescript"
+        import = "lazyvim.plugins.extras.lang.typescript",
+    },
 
     -- add more treesitter parsers
-    {
+    { -- "nvim-treesitter/nvim-treesitter"
         "nvim-treesitter/nvim-treesitter",
         opts = {
             ensure_installed = {
@@ -187,7 +189,7 @@ return {
     -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
     -- would overwrite `ensure_installed` with the new value.
     -- If you'd rather extend the default config, use the code below instead:
-    {
+    { -- "nvim-treesitter/nvim-treesitter"
         "nvim-treesitter/nvim-treesitter",
         opts = function(_, opts)
             -- add tsx and treesitter
@@ -199,7 +201,7 @@ return {
     },
 
     -- the opts function can also be used to change the default opts:
-    {
+    { -- "nvim-lualine/lualine.nvim"
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
         opts = function(_, opts)
@@ -208,7 +210,7 @@ return {
     },
 
     -- or you can return new options to override all the defaults
-    {
+    { -- "nvim-lualine/lualine.nvim"
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
         opts = function()
@@ -219,13 +221,16 @@ return {
     },
 
     -- use mini.starter instead of alpha
-    { import = "lazyvim.plugins.extras.ui.mini-starter" },
+    { -- "lazyvim.plugins.extras.ui.mini-starter"
+        import = "lazyvim.plugins.extras.ui.mini-starter",
+    },
 
     -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
-    { import = "lazyvim.plugins.extras.lang.json" },
+    { -- "lazyvim.plugins.extras.lang.json"
+        import = "lazyvim.plugins.extras.lang.json",
+    },
 
-    -- add any tools you want to have installed below
-    {
+    { -- "williamboman/mason.nvim"
         "williamboman/mason.nvim",
         opts = {
             ensure_installed = {
@@ -239,7 +244,7 @@ return {
         },
     },
 
-    {
+    { -- "iamcco/markdown-preview.nvim"
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 
@@ -262,7 +267,7 @@ return {
         end,
     },
 
-    {
+    { -- "stevearc/conform.nvim"
         "stevearc/conform.nvim",
         opts = {
             formatters = {
@@ -301,7 +306,7 @@ return {
         },
     },
 
-    {
+    { -- "mfussenegger/nvim-lint"
         "mfussenegger/nvim-lint",
         optional = true,
         opts = {
@@ -316,7 +321,7 @@ return {
         },
     },
 
-    {
+    { -- "nvimtools/none-ls.nvim"
         "nvimtools/none-ls.nvim",
         optional = true,
         opts = function(_, opts)
@@ -327,93 +332,7 @@ return {
         end,
     },
 
-    {
+    { -- "echasnovski/mini.hipatterns"
         "echasnovski/mini.hipatterns",
-        recommended = true,
-        desc = "Highlight colors in your code. Also includes Tailwind CSS support.",
-        event = "LazyFile",
-        opts = function()
-            local hi = require("mini.hipatterns")
-            return {
-                -- custom LazyVim option to enable the tailwind integration
-                tailwind = {
-                    enabled = true,
-                    ft = {
-                        "astro",
-                        "css",
-                        "heex",
-                        "html",
-                        "html-eex",
-                        "javascript",
-                        "javascriptreact",
-                        "rust",
-                        "svelte",
-                        "typescript",
-                        "typescriptreact",
-                        "vue",
-                    },
-                    -- full: the whole css class will be highlighted
-                    -- compact: only the color will be highlighted
-                    style = "full",
-                },
-                highlighters = {
-                    hex_color = hi.gen_highlighter.hex_color({ priority = 2000 }),
-                    shorthand = {
-                        pattern = "()#%x%x%x()%f[^%x%w]",
-                        group = function(_, _, data)
-                            ---@type string
-                            local match = data.full_match
-                            local r, g, b = match:sub(2, 2), match:sub(3, 3), match:sub(4, 4)
-                            local hex_color = "#" .. r .. r .. g .. g .. b .. b
-
-                            return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
-                        end,
-                        extmark_opts = { priority = 2000 },
-                    },
-                },
-            }
-        end,
-        config = function(_, opts)
-            if type(opts.tailwind) == "table" and opts.tailwind.enabled then
-                -- reset hl groups when colorscheme changes
-                vim.api.nvim_create_autocmd("ColorScheme", {
-                    callback = function()
-                        M.hl = {}
-                    end,
-                })
-                opts.highlighters.tailwind = {
-                    pattern = function()
-                        if not vim.tbl_contains(opts.tailwind.ft, vim.bo.filetype) then
-                            return
-                        end
-                        if opts.tailwind.style == "full" then
-                            return "%f[%w:-]()[%w:-]+%-[a-z%-]+%-%d+()%f[^%w:-]"
-                        elseif opts.tailwind.style == "compact" then
-                            return "%f[%w:-][%w:-]+%-()[a-z%-]+%-%d+()%f[^%w:-]"
-                        end
-                    end,
-                    group = function(_, _, m)
-                        ---@type string
-                        local match = m.full_match
-                        ---@type string, number
-                        local color, shade = match:match("[%w-]+%-([a-z%-]+)%-(%d+)")
-                        shade = tonumber(shade)
-                        local bg = vim.tbl_get(M.colors, color, shade)
-                        if bg then
-                            local hl = "MiniHipatternsTailwind" .. color .. shade
-                            if not M.hl[hl] then
-                                M.hl[hl] = true
-                                local bg_shade = shade == 500 and 950 or shade < 500 and 900 or 100
-                                local fg = vim.tbl_get(M.colors, color, bg_shade)
-                                vim.api.nvim_set_hl(0, hl, { bg = "#" .. bg, fg = "#" .. fg })
-                            end
-                            return hl
-                        end
-                    end,
-                    extmark_opts = { priority = 2000 },
-                }
-            end
-            require("mini.hipatterns").setup(opts)
-        end,
     },
 }
