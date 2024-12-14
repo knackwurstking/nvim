@@ -261,6 +261,7 @@ return {
             vim.cmd([[do FileType]])
         end,
     },
+
     {
         "stevearc/conform.nvim",
         opts = {
@@ -299,6 +300,7 @@ return {
             },
         },
     },
+
     {
         "mfussenegger/nvim-lint",
         optional = true,
@@ -313,6 +315,7 @@ return {
             },
         },
     },
+
     {
         "nvimtools/none-ls.nvim",
         optional = true,
@@ -323,6 +326,7 @@ return {
             })
         end,
     },
+
     {
         "echasnovski/mini.hipatterns",
         recommended = true,
