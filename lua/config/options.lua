@@ -19,6 +19,3 @@ vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 
 vim.o.textwidth = 100
 vim.o.colorcolumn = "100"
-
--- NOTE: Disable mouse in visual mode, so i can use the Apple AI writing tools
-vim.o.mouse = "n"
