@@ -290,8 +290,8 @@ return {
                 },
                 ["prettier"] = {
                     prepend_args = {
-                        "--print-width",
-                        "100",
+                        --"--print-width",
+                        --"100",
                         "--tab-width",
                         "4",
                     },
@@ -302,6 +302,7 @@ return {
                 ["templ"] = { "templ" },
                 ["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
                 ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+                --["html"] = { "prettier", "superhtml" },
             },
         },
     },
