@@ -19,3 +19,10 @@ vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 
 vim.o.textwidth = 80
 vim.o.colorcolumn = "80"
+
+vim.g.outline_window = {
+    focus_on_open = false,
+    symbol_folding = {
+        autofold_depth = 0,
+    },
+}
