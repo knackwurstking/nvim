@@ -613,17 +613,18 @@ require('lazy').setup({
             --  - settings (table): Override the default settings passed when initializing the server.
             --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
             local servers = {
-                -- clangd = {},
-                -- gopls = {},
-                -- pyright = {},
-                -- rust_analyzer = {},
+                --clangd = {},
+                gopls = {},
+                --pyright = {},
+                --rust_analyzer = {},
+
                 -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
                 --
                 -- Some languages (like typescript) have entire language plugins that can be useful:
                 --    https://github.com/pmizio/typescript-tools.nvim
                 --
                 -- But for many setups, the LSP (`ts_ls`) will work just fine
-                -- ts_ls = {},
+                ts_ls = {},
                 --
 
                 lua_ls = {
@@ -655,6 +656,11 @@ require('lazy').setup({
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
+                'html-lsp',
+                'lua-language-server',
+                'prettier',
+                'stylua',
+                'superhtml',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -714,6 +720,7 @@ require('lazy').setup({
 
             formatters_by_ft = {
                 lua = { 'stylua' },
+                html = { 'html' },
                 -- Conform can also run multiple formatters sequentially
                 -- python = { "isort", "black" },
                 --
