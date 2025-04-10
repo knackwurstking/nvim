@@ -338,7 +338,7 @@ return {
                 ["templ"] = { "templ" },
                 ["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
                 ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
-                --["html"] = { "prettier", "superhtml" },
+                ["html"] = { "prettier" },
             },
         },
     },
