@@ -249,6 +249,10 @@ return {
                     position = "right",
                     width = 30,
                     relative_width = true,
+                    wrap = true,
+                },
+                symbol_folding = {
+                    autofold_depth = 0,
                 },
             }
 
