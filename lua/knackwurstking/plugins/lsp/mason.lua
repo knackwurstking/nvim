@@ -52,7 +52,6 @@ return {
 				--"eslint_d",
 				"gofumpt",
 				"goimports",
-				"golangci-lint",
 				"typescript-language-server",
 			},
 		})
