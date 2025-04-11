@@ -5,6 +5,12 @@ return {
 		local conform = require("conform")
 
 		conform.setup({
+			formatters = {
+				prettier = {
+					append_args = { "--tab-width", "4" },
+				},
+			},
+
 			formatters_by_ft = {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
