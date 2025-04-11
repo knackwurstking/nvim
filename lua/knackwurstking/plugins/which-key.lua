@@ -16,6 +16,7 @@ return {
             {"<leader>t", group = "[T]ab" },
             {"<leader>f", group = "[F]ind" },
             {"<leader>x", group = "Trouble" },
+            {"<leader>w", group = "Session" },
         },
     },
 	config = function(_, opts)
