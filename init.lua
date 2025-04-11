@@ -3,7 +3,7 @@ require("knackwurstking.lazy")
 
 local opt = vim.opt
 
-opt.relativenumber = true 
+opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
@@ -14,7 +14,7 @@ opt.autoindent = true
 
 opt.wrap = false
 
--- search settings 
+-- search settings
 opt.ignorecase = true
 opt.smartcase = true
 

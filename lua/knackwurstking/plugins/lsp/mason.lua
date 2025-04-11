@@ -53,6 +53,7 @@ return {
 				"eslint_d",
 				"gofumpt",
 				"goimports",
+				"golangci-lint",
 			},
 		})
 	end,
