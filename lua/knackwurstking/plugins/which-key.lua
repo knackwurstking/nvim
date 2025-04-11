@@ -18,6 +18,7 @@ return {
 			{ "<leader>w", group = "Session" },
 			{ "<leader>c", group = "[C]ode" },
 			{ "<leader>g", group = "[G]it" },
+			{ "<leader>r", group = "[R]estart" },
 		},
 	},
 	config = function(_, opts)
