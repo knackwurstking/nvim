@@ -6,7 +6,7 @@ return {
     },
     cmd = "Trouble",
     keys = {
-        { "<leader>xw", "<cmd>Trouble diagnostics toggle<CR>", desc = "Open trouble [D]iagnostics" },
+        { "<leader>xw", "<cmd>Trouble diagnostics toggle<CR>", desc = "Open trouble Diagnostics" },
         { "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Open trouble [D]ocument diagnostics" },
         { "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", desc = "Open trouble [Q]uickfix list" },
         { "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Open trouble [L]ocation list" },
