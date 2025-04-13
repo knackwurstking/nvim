@@ -54,6 +54,7 @@ return {
 				"goimports",
 				"typescript-language-server",
 				"marksman",
+				"typos-lsp",
 			},
 		})
 	end,
