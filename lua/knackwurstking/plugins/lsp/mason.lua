@@ -53,6 +53,7 @@ return {
 				"gofumpt",
 				"goimports",
 				"typescript-language-server",
+				"marksman",
 			},
 		})
 	end,
