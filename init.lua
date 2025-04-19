@@ -14,6 +14,10 @@ opt.autoindent = true
 
 opt.wrap = false
 
+-- line length highlighting
+
+opt.colorcolumn = "80"
+
 -- search settings
 opt.ignorecase = true
 opt.smartcase = true
