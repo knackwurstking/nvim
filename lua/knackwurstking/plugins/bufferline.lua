@@ -36,7 +36,7 @@ return {
 
 		-- bufferline
 		vim.keymap.set("n", "<leader>bn", "<cmd> BufferLineCycleNext <CR>", { desc = "Cycle [N]ext" })
-		vim.keymap.set("n", "<leader>bp", "<cmd> BufferLineCyclPrev <CR>", { desc = "Cycle [P]revious" })
+		vim.keymap.set("n", "<leader>bp", "<cmd> BufferLineCyclePrev <CR>", { desc = "Cycle [P]revious" })
 		vim.keymap.set("n", "<leader>bl", "<cmd> BufferLineCloseLeft <CR>", { desc = "Delete [L]eft" })
 		vim.keymap.set("n", "<leader>br", "<cmd> BufferLineCloseRight <CR>", { desc = "Delete [R]ight" })
 		vim.keymap.set("n", "<leader>bd", "<cmd> bd! <CR>", { desc = "[D]lete current" })
