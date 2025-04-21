@@ -12,7 +12,7 @@ return {
 		defaults = {
 			{ "<leader>e", group = "[E]xplorer" },
 			{ "<leader>s", group = "[S]plit" },
-			{ "<leader>t", group = "[T]ab" },
+			--{ "<leader>t", group = "[T]ab" },
 			{ "<leader>f", group = "[F]ind" },
 			{ "<leader>x", group = "Trouble" },
 			{ "<leader>w", group = "Session" },
