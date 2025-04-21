@@ -19,6 +19,7 @@ return {
 			{ "<leader>c", group = "[C]ode" },
 			{ "<leader>g", group = "[G]it" },
 			{ "<leader>r", group = "[R]estart" },
+			{ "<leader>b", group = "[B]uffer" },
 		},
 	},
 	config = function(_, opts)
