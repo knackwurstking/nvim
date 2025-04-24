@@ -141,5 +141,17 @@ return {
 				})
 			end,
 		})
+
+		-- Golang Templ Setup
+		-- Use a loop to conveniently call 'setup' on multiple servers and
+		-- map buffer local keybindings when the language server attaches
+
+		local servers = { "gopls", "ccls", "cmake", "ts_ls", "templ" }
+		for _, lsp in ipairs(servers) do
+			lspconfig[lsp].setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+		end
 	end,
 }

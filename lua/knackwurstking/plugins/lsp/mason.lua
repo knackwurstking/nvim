@@ -55,6 +55,7 @@ return {
 				"typescript-language-server",
 				"marksman",
 				"typos-lsp",
+				"templ",
 			},
 		})
 	end,
