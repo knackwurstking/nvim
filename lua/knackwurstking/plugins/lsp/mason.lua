@@ -38,6 +38,10 @@ return {
 				"emmet_ls",
 				"prismals",
 				"pyright",
+				"templ",
+				"ts_ls",
+				"cmake",
+				"ccls",
 				"gopls",
 			},
 		})
@@ -55,7 +59,6 @@ return {
 				"typescript-language-server",
 				"marksman",
 				"typos-lsp",
-				"templ",
 			},
 		})
 	end,
