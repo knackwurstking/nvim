@@ -30,14 +30,14 @@ return {
 					window_picker = {
 						enable = false,
 					},
-					quit_on_open = true,
+					quit_on_open = false,
 				},
 			},
 			filters = {
 				custom = { ".DS_Store" },
 			},
 			git = {
-				ignore = false,
+				ignore = true,
 			},
 		})
 
