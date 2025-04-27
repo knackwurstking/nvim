@@ -140,6 +140,16 @@ return {
 					},
 				})
 			end,
+			["templ"] = function()
+				lspconfig["templ"].setup({
+					filetypes = { "templ" },
+					settings = {
+						templ = {
+							enable_snippets = true,
+						},
+					},
+				})
+			end,
 		})
 	end,
 }
