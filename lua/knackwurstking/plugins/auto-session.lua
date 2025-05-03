@@ -1,16 +1,17 @@
 return {
-    "rmagatti/auto-session",
-    config = function()
-        local auto_session = require("auto-session")
+	"rmagatti/auto-session",
+	config = function()
+		local auto_session = require("auto-session")
 
-        auto_session.setup({
-            auto_restore_enabled = false,
-            auto_session_suppress_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents", "~/Desktop/" },
-        })
+		auto_session.setup({
+			auto_restore = false,
+			suppress_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents", "~/Desktop/" },
+		})
 
-        local keymap = vim.keymap
+		local keymap = vim.keymap
 
-        keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "[R]estore session" })
-        keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "[S]ave session" })
-    end,
+		keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "[R]estore session" })
+		keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "[S]ave session" })
+		vim.o.sessionoptions = "localoptions"
+	end,
 }
