@@ -41,7 +41,6 @@ return {
 				"templ",
 				"ts_ls",
 				"cmake",
-				"ccls",
 				"gopls",
 			},
 		})
