@@ -5,13 +5,13 @@ return {
 
 		auto_session.setup({
 			auto_restore = false,
-			suppress_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents", "~/Desktop/" },
+			suppressed_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents", "~/Desktop/" },
 		})
 
 		local keymap = vim.keymap
 
 		keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "[R]estore session" })
 		keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "[S]ave session" })
-		vim.o.sessionoptions = "localoptions"
+		vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 	end,
 }
