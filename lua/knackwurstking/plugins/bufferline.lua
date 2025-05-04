@@ -10,7 +10,7 @@ return {
 				--close_command = "bp|sp|bn|bd! %d",
 				--right_mouse_command = "bp|sp|bn|bd! %d",
 				--left_mouse_command = "buffer %d",
-				buffer_close_icon = "",
+				buffer_close_icon = "✗",
 				modified_icon = "",
 				close_icon = "",
 				show_close_icon = false,
