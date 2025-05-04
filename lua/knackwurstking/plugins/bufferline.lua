@@ -40,6 +40,12 @@ return {
 		vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to [P]revious tab" })
 		vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in [N]ew tab" })
 
+		for i = 1, 9 do
+			vim.keymap.set("n", "<leader>t" .. i, function()
+				require("bufferline").go_to(i)
+			end)
+		end
+
 		-- bufferline
 		--vim.keymap.set("n", "<leader>bn", "<cmd> BufferLineCycleNext <CR>", { desc = "Cycle [N]ext" })
 		--vim.keymap.set("n", "<leader>bp", "<cmd> BufferLineCyclePrev <CR>", { desc = "Cycle [P]revious" })
