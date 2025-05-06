@@ -5,7 +5,7 @@ return {
 	config = function()
 		require("bufferline").setup({
 			options = {
-				mode = "tabs",
+				mode = "buffers",
 				separator_style = "slant",
 				--close_command = "bp|sp|bn|bd! %d",
 				--right_mouse_command = "bp|sp|bn|bd! %d",
@@ -34,29 +34,29 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
-		vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-		vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to [N]ext tab" })
-		vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to [P]revious tab" })
-		vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in [N]ew tab" })
-
-		for i = 1, 9 do
-			vim.keymap.set("n", "<leader>t" .. i, function()
-				require("bufferline").go_to(i)
-			end)
-		end
-
-		-- bufferline
-		--vim.keymap.set("n", "<leader>bn", "<cmd> BufferLineCycleNext <CR>", { desc = "Cycle [N]ext" })
-		--vim.keymap.set("n", "<leader>bp", "<cmd> BufferLineCyclePrev <CR>", { desc = "Cycle [P]revious" })
-		--vim.keymap.set("n", "<leader>bl", "<cmd> BufferLineCloseLeft <CR>", { desc = "Delete [L]eft" })
-		--vim.keymap.set("n", "<leader>br", "<cmd> BufferLineCloseRight <CR>", { desc = "Delete [R]ight" })
-		--vim.keymap.set("n", "<leader>bd", "<cmd> bd! <CR>", { desc = "[D]lete current" })
+		--vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+		--vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+		--vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to [N]ext tab" })
+		--vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to [P]revious tab" })
+		--vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in [N]ew tab" })
 
 		--for i = 1, 9 do
-		--	vim.keymap.set("n", "<leader>b" .. i, function()
+		--	vim.keymap.set("n", "<leader>t" .. i, function()
 		--		require("bufferline").go_to(i)
 		--	end)
 		--end
+
+		-- bufferline
+		vim.keymap.set("n", "<leader>bn", "<cmd> BufferLineCycleNext <CR>", { desc = "Cycle [N]ext" })
+		vim.keymap.set("n", "<leader>bp", "<cmd> BufferLineCyclePrev <CR>", { desc = "Cycle [P]revious" })
+		vim.keymap.set("n", "<leader>bl", "<cmd> BufferLineCloseLeft <CR>", { desc = "Delete [L]eft" })
+		vim.keymap.set("n", "<leader>br", "<cmd> BufferLineCloseRight <CR>", { desc = "Delete [R]ight" })
+		vim.keymap.set("n", "<leader>bd", "<cmd> bd! <CR>", { desc = "[D]lete current" })
+
+		for i = 1, 9 do
+			vim.keymap.set("n", "<leader>b" .. i, function()
+				require("bufferline").go_to(i)
+			end)
+		end
 	end,
 }
