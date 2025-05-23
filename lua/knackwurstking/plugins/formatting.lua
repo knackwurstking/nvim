@@ -18,7 +18,7 @@ return {
 				--typescriptreact = { "prettier" },
 				--svelte = { "prettier" },
 				css = { "prettier" },
-				html = { "prettier" },
+				html = {},
 				--json = { "prettier" },
 				--yaml = { "prettier" },
 				--markdown = { "prettier" },
@@ -30,7 +30,7 @@ return {
 				templ = { "templ" },
 			},
 			format_on_save = {
-				lsp_fallback = true,
+				lsp_fallback = false,
 				async = false,
 				timeout_ms = 1000,
 			},
