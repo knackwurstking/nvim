@@ -53,6 +53,7 @@ return {
 		vim.keymap.set("n", "<leader>br", "<cmd> BufferLineCloseRight <CR>", { desc = "Delete [R]ight" })
 		vim.keymap.set("n", "<leader>bd", "<cmd> bd! <CR>", { desc = "[D]lete current" })
 		vim.keymap.set("n", "<leader>bb", ":e #<CR>", { desc = "[B]ack" })
+		vim.keymap.set("n", "<leader>bt", "<cmd> BufferLineTogglePin <CR>", { desc = "[T]oggle Pin" })
 
 		for i = 1, 9 do
 			vim.keymap.set("n", "<leader>b" .. i, function()
