@@ -2,9 +2,10 @@ vim.o.undofile      = true
 vim.o.clipboard     = "unnamedplus"
 vim.o.laststatus    = 0
 
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.opt.expandtab   = true
 vim.opt.shiftwidth  = 4
-vim.opt.softtabstop = -1
+vim.opt.softtabstop = 4
 
 vim.opt.mouse = "a"
 
