@@ -11,7 +11,7 @@ return {
 		-- import mason-lspconfig
 		local mason_lspconfig = require("mason-lspconfig")
 
-		local mason_tool_installer = require("mason-tool-installer")
+		--local mason_tool_installer = require("mason-tool-installer")
 
 		-- enable mason and configure icons
 		mason.setup({
@@ -29,37 +29,38 @@ return {
 
 			-- list of servers for mason to install
 			ensure_installed = {
-				"html",
-				"cssls",
-				"tailwindcss",
-				"svelte",
 				"lua_ls",
-				"graphql",
-				"emmet_ls",
-				"prismals",
-				"pyright",
-				"templ",
-				"ts_ls",
 				"cmake",
+
+				--"html",
+				--"cssls",
+				--"tailwindcss",
+				--"svelte",
+				--"graphql",
+				--"emmet_ls",
+				--"prismals",
+				--"pyright",
+				--"templ",
+				--"ts_ls",
 				--"gopls",
 			},
 		})
 
-		mason_tool_installer.setup({
-			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"isort", -- python formatter
-				"black", -- python formatter
-				"pylint",
-				--"eslint_d",
-				--"gofumpt",
-				--"goimports",
-				"typescript-language-server",
-				"marksman",
-				"typos-lsp",
-				"templ",
-			},
-		})
+		--mason_tool_installer.setup({
+		--	ensure_installed = {
+		--		--"prettier", -- prettier formatter
+		--		--"stylua", -- lua formatter
+		--		--"isort", -- python formatter
+		--		--"black", -- python formatter
+		--		--"pylint",
+		--		--"eslint_d",
+		--		--"gofumpt",
+		--		--"goimports",
+		--		--"typescript-language-server",
+		--		--"marksman",
+		--		--"typos-lsp",
+		--		--"templ",
+		--	},
+		--})
 	end,
 }
