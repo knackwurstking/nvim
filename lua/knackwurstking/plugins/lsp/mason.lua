@@ -31,18 +31,13 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"cmake",
+				"gopls",
+				"html",
+				"cssls",
+				"svelte",
+				"ts_ls",
 
-				--"html",
-				--"cssls",
-				--"tailwindcss",
-				--"svelte",
-				--"graphql",
-				--"emmet_ls",
-				--"prismals",
 				--"pyright",
-				--"templ",
-				--"ts_ls",
-				--"gopls",
 			},
 		})
 
