@@ -1,6 +1,8 @@
 return {
 	"stevearc/conform.nvim",
+
 	event = { "BufReadPre", "BufNewFile" },
+
 	config = function()
 		local conform = require("conform")
 
@@ -11,24 +13,26 @@ return {
 				},
 			},
 
+
 			formatters_by_ft = {
-				javascript = { "prettier" },
-				typescript = { "prettier" },
+				--javascript = { "prettier" },
+				--typescript = { "prettier" },
 				--javascriptreact = { "prettier" },
 				--typescriptreact = { "prettier" },
-				svelte = { "prettier" },
-				css = { "prettier" },
-				html = { "prettier" },
-				json = { "prettier" },
-				yaml = { "prettier" },
+				--svelte = { "prettier" },
+				--css = { "prettier" },
+				--html = { "prettier" },
+				--json = { "prettier" },
+				--yaml = { "prettier" },
 				--markdown = { "prettier" },
 				--graphql = { "prettier" },
 				--liquid = { "prettier" },
-				lua = { "stylua" },
-				python = { "isort", "black" },
-				go = { "gofumpt", "goimports" },
-				templ = { "templ" },
+				--lua = { "stylua" },
+				--python = { "isort", "black" },
+				--go = { "gofumpt", "goimports" },
+				--templ = { "templ" },
 			},
+
 			format_on_save = {
 				lsp_fallback = false,
 				async = false,
