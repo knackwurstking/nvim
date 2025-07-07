@@ -37,3 +37,9 @@ vim.keymap.set("n", "<space>c", function()
     end) 
 end)
 
+-- TODO: Add some plugin for theese languages
+--  * golang
+--  * javascript / typescript
+--  * css
+--  * html
+--  * svelte
