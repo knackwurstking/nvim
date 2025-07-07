@@ -41,7 +41,7 @@ return {
 				"templ",
 				"ts_ls",
 				"cmake",
-				"gopls",
+				--"gopls",
 			},
 		})
 
@@ -53,8 +53,8 @@ return {
 				"black", -- python formatter
 				"pylint",
 				--"eslint_d",
-				"gofumpt",
-				"goimports",
+				--"gofumpt",
+				--"goimports",
 				"typescript-language-server",
 				"marksman",
 				"typos-lsp",
