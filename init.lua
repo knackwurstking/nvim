@@ -1,38 +1,39 @@
-require("knackwurstking.core")
-require("knackwurstking.lazy")
+vim.o.undofile      = true
+vim.o.clipboard     = "unnamedplus"
+vim.o.laststatus    = 0
 
-local opt = vim.opt
+vim.opt.expandtab   = true
+vim.opt.shiftwidth  = 4
+vim.opt.softtabstop = -1
 
-opt.relativenumber = true
-opt.number = true
+vim.opt.mouse = "a"
 
--- tabs & indentation
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.autoindent = true
+vim.opt.relativenumber = true
 
-opt.wrap = false
+vim.opt.syntax = "enable"
 
--- line length highlighting
+--vim.cmd("syntax off | colorscheme retrobox | highlight Normal guifg=#ffaf00 guibg=#282828")
+vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 
-opt.colorcolumn = "80"
+vim.keymap.set('n', '<space>y', function() 
+    vim.fn.setreg('+', vim.fn.expand('%:p'))
+end)
 
--- search settings
-opt.ignorecase = true
-opt.smartcase = true
+vim.keymap.set('n', '<space>e', ':Ex<CR>')
 
-opt.cursorline = true
+vim.keymap.set('n', '<space>gt', ':grep -ie todo: * | copen 10<CR>')
 
-opt.termguicolors = true
-opt.background = "dark"
-opt.signcolumn = "yes"
+vim.keymap.set('n', '<space>tp', ':tabprevious<CR>')
+vim.keymap.set('n', '<space>tn', ':tabnext<CR>')
 
-opt.backspace = "indent,eol,start"
+vim.keymap.set("n", "<space>c", function() 
+    vim.ui.input({}, function(c) 
+        if c and c~="" then 
+            vim.cmd("noswapfile vnew") 
+            vim.bo.buftype = "nofile" 
+            vim.bo.bufhidden = "wipe"
+            vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.systemlist(c)) 
+        end 
+    end) 
+end)
 
--- clipboard
-opt.clipboard:append("unnamedplus")
-
--- split windows
-opt.splitright = true
-opt.splitbelow = true
