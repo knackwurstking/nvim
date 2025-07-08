@@ -1,3 +1,7 @@
+-- Dependencies:
+--  * gopls
+--  * vscode-html-language-server
+
 vim.o.undofile      = true
 vim.o.clipboard     = "unnamedplus"
 vim.o.laststatus    = 0
@@ -16,10 +20,6 @@ vim.opt.syntax = "enable"
 --vim.cmd("syntax off | colorscheme retrobox | highlight Normal guifg=#ffaf00 guibg=#282828")
 vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 
-vim.keymap.set('n', '<space>y', function() 
-    vim.fn.setreg('+', vim.fn.expand('%:p'))
-end)
-
 vim.keymap.set('n', '<space>e', ':Ex<CR>')
 
 vim.keymap.set('n', '<space>gt', ':grep -ie todo: * | copen 10<CR>')
@@ -27,20 +27,127 @@ vim.keymap.set('n', '<space>gt', ':grep -ie todo: * | copen 10<CR>')
 vim.keymap.set('n', '<space>tp', ':tabprevious<CR>')
 vim.keymap.set('n', '<space>tn', ':tabnext<CR>')
 
-vim.keymap.set("n", "<space>c", function() 
-    vim.ui.input({}, function(c) 
-        if c and c~="" then 
-            vim.cmd("noswapfile vnew") 
-            vim.bo.buftype = "nofile" 
-            vim.bo.bufhidden = "wipe"
-            vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.systemlist(c)) 
-        end 
-    end) 
-end)
+-- Lazy
+
+-- Visit the project page for the latest installation instructions
+-- https://github.com/folke/lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+    -- Boilerplate for next steps.
+    -- From now on, all code examples will go to this section.
+    -- {
+    --     "https://gitprovider.com/exampleuser/myplugin",
+    -- },
+
+    { "neovim/nvim-lspconfig" }
+})
+
+-- LSP
+
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig.configs')
+
+-- Golang
+
+if not configs.gopls then
+    configs.gopls = {
+        default_config = {
+            cmd = { "gopls" },
+            filetypes = { "go", "gomod" },
+            root_dir = lspconfig.util.root_pattern("go.mod", "go.work"),
+            single_file_support = true,
+        },
+    }
+end
+
+lspconfig.gopls.setup {
+    on_attach = function(client, bufnr)
+      -- Enable completion with nvim-cmp if you are using it
+      if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
+          require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
+      end
+
+      -- Enable formatting
+      if client.server_capabilities.documentFormattingProvider then
+         vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+
+            callback = function()
+               vim.lsp.buf.format { bufnr = bufnr }
+            end
+         })
+      end
+    end,
+}
+
+-- HTML
+
+if not configs.html then
+    configs.html = {
+        default_config = {
+            cmd = { "vscode-html-language-server" },
+            filetypes = { "html" },
+            --root_dir = lspconfig.util.root_pattern(".git", "index.html", "index.htm"),
+            root_dir = lspconfig.util.root_pattern("index.html", "index.htm"),
+            single_file_support = true,
+        },
+    }
+end
+
+lspconfig.html.setup {
+    on_attach = function(client, bufnr)
+        -- Enable completion
+        if client.supports_method("textDocument/completion") then
+            vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+        end
+    end,
+}
+
+-- Enable the LSP
+require('lspconfig').gopls.setup {}
+
+-- Keybindings for LSP commands
+
+local opts = { noremap=true, silent=true, buffer=bufnr }
+
+-- Go to definitions
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+
+-- Go to refereces
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+
+-- Preview on "hover"
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+
+-- Code action
+vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
+
+-- Format
+vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
+
+--vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
+--vim.keymap.set('n', '<space>vd', vim.diagnostic.open_float, opts)
+--vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+--vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+--vim.keymap.set('n', '<space>vrr', vim.lsp.buf.references, opts)
+--vim.keymap.set('n', '<space>vR', vim.lsp.buf.rename, opts)
+--vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
 -- TODO: Add some plugin for theese languages
---  * golang
---  * javascript / typescript
---  * css
---  * html
---  * svelte
+--  * [x] golang
+--  * [ ] javascript / typescript
+--  * [ ] css
+--  * [ ] html
+--  * [ ] svelte
