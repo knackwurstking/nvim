@@ -1,6 +1,6 @@
 -- Dependencies:
---  * gopls
---  * vscode-html-language-server
+--  * gopls                         -> `go install golang.org/x/tools/gopls@latest`
+--  * vscode-html-language-server   -> `npm i -g vscode-languageservers-extracted`
 
 vim.o.undofile      = true
 vim.o.clipboard     = "unnamedplus"
