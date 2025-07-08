@@ -22,7 +22,7 @@ vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 
 vim.keymap.set('n', '<space>e', ':Ex<CR>')
 
-vim.keymap.set('n', '<space>gt', ':grep -ie todo: * | copen 10<CR>')
+vim.keymap.set('n', '<space>ft', ':grep -ie todo: * | copen 5<CR>')
 
 vim.keymap.set('n', '<space>tp', ':tabprevious<CR>')
 vim.keymap.set('n', '<space>tn', ':tabnext<CR>')
