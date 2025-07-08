@@ -21,20 +21,6 @@ vim.opt.syntax = "enable"
 --vim.cmd("syntax off | colorscheme retrobox | highlight Normal guifg=#ffaf00 guibg=#282828")
 vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 
-vim.keymap.set('n', '<space>e', ':Ex<CR>')
-
-vim.keymap.set('n', '<space>ft', ':grep -ie todo: * | copen 5<CR>')
-
-vim.keymap.set('n', '<space>tt', ':tabnew<CR>')
-vim.keymap.set('n', '<space>tc', ':tabclose<CR>')
-vim.keymap.set('n', '<space>tp', ':tabprevious<CR>')
-vim.keymap.set('n', '<space>tn', ':tabnext<CR>')
-
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)     -- h - Navigate Right
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)     -- j - Navigate Down
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)       -- k - Navigate Up
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)    -- l - Navigate Left
-
 -- Lazy
 
 -- Visit the project page for the latest installation instructions
@@ -283,6 +269,22 @@ vim.keymap.set('n', '<space>ff', function() require('telescope.builtin').find_fi
 -- Auto Session (Session Manager)
 vim.keymap.set('n', '<space>ws', ':SessionSave<CR>')
 vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>')
+
+-- Other keymaps
+
+vim.keymap.set('n', '<space>e', ':Ex<CR>')
+
+vim.keymap.set('n', '<space>ft', ':grep -ie todo: * | copen 5<CR>')
+
+vim.keymap.set('n', '<space>tt', ':tabnew<CR>')
+vim.keymap.set('n', '<space>tc', ':tabclose<CR>')
+vim.keymap.set('n', '<space>tp', ':tabprevious<CR>')
+vim.keymap.set('n', '<space>tn', ':tabnext<CR>')
+
+vim.keymap.set("n", "<C-h>", "<C-w>h", opts)     -- h - Navigate Right
+vim.keymap.set("n", "<C-j>", "<C-w>j", opts)     -- j - Navigate Down
+vim.keymap.set("n", "<C-k>", "<C-w>k", opts)       -- k - Navigate Up
+vim.keymap.set("n", "<C-l>", "<C-w>l", opts)    -- l - Navigate Left
 
 -- TODO: Add some plugin for theese languages
 --  * [x] golang
