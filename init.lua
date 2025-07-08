@@ -111,6 +111,16 @@ require("lazy").setup({
             },
         },
     },
+
+    {
+        'rmagatti/auto-session',
+        lazy = false,
+    
+        opts = {
+            suppressed_dirs = { '~/', '~/Downloads', '/' },
+            -- log_level = 'debug',
+        }
+    },
 })
 
 -- LSP
@@ -233,10 +243,18 @@ vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } 
 -- Telescope: Find Files
 vim.keymap.set('n', '<space>ff', function() require('telescope.builtin').find_files() end)
 
+-- Auto Session (Session Manager)
+vim.keymap.set('n', '<space>ws', ':SessionSave<CR>')
+vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>')
+
 -- TODO: Add some plugin for theese languages
--- TODO: Enable code completion somehow
 --  * [x] golang
 --  * [ ] javascript / typescript
 --  * [ ] css
 --  * [x] html
 --  * [ ] svelte
+--
+-- TODO: Enable code completion somehow
+--
+-- TODO: Session save and load
+
