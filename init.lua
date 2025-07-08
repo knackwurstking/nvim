@@ -77,7 +77,6 @@ require("lazy").setup({
         end,
     },
 
-    -- TODO: Outline
     {
         "hedyhli/outline.nvim",
 
@@ -90,6 +89,24 @@ require("lazy").setup({
 
         opts = {
           -- Your setup opts here
+        },
+    },
+
+    {
+        'nvim-telescope/telescope.nvim', 
+        tag = '0.1.8',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+
+        opts = {
+            defaults = {
+                layout_strategy = 'horizontal',
+                layout_config = {
+                    horizontal = {
+                        width = { padding = 0 },
+                        height = { padding = 0 },
+                    },
+                },
+            },
         },
     },
 })
@@ -200,8 +217,8 @@ vim.keymap.set("n", "<c-q>", function()
   vim.api.nvim_set_current_win(window) -- restore focus to window you were editing (delete this if you want to stay in loclist)
 end, { buffer = bufnr })
 
--- Format
-vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
+-- LSP: Format
+vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } end, opts)
 
 --vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
 --vim.keymap.set('n', '<space>vd', vim.diagnostic.open_float, opts)
@@ -210,6 +227,9 @@ vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } e
 --vim.keymap.set('n', '<space>vrr', vim.lsp.buf.references, opts)
 --vim.keymap.set('n', '<space>vR', vim.lsp.buf.rename, opts)
 --vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+
+-- Telescope: Find Files
+vim.keymap.set('n', '<space>ff', function() require('telescope.builtin').find_files() end)
 
 -- TODO: Add some plugin for theese languages
 -- TODO: Enable code completion somehow
