@@ -27,6 +27,11 @@ vim.keymap.set('n', '<space>ft', ':grep -ie todo: * | copen 5<CR>')
 vim.keymap.set('n', '<space>tp', ':tabprevious<CR>')
 vim.keymap.set('n', '<space>tn', ':tabnext<CR>')
 
+vim.keymap.set("n", "<C-h>", "<C-w>h", opts)     -- h - Navigate Right
+vim.keymap.set("n", "<C-j>", "<C-w>j", opts)     -- j - Navigate Down
+vim.keymap.set("n", "<C-k>", "<C-w>k", opts)       -- k - Navigate Up
+vim.keymap.set("n", "<C-l>", "<C-w>l", opts)    -- l - Navigate Left
+
 -- Lazy
 
 -- Visit the project page for the latest installation instructions
@@ -149,9 +154,9 @@ vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
 
 -- Show diagnostics
-vim.keymap.set('n', '<space>dd', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<space>qq', vim.diagnostic.open_float, opts)
 
-vim.keymap.set("n", "<space>dw", function()
+vim.keymap.set("n", "<c-q>", function()
   vim.diagnostic.setloclist({ open = false }) -- don't open and focus
 
   local window = vim.api.nvim_get_current_win()
