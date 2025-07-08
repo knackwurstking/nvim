@@ -1,4 +1,5 @@
 -- Dependencies:
+--  * luarocks                      -> `api install luarocks`
 --  * gopls                         -> `go install golang.org/x/tools/gopls@latest`
 --  * vscode-html-language-server   -> `npm i -g vscode-languageservers-extracted`
 
