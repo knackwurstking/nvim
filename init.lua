@@ -290,8 +290,4 @@ vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>')
 --  * [ ] css
 --  * [x] html
 --  * [ ] svelte
---
--- TODO: Enable code completion somehow
---
--- TODO: Session save and load
 
