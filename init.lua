@@ -127,6 +127,8 @@ lspconfig.html.setup {
     end,
 }
 
+-- TODO: CSS
+
 -- Enable the LSP
 require('lspconfig').gopls.setup {}
 
@@ -148,6 +150,7 @@ vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
 
 -- Show diagnostics
 vim.keymap.set('n', '<space>dd', vim.diagnostic.open_float, opts)
+
 vim.keymap.set("n", "<space>dw", function()
   vim.diagnostic.setloclist({ open = false }) -- don't open and focus
 
