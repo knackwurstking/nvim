@@ -97,11 +97,23 @@ lspconfig.gopls.setup {
 if not configs.html then
     configs.html = {
         default_config = {
-            cmd = { "vscode-html-language-server" },
-            filetypes = { "html" },
-            --root_dir = lspconfig.util.root_pattern(".git", "index.html", "index.htm"),
-            root_dir = lspconfig.util.root_pattern("index.html", "index.htm"),
+            cmd = { "vscode-html-language-server", "--stdio" },
+            filetypes = { "html", "javascript", "templ" },
+            root_dir = lspconfig.util.root_pattern(".git"),
             single_file_support = true,
+
+            init_options = {
+                provideFormatter = true,
+
+                embeddedLanguages = {
+                    css = true, 
+                    javascript = true,
+                },
+
+                configurationSection = { 
+                    'html', 'css', 'javascript',
+                },
+            },
         },
     }
 end
@@ -146,8 +158,9 @@ vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } e
 --vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
 -- TODO: Add some plugin for theese languages
+-- TODO: Enable code completion somehow
 --  * [x] golang
 --  * [ ] javascript / typescript
 --  * [ ] css
---  * [ ] html
+--  * [x] html
 --  * [ ] svelte
