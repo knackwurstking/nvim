@@ -266,6 +266,7 @@ vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } 
 
 -- Telescope: Find Files
 vim.keymap.set('n', '<space>ff', function() require('telescope.builtin').find_files() end)
+vim.keymap.set('n', '<space>fb', require('telescope.builtin').buffers)
 
 -- Auto Session (Session Manager)
 vim.keymap.set('n', '<space>ws', ':SessionSave<CR>')
