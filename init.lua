@@ -274,7 +274,7 @@ vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>')
 
 vim.keymap.set('n', '<space>e', ':Ex<CR>')
 
-vim.keymap.set('n', '<space>ft', ':grep -ie todo: * | copen 5<CR>')
+vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen 7<CR>")
 
 vim.keymap.set('n', '<space>tt', ':tabnew<CR>')
 vim.keymap.set('n', '<space>tc', ':tabclose<CR>')
