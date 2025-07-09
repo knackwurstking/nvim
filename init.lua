@@ -241,9 +241,9 @@ vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
 
 -- Show diagnostics
-vim.keymap.set('n', '<space>qq', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<space>dd', vim.diagnostic.open_float, opts)
 
-vim.keymap.set("n", "<c-q>", function()
+vim.keymap.set("n", "<c-d>", function()
   vim.diagnostic.setloclist({ open = false }) -- don't open and focus
 
   local window = vim.api.nvim_get_current_win()
