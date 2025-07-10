@@ -1,7 +1,7 @@
 -- Dependencies:
---  * luarocks                      -> `api install luarocks`
---  * gopls                         -> `go install golang.org/x/tools/gopls@latest`
---  * vscode-html-language-server   -> `npm i -g vscode-languageservers-extracted`
+--  * luarocks                          -> `api install luarocks`
+--  * gopls                             -> `go install golang.org/x/tools/gopls@latest`
+--  * vscode-languageservers-extracted  -> `npm i -g vscode-languageservers-extracted`
 
 vim.o.undofile      = true
 vim.o.clipboard     = "unnamedplus"
@@ -220,7 +220,31 @@ lspconfig.html.setup {
     end,
 }
 
--- TODO: CSS
+-- CSS
+
+if not configs.css then
+    configs.css = {
+        default_config = {
+            cmd = { "vscode-css-language-server", "--stdio" },
+            filetypes = { "css" },
+            root_dir = lspconfig.util.root_pattern(".git"),
+            single_file_support = true,
+
+            init_options = {
+                provideFormatter = true,
+            },
+        },
+    }
+end
+
+lspconfig.css.setup {
+    on_attach = function(client, bufnr)
+        -- Enable completion
+        if client.supports_method("textDocument/completion") then
+            vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+        end
+    end,
+}
 
 -- Enable the LSP
 require('lspconfig').gopls.setup {}
