@@ -255,6 +255,15 @@ if not configs.html then
 end
 
 lspconfig.html.setup {
+    settings = {
+        html = { 
+            format = { 
+                wrapLineLength = '100',
+                wrapAttributes = 'auto', -- [https://code.visualstudio.com/docs/languages/html#_formatting]
+            },
+        } ,
+    },
+
     on_attach = function(client, bufnr)
         -- Enable completion
         if client.supports_method("textDocument/completion") then
