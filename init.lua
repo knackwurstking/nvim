@@ -49,21 +49,19 @@ require("lazy").setup({
     { "neovim/nvim-lspconfig" },
 
     {
-        'nvim-treesitter/nvim-treesitter',
-        opts = function(_, opts)
-            opts.ignore_install = { 'help' }
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
 
-            if type(opts.ensure_installed) == 'table' then
-                vim.list_extend(opts.ensure_installed, {
-                    'dockerfile',
-                    'git_config',
-                    'jsdoc',
-                    'make',
-                    'toml',
-                    'vimdoc',
-                })
-            end
-        end,
+        config = function () 
+          local configs = require("nvim-treesitter.configs")
+
+          configs.setup({
+              ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+              sync_install = false,
+              highlight = { enable = true },
+              indent = { enable = true },  
+            })
+        end
     },
 
     {
