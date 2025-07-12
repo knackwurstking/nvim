@@ -23,6 +23,7 @@ vim.opt.syntax = "enable"
 
 vim.opt.foldmethod = "marker"
 vim.opt.foldmarker = "{{{,}}}"
+--vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- }}}
 
