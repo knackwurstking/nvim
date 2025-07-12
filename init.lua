@@ -321,7 +321,7 @@ lspconfig.html.setup {
         html = { 
             format = { 
                 wrapLineLength = '100',
-                wrapAttributes = 'auto', -- [https://code.visualstudio.com/docs/languages/html#_formatting]
+                wrapAttributes = 'preserve', -- [https://code.visualstudio.com/docs/languages/html#_formatting]
             },
         } ,
     },
