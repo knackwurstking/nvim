@@ -201,6 +201,53 @@ require("lazy").setup({ -- {{{
             vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
         end
     }, -- }}}
+
+    -- TODO: Buffer line
+    {
+        "akinsho/bufferline.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        version = "*",
+        config = function()
+            require("bufferline").setup({
+                options = {
+                    mode = "buffers",
+                    separator_style = "slant",
+                    --close_command = "bp|sp|bn|bd! %d",
+                    --right_mouse_command = "bp|sp|bn|bd! %d",
+                    --left_mouse_command = "buffer %d",
+                    buffer_close_icon = "✗",
+                    modified_icon = "",
+                    close_icon = "",
+                    show_close_icon = false,
+                    left_trunc_marker = "",
+                    right_trunc_marker = "",
+                    max_name_length = 14,
+                    max_prefix_length = 13,
+                    tab_size = 10,
+                    show_tab_indicators = true,
+                    indicator = {
+                        style = "underline",
+                    },
+                    enforce_regular_tabs = false,
+                    view = "multiwindow",
+                    show_buffer_close_icons = true,
+                    --separator_style = "thin",
+                    -- separator_style = "slant",
+                    always_show_bufferline = true,
+                    diagnostics = false,
+                    themable = true,
+                },
+            })
+
+            vim.keymap.set("n", "<space>bn", "<cmd> BufferLineCycleNext <CR>")
+            vim.keymap.set("n", "<space>bp", "<cmd> BufferLineCyclePrev <CR>")
+            vim.keymap.set("n", "<space>bl", "<cmd> BufferLineCloseLeft <CR>")
+            vim.keymap.set("n", "<space>br", "<cmd> BufferLineCloseRight <CR>")
+            vim.keymap.set("n", "<space>bd", "<cmd> bd! <CR>")
+            vim.keymap.set("n", "<space>bb", ":e #<CR>")
+            vim.keymap.set("n", "<space>bt", "<cmd> BufferLineTogglePin <CR>")
+        end,
+    },
 }) -- }}}
 
 -- LSP
@@ -375,10 +422,15 @@ vim.keymap.set('n', '<space>e', ':Ex<CR>')
 
 vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen 7<CR>")
 
-vim.keymap.set('n', '<space>tt', ':tabnew<CR>')
-vim.keymap.set('n', '<space>tc', ':tabclose<CR>')
-vim.keymap.set('n', '<space>tp', ':tabprevious<CR>')
-vim.keymap.set('n', '<space>tn', ':tabnext<CR>')
+--vim.keymap.set('n', '<space>tt', ':tabnew<CR>')
+--vim.keymap.set('n', '<space>tc', ':tabclose<CR>')
+--vim.keymap.set('n', '<space>tp', ':tabprevious<CR>')
+--vim.keymap.set('n', '<space>tn', ':tabnext<CR>')
+
+--vim.keymap.set('n', '<space>bb', '<cmd>:e #<CR>')
+--vim.keymap.set('n', '<space>bn', '<cmd>bnext<CR>')
+--vim.keymap.set('n', '<space>bp', '<cmd>bprevious<CR>')
+--vim.keymap.set('n', '<space>bd', '<cmd>bdelete<CR>')
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", opts)     -- h - Navigate Right
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts)     -- j - Navigate Down
