@@ -3,6 +3,8 @@
 --  * gopls                             -> `go install golang.org/x/tools/gopls@latest`
 --  * vscode-languageservers-extracted  -> `npm i -g vscode-languageservers-extracted`
 
+-- {{{ Options
+
 vim.o.undofile      = true
 vim.o.clipboard     = "unnamedplus"
 vim.o.laststatus    = 0
@@ -22,8 +24,15 @@ vim.opt.syntax = "enable"
 vim.opt.foldmethod = "marker"
 vim.opt.foldmarker = "{{{,}}}"
 
+-- }}}
+
+-- {{{ CMD
+
 --vim.cmd("syntax off | colorscheme retrobox | highlight Normal guifg=#ffaf00 guibg=#282828")
 vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
+vim.cmd("set foldmethod=marker")
+
+-- }}}
 
 -- Lazy
 
@@ -42,7 +51,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+require("lazy").setup({ -- {{{
     -- Boilerplate for next steps.
     -- From now on, all code examples will go to this section.
     -- {
@@ -51,7 +60,7 @@ require("lazy").setup({
 
     { "neovim/nvim-lspconfig" },
 
-    {
+    { -- {{{ nvim-treesitter/nvim-treesitter
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
 
@@ -65,9 +74,9 @@ require("lazy").setup({
               indent = { enable = true },  
             })
         end
-    },
+    }, -- }}}
 
-    {
+    { -- {{{ hedyhli/outline.nvim
         "hedyhli/outline.nvim",
 
         lazy = true,
@@ -80,9 +89,9 @@ require("lazy").setup({
         opts = {
           -- Your setup opts here
         },
-    },
+    }, -- }}}
 
-    {
+    { -- {{{ nvim-telescope/telescope.nvim
         'nvim-telescope/telescope.nvim', 
         tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' },
@@ -98,9 +107,9 @@ require("lazy").setup({
                 },
             },
         },
-    },
+    }, -- }}}
 
-    {
+    { -- {{{ rmagatti/auto-session
         'rmagatti/auto-session',
         lazy = false,
     
@@ -108,9 +117,9 @@ require("lazy").setup({
             suppressed_dirs = { '~/', '~/Downloads', '/' },
             -- log_level = 'debug',
         }
-    },
+    }, -- }}}
 
-    {
+    { -- {{{ hrsh7th/nvim-cmp
         'hrsh7th/nvim-cmp',
         event = "InsertEnter", -- Load on InsertEnter event
 
@@ -145,18 +154,18 @@ require("lazy").setup({
                 },
             }
         end,
-    },
+    }, -- }}}
 
-    {
+    { -- {{{ nvim-lualine/lualine.nvim
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
 
         config = function() 
             require("lualine").setup()
         end,
-    },
+    }, -- }}}
 
-    {
+    { -- {{{ ThePrimeagen/harpoon
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -190,15 +199,15 @@ require("lazy").setup({
             vim.keymap.set("n", "<space>a", function() harpoon:list():add() end)
             vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
         end
-    },
-})
+    }, -- }}}
+}) -- }}}
 
 -- LSP
 
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
 
--- Golang
+-- {{{ Golang
 
 if not configs.gopls then
     configs.gopls = {
@@ -231,7 +240,9 @@ lspconfig.gopls.setup {
     end,
 }
 
--- HTML
+-- }}}
+
+-- {{{ HTML
 
 if not configs.html then
     configs.html = {
@@ -275,7 +286,9 @@ lspconfig.html.setup {
     end,
 }
 
--- CSS
+-- }}}
+
+-- {{{ CSS
 
 if not configs.css then
     configs.css = {
@@ -301,11 +314,14 @@ lspconfig.css.setup {
     end,
 }
 
+-- }}}
+
 -- Enable the LSP
 require('lspconfig').gopls.setup {}
 
--- Keybindings for LSP commands
+-- {{{ Keybindings 
 
+-- LSP commands
 local opts = { noremap=true, silent=true, buffer=bufnr }
 
 -- Go to definitions
@@ -367,6 +383,8 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", opts)     -- h - Navigate Right
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts)     -- j - Navigate Down
 vim.keymap.set("n", "<C-k>", "<C-w>k", opts)       -- k - Navigate Up
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)    -- l - Navigate Left
+
+-- }}}
 
 -- TODO: Add some plugin for theese languages
 --  * [x] golang
