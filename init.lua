@@ -19,6 +19,9 @@ vim.opt.relativenumber = true
 
 vim.opt.syntax = "enable"
 
+vim.opt.foldmethod = "marker"
+vim.opt.foldmarker = "{{{,}}}"
+
 --vim.cmd("syntax off | colorscheme retrobox | highlight Normal guifg=#ffaf00 guibg=#282828")
 vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 
@@ -371,4 +374,3 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", opts)    -- l - Navigate Left
 --  * [ ] css
 --  * [x] html
 --  * [ ] svelte
-
