@@ -25,6 +25,9 @@ vim.opt.foldmethod = "marker"
 vim.opt.foldmarker = "{{{,}}}"
 --vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+vim.opt.spelllang = { "en_us", "de_de" }
+vim.opt.spell = true
+
 -- }}}
 
 -- {{{ CMD
@@ -374,7 +377,7 @@ local opts = { noremap=true, silent=true, buffer=bufnr }
 -- Go to definitions
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 
--- Go to refereces
+-- Go to references
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 
 -- Preview on "hover"
@@ -438,9 +441,9 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", opts)    -- l - Navigate Left
 
 -- }}}
 
--- TODO: Add some plugin for theese languages
+-- TODO: Add some plugin for these languages
 --  * [x] golang
 --  * [ ] javascript / typescript
---  * [ ] css
---  * [x] html
+--  * [ ] CSS
+--  * [x] HTML
 --  * [ ] svelte
