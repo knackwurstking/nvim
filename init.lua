@@ -202,8 +202,7 @@ require("lazy").setup({ -- {{{
         end
     }, -- }}}
 
-    -- TODO: Buffer line
-    {
+    { -- {{{ "akinsho/bufferline.nvim"
         "akinsho/bufferline.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         version = "*",
@@ -247,7 +246,7 @@ require("lazy").setup({ -- {{{
             vim.keymap.set("n", "<space>bb", ":e #<CR>")
             vim.keymap.set("n", "<space>bt", "<cmd> BufferLineTogglePin <CR>")
         end,
-    },
+    }, -- }}}
 }) -- }}}
 
 -- LSP
@@ -323,7 +322,7 @@ lspconfig.html.setup {
                 wrapLineLength = '100',
                 wrapAttributes = 'preserve', -- [https://code.visualstudio.com/docs/languages/html#_formatting]
             },
-        } ,
+        },
     },
 
     on_attach = function(client, bufnr)
