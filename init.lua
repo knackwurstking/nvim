@@ -21,7 +21,6 @@ vim.opt.relativenumber = true
 
 vim.opt.syntax = "enable"
 
-vim.opt.foldmethod = "marker"
 vim.opt.foldmarker = "{{{,}}}"
 --vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
@@ -34,7 +33,7 @@ vim.opt.spell = true
 
 --vim.cmd("syntax off | colorscheme retrobox | highlight Normal guifg=#ffaf00 guibg=#282828")
 vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
-vim.cmd("set foldmethod=marker")
+vim.cmd("set foldmethod=syntax")
 
 -- }}}
 
