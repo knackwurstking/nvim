@@ -409,7 +409,7 @@ vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } 
 --vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
 -- Telescope: Find Files
-vim.keymap.set('n', '<space>ff', function() require('telescope.builtin').find_files() end)
+vim.keymap.set('n', '<space>ff', function() require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}) end)
 vim.keymap.set('n', '<space>fb', require('telescope.builtin').buffers)
 vim.keymap.set("n", "<space>fs", '<cmd>Telescope live_grep<CR>')
 
