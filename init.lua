@@ -9,10 +9,10 @@ vim.o.undofile      = true
 vim.o.clipboard     = "unnamedplus"
 vim.o.laststatus    = 0
 
-vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
-vim.opt.expandtab   = true
+vim.o.tabstop = 4
+--vim.opt.expandtab   = true
 vim.opt.shiftwidth  = 4
-vim.opt.softtabstop = 4
+--vim.opt.softtabstop = 4
 
 vim.opt.mouse = "a"
 
@@ -249,6 +249,14 @@ require("lazy").setup({ -- {{{
             vim.keymap.set("n", "<space>bt", "<cmd> BufferLineTogglePin <CR>")
         end,
     }, -- }}}
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
 }) -- }}}
 
 -- LSP
@@ -286,80 +294,6 @@ lspconfig.gopls.setup {
             end
          })
       end
-    end,
-}
-
--- }}}
-
--- {{{ HTML
-
-if not configs.html then
-    configs.html = {
-        default_config = {
-            cmd = { "vscode-html-language-server", "--stdio" },
-            filetypes = { "html", "javascript", "templ" },
-            root_dir = lspconfig.util.root_pattern(".git"),
-            single_file_support = true,
-
-            init_options = {
-                provideFormatter = true,
-
-                embeddedLanguages = {
-                    css = true, 
-                    javascript = true,
-                },
-
-                configurationSection = { 
-                    'html', 'css', 'javascript',
-                },
-            },
-        },
-    }
-end
-
-lspconfig.html.setup {
-    settings = {
-        html = { 
-            format = { 
-                wrapLineLength = '100',
-                wrapAttributes = 'preserve', -- [https://code.visualstudio.com/docs/languages/html#_formatting]
-            },
-        },
-    },
-
-    on_attach = function(client, bufnr)
-        -- Enable completion
-        if client.supports_method("textDocument/completion") then
-            vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-        end
-    end,
-}
-
--- }}}
-
--- {{{ CSS
-
-if not configs.css then
-    configs.css = {
-        default_config = {
-            cmd = { "vscode-css-language-server", "--stdio" },
-            filetypes = { "css" },
-            root_dir = lspconfig.util.root_pattern(".git"),
-            single_file_support = true,
-
-            init_options = {
-                provideFormatter = true,
-            },
-        },
-    }
-end
-
-lspconfig.css.setup {
-    on_attach = function(client, bufnr)
-        -- Enable completion
-        if client.supports_method("textDocument/completion") then
-            vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-        end
     end,
 }
 
@@ -435,8 +369,8 @@ vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", opts)     -- h - Navigate Right
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts)     -- j - Navigate Down
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)       -- k - Navigate Up
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)    -- l - Navigate Left
+vim.keymap.set("n", "<C-k>", "<C-w>k", opts)     -- k - Navigate Up
+vim.keymap.set("n", "<C-l>", "<C-w>l", opts)     -- l - Navigate Left
 
 -- }}}
 
@@ -446,3 +380,4 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", opts)    -- l - Navigate Left
 --  * [ ] CSS
 --  * [x] HTML
 --  * [ ] svelte
+--  * [ ] (a-h) templ
