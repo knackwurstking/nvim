@@ -4,7 +4,6 @@
 --  * vscode-languageservers-extracted  -> `npm i -g vscode-languageservers-extracted`
 
 -- Options
-
 vim.o.undofile         = true
 vim.o.clipboard        = "unnamedplus"
 vim.o.laststatus       = 0
@@ -28,17 +27,12 @@ vim.opt.spelllang      = { "en_us", "de_de" }
 vim.opt.spell          = true
 
 -- {{{ CMD
-
 --vim.cmd("syntax off | colorscheme retrobox | highlight Normal guifg=#ffaf00 guibg=#282828")
 vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 vim.cmd("set foldmethod=syntax")
-
 -- }}}
 
 -- Lazy
-
--- Visit the project page for the latest installation instructions
--- https://github.com/folke/lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -325,15 +319,6 @@ require("lazy").setup({ -- {{{
 		end
 	}, -- }}}
 
-	{ -- {{{ gruvbox
-		'morhetz/gruvbox',
-		config = function()
-			vim.cmd("colorscheme gruvbox")
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-		end
-	}, -- }}}
-
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
@@ -344,30 +329,6 @@ require("lazy").setup({ -- {{{
 			"neovim/nvim-lspconfig",
 		},
 	},
-
-	{ -- {{{ nvim-tree/nvim-tree
-		'nvim-tree/nvim-tree.lua',
-		dependencies = {
-			'nvim-tree/nvim-web-devicons',
-		},
-		config = function()
-			require('nvim-tree').setup {
-				sync_root_with_cwd = true,
-				respect_buf_cwd = true,
-				view = {
-					width = 30,
-					side = 'left',
-				},
-				git = {
-					enable = true,
-					ignore = false,
-				},
-				filters = {
-					dotfiles = false,
-				},
-			}
-		end
-	}, -- }}}
 })  -- }}}
 
 -- LSP
@@ -454,9 +415,6 @@ lspconfig.markdownls.setup {
 
 -- Keybindings
 
--- LSP commands
-local opts = { noremap = true, silent = true, buffer = bufnr }
-
 -- Go to definitions
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
 
@@ -479,29 +437,22 @@ vim.keymap.set("n", "<c-d>", function()
 
 	vim.cmd.lwindow()                 -- open+focus loclist if has entries, else close -- this is the magic toggle command
 	vim.api.nvim_set_current_win(window) -- restore focus to window you were editing (delete this if you want to stay in loclist)
-end, { buffer = bufnr, desc = "Toggle diagnostics location list" })
+end, { desc = "Toggle diagnostics location list" })
 
 -- LSP: Format
 vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } end, { desc = "Format current buffer" })
 
 -- Markdown formatting with Prettier
-vim.keymap.set('n', '<space>cm', function()
+vim.keymap.set("n", "<space>cm", function()
 	local file = vim.api.nvim_buf_get_name(0)
 	if string.match(file, "%.md$") then
 		vim.fn.system("npx prettier --write " .. file)
-		print("Markdown formatted with Prettier")
+		vim.cmd("edit")
+		print("Markdown formatted with Prettier and file reloaded")
 	else
 		print("Not a markdown file")
 	end
 end, { desc = "Format markdown with Prettier" })
-
---vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
---vim.keymap.set('n', '<space>vd', vim.diagnostic.open_float, opts)
---vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
---vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
---vim.keymap.set('n', '<space>vrr', vim.lsp.buf.references, opts)
---vim.keymap.set('n', '<space>vR', vim.lsp.buf.rename, opts)
---vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
 -- Telescope: Find Files
 vim.keymap.set('n', '<space>ff',
@@ -535,26 +486,3 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate left window" })       
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Navigate down window" })                                 -- j - Navigate Down
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Navigate up window" })                                   -- k - Navigate Up
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate right window" }) -- l - Navigate Left
-
--- Toggle nvim-tree with leader+e
-vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>', { desc = "Toggle file explorer" })
-
-vim.keymap.set("n", "<space>cm", function()
-	local file = vim.api.nvim_buf_get_name(0)
-	if string.match(file, "%.md$") then
-		vim.fn.system("npx prettier --write " .. file)
-		print("Markdown formatted with Prettier")
-	else
-		print("Not a markdown file")
-	end
-end, { desc = "Format markdown with Prettier" })
-vim.keymap.set("n", "<space>cm", function()
-	local file = vim.api.nvim_buf_get_name(0)
-	if string.match(file, "%.md$") then
-		vim.fn.system("npx prettier --write " .. file)
-		vim.cmd("edit")
-		print("Markdown formatted with Prettier and file reloaded")
-	else
-		print("Not a markdown file")
-	end
-end, { desc = "Format markdown with Prettier" })
