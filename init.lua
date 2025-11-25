@@ -201,7 +201,7 @@ require("lazy").setup({ -- {{{
         end
     }, -- }}}
 
-    { -- {{{ ThePrimeagen/harpoon
+{ -- {{{ ThePrimeagen/harpoon
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -232,8 +232,12 @@ require("lazy").setup({ -- {{{
             --    toggle_telescope(harpoon:list()) 
             --end, { desc = "Open harpoon window" })
 
-            vim.keymap.set("n", "<space>a", function() harpoon:list():add() end)
-            vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+            -- Harpoon keymaps with more intuitive bindings
+            vim.keymap.set("n", "<space>ha", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
+            vim.keymap.set("n", "<space>hn", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
+            vim.keymap.set("n", "<space>hp", function() harpoon:list():prev() end, { desc = "Previous Harpoon file" })
+            vim.keymap.set("n", "<space>hq", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Open Harpoon menu" })
+            vim.keymap.set("n", "<space>hr", function() harpoon:list():remove() end, { desc = "Remove file from Harpoon" })
         end
     }, -- }}}
 
@@ -273,13 +277,13 @@ require("lazy").setup({ -- {{{
                 },
             })
 
-            vim.keymap.set("n", "<space>bn", "<cmd> BufferLineCycleNext <CR>")
-            vim.keymap.set("n", "<space>bp", "<cmd> BufferLineCyclePrev <CR>")
-            vim.keymap.set("n", "<space>bl", "<cmd> BufferLineCloseLeft <CR>")
-            vim.keymap.set("n", "<space>br", "<cmd> BufferLineCloseRight <CR>")
-            vim.keymap.set("n", "<space>bd", "<cmd> bd! <CR>")
-            vim.keymap.set("n", "<space>bb", ":e #<CR>")
-            vim.keymap.set("n", "<space>bt", "<cmd> BufferLineTogglePin <CR>")
+vim.keymap.set("n", "<space>bn", "<cmd> BufferLineCycleNext <CR>", { desc = "Next buffer" })
+             vim.keymap.set("n", "<space>bp", "<cmd> BufferLineCyclePrev <CR>", { desc = "Previous buffer" })
+             vim.keymap.set("n", "<space>bl", "<cmd> BufferLineCloseLeft <CR>", { desc = "Close left buffers" })
+             vim.keymap.set("n", "<space>br", "<cmd> BufferLineCloseRight <CR>", { desc = "Close right buffers" })
+             vim.keymap.set("n", "<space>bd", "<cmd> bd! <CR>", { desc = "Delete buffer" })
+             vim.keymap.set("n", "<space>bb", ":e #<CR>", { desc = "Switch to last buffer" })
+             vim.keymap.set("n", "<space>bt", "<cmd> BufferLineTogglePin <CR>", { desc = "Toggle buffer pin" })
 end,
     }, -- }}}
 
@@ -316,6 +320,7 @@ end,
 				{ "<space>c", group = "Code" },
 				{ "<space>b", group = "Buffer" },
 				{ "<space>w", group = "Session" },
+				{ "<space>h", group = "Harpoon" },
 			})
         end
     }, -- }}}
