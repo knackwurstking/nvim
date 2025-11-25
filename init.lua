@@ -486,10 +486,3 @@ vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>', {desc = "Toggle file expl
 
 -- }}}
 
--- TODO: Add some plugin for these languages
---  * [x] golang
---  * [ ] javascript / typescript
---  * [ ] CSS
---  * [x] HTML
---  * [ ] svelte
---  * [ ] (a-h) templ
