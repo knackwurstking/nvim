@@ -3,7 +3,7 @@
 --  * gopls                             -> `go install golang.org/x/tools/gopls@latest`
 --  * vscode-languageservers-extracted  -> `npm i -g vscode-languageservers-extracted`
 
--- {{{ Options
+-- Options
 
 vim.o.undofile      = true
 vim.o.clipboard     = "unnamedplus"
@@ -26,8 +26,6 @@ vim.opt.foldmarker = "{{{,}}}"
 
 vim.opt.spelllang = { "en_us", "de_de" }
 vim.opt.spell = true
-
--- }}}
 
 -- {{{ CMD
 
@@ -373,7 +371,7 @@ end,
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
 
--- {{{ Golang
+-- Golang
 
 if not configs.gopls then
     configs.gopls = {
@@ -403,15 +401,32 @@ lspconfig.gopls.setup {
             end
          })
       end
+end,
+}
+
+-- Lua
+
+lspconfig.lua_ls.setup {
+    on_attach = function(client, bufnr)
+      -- Enable completion with nvim-cmp if you are using it
+      if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
+          require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
+      end
+
+      -- Enable formatting
+      if client.server_capabilities.documentFormattingProvider then
+         vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+
+            callback = function()
+               vim.lsp.buf.format { bufnr = bufnr }
+            end
+         })
+      end
     end,
 }
 
--- }}}
-
--- Enable the LSP
-require('lspconfig').gopls.setup {}
-
--- {{{ Keybindings 
+-- Keybindings 
 
 -- LSP commands
 local opts = { noremap=true, silent=true, buffer=bufnr }
@@ -483,6 +498,4 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", {noremap=true, silent=true, desc = "Navig
 
 -- Toggle nvim-tree with leader+e
 vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>', {desc = "Toggle file explorer"})
-
--- }}}
 
