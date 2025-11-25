@@ -287,7 +287,9 @@ end,
         "folke/which-key.nvim",
         event = "VeryLazy",
         config = function()
-            require("which-key").setup {
+            local wk = require("which-key")
+
+            wk.setup({
                 -- Configure to show cleaner display without group indicators
                 icons = {
                     group = "", -- Remove the "+" prefix for groups
@@ -306,7 +308,15 @@ end,
                         suggestions = 20, -- how many suggestions should be shown in the list?
                     },
                 },
-            }
+            })
+
+			-- Mappings, rename groups
+			wk.add({
+				{ "<space>f", group = "File" },
+				{ "<space>c", group = "Code" },
+				{ "<space>b", group = "Buffer" },
+				{ "<space>w", group = "Session" },
+			})
         end
     }, -- }}}
 
