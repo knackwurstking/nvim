@@ -288,7 +288,24 @@ end,
         event = "VeryLazy",
         config = function()
             require("which-key").setup {
-                -- your configuration comes here
+                -- Configure to show cleaner display without group indicators
+                icons = {
+                    group = "", -- Remove the "+" prefix for groups
+                },
+                -- Disable the default key descriptions that might interfere
+                disable = {
+                    -- Disable for specific modes if needed
+                    -- "i", -- Insert mode
+                },
+                -- Add more detailed descriptions for specific commands
+                plugins = {
+                    marks = true,       -- shows a list of your marks on 'm'
+                    registers = true,   -- shows your registers on ':'
+                    spelling = {
+                        enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+                        suggestions = 20, -- how many suggestions should be shown in the list?
+                    },
+                },
             }
         end
     }, -- }}}

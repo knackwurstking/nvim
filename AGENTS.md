@@ -38,5 +38,5 @@
 - Telescope for fuzzy finding
 - Various UI enhancements and keybindings
 - nvim-tree plugin added with toggle functionality on leader+e
-- which-key plugin for enhanced keybinding documentation
+- which-key plugin for enhanced keybinding documentation (using new API with custom labels)
 - gruvbox colorscheme with transparent background
