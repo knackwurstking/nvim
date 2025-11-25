@@ -159,13 +159,37 @@ require("lazy").setup({ -- {{{
         end,
     }, -- }}}
 
-    { -- {{{ nvim-lualine/lualine.nvim
+{ -- {{{ nvim-lualine/lualine.nvim
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
 
         config = function() 
             require("lualine").setup()
         end,
+    }, -- }}}
+
+    { -- {{{ nvim-tree/nvim-tree
+        'nvim-tree/nvim-tree.lua',
+        dependencies = { 
+            'nvim-tree/nvim-web-devicons',
+        },
+        config = function()
+            require('nvim-tree').setup {
+                sync_root_with_cwd = true,
+                respect_buf_cwd = true,
+                view = {
+                    width = 30,
+                    side = 'left',
+                },
+                git = {
+                    enable = true,
+                    ignore = false,
+                },
+                filters = {
+                    dotfiles = false,
+                },
+            }
+        end
     }, -- }}}
 
     { -- {{{ ThePrimeagen/harpoon
@@ -247,8 +271,19 @@ require("lazy").setup({ -- {{{
             vim.keymap.set("n", "<space>bd", "<cmd> bd! <CR>")
             vim.keymap.set("n", "<space>bb", ":e #<CR>")
             vim.keymap.set("n", "<space>bt", "<cmd> BufferLineTogglePin <CR>")
-        end,
+end,
     }, -- }}}
+
+    { -- {{{ folke/which-key
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("which-key").setup {
+                -- your configuration comes here
+            }
+        end
+    }, -- }}}
+
     {
         "mason-org/mason-lspconfig.nvim",
         opts = {},
@@ -257,6 +292,30 @@ require("lazy").setup({ -- {{{
             "neovim/nvim-lspconfig",
         },
     },
+
+    { -- {{{ nvim-tree/nvim-tree
+        'nvim-tree/nvim-tree.lua',
+        dependencies = { 
+            'nvim-tree/nvim-web-devicons',
+        },
+        config = function()
+            require('nvim-tree').setup {
+                sync_root_with_cwd = true,
+                respect_buf_cwd = true,
+                view = {
+                    width = 30,
+                    side = 'left',
+                },
+                git = {
+                    enable = true,
+                    ignore = false,
+                },
+                filters = {
+                    dotfiles = false,
+                },
+            }
+        end
+    }, -- }}}
 }) -- }}}
 
 -- LSP
@@ -353,7 +412,7 @@ vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>')
 
 -- Other keymaps
 
-vim.keymap.set('n', '<space>e', ':Ex<CR>')
+vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>')
 
 vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen 7<CR>")
 
@@ -370,7 +429,10 @@ vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen
 vim.keymap.set("n", "<C-h>", "<C-w>h", opts)     -- h - Navigate Right
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts)     -- j - Navigate Down
 vim.keymap.set("n", "<C-k>", "<C-w>k", opts)     -- k - Navigate Up
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)     -- l - Navigate Left
+vim.keymap.set("n", "<C-l>", "<C-w>l", {noremap=true, silent=true})     -- l - Navigate Left
+
+-- Toggle nvim-tree with leader+e
+vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>')
 
 -- }}}
 
