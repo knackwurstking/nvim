@@ -335,7 +335,7 @@ end,
 {
         "mason-org/mason-lspconfig.nvim",
         opts = {
-            ensure_installed = { "lua_ls", "gopls", "templ" }
+            ensure_installed = { "lua_ls", "gopls", "templ", "marksman" }
         },
         dependencies = {
             { "mason-org/mason.nvim", opts = {} },
