@@ -402,19 +402,19 @@ require('lspconfig').gopls.setup {}
 local opts = { noremap=true, silent=true, buffer=bufnr }
 
 -- Go to definitions
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {desc = "Go to definition"})
 
 -- Go to references
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, {desc = "Go to references"})
 
 -- Preview on "hover"
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc = "Hover for documentation"})
 
 -- Code action
-vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
+vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, {desc = "Code actions"})
 
 -- Show diagnostics
-vim.keymap.set('n', '<space>cd', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<space>cd', vim.diagnostic.open_float, {desc = "Show diagnostics"})
 
 vim.keymap.set("n", "<c-d>", function()
   vim.diagnostic.setloclist({ open = false }) -- don't open and focus
@@ -423,10 +423,10 @@ vim.keymap.set("n", "<c-d>", function()
 
   vim.cmd.lwindow() -- open+focus loclist if has entries, else close -- this is the magic toggle command
   vim.api.nvim_set_current_win(window) -- restore focus to window you were editing (delete this if you want to stay in loclist)
-end, { buffer = bufnr })
+end, { buffer = bufnr, desc = "Toggle diagnostics location list" })
 
 -- LSP: Format
-vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } end, opts)
+vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } end, {desc = "Format current buffer"})
 
 --vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
 --vim.keymap.set('n', '<space>vd', vim.diagnostic.open_float, opts)
@@ -437,19 +437,19 @@ vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } 
 --vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
 -- Telescope: Find Files
-vim.keymap.set('n', '<space>ff', function() require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}) end)
-vim.keymap.set('n', '<space>fb', require('telescope.builtin').buffers)
-vim.keymap.set("n", "<space>fs", '<cmd>Telescope live_grep<CR>')
+vim.keymap.set('n', '<space>ff', function() require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}) end, {desc = "Find files"})
+vim.keymap.set('n', '<space>fb', require('telescope.builtin').buffers, {desc = "Find buffers"})
+vim.keymap.set("n", "<space>fs", '<cmd>Telescope live_grep<CR>', {desc = "Live grep"})
 
 -- Auto Session (Session Manager)
-vim.keymap.set('n', '<space>ws', ':SessionSave<CR>')
-vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>')
+vim.keymap.set('n', '<space>ws', ':SessionSave<CR>', {desc = "Save session"})
+vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>', {desc = "Restore session"})
 
 -- Other keymaps
 
-vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>', {desc = "Toggle file explorer"})
 
-vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen 7<CR>")
+vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen 7<CR>", {desc = "Find TODO, NOTE, FIXME"})
 
 --vim.keymap.set('n', '<space>tt', ':tabnew<CR>')
 --vim.keymap.set('n', '<space>tc', ':tabclose<CR>')
@@ -461,13 +461,13 @@ vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen
 --vim.keymap.set('n', '<space>bp', '<cmd>bprevious<CR>')
 --vim.keymap.set('n', '<space>bd', '<cmd>bdelete<CR>')
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)     -- h - Navigate Right
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)     -- j - Navigate Down
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)     -- k - Navigate Up
-vim.keymap.set("n", "<C-l>", "<C-w>l", {noremap=true, silent=true})     -- l - Navigate Left
+vim.keymap.set("n", "<C-h>", "<C-w>h", {desc = "Navigate left window"})     -- h - Navigate Right
+vim.keymap.set("n", "<C-j>", "<C-w>j", {desc = "Navigate down window"})     -- j - Navigate Down
+vim.keymap.set("n", "<C-k>", "<C-w>k", {desc = "Navigate up window"})     -- k - Navigate Up
+vim.keymap.set("n", "<C-l>", "<C-w>l", {noremap=true, silent=true, desc = "Navigate right window"})     -- l - Navigate Left
 
 -- Toggle nvim-tree with leader+e
-vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>', {desc = "Toggle file explorer"})
 
 -- }}}
 
