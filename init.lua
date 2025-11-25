@@ -168,6 +168,15 @@ require("lazy").setup({ -- {{{
         end,
     }, -- }}}
 
+    { -- {{{ gruvbox
+        'morhetz/gruvbox',
+        config = function()
+            vim.cmd("colorscheme gruvbox")
+            vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+        end
+    }, -- }}}
+
     { -- {{{ nvim-tree/nvim-tree
         'nvim-tree/nvim-tree.lua',
         dependencies = { 
@@ -281,6 +290,15 @@ end,
             require("which-key").setup {
                 -- your configuration comes here
             }
+        end
+    }, -- }}}
+
+    { -- {{{ gruvbox
+        'morhetz/gruvbox',
+        config = function()
+            vim.cmd("colorscheme gruvbox")
+            vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
         end
     }, -- }}}
 

@@ -39,3 +39,4 @@
 - Various UI enhancements and keybindings
 - nvim-tree plugin added with toggle functionality on leader+e
 - which-key plugin for enhanced keybinding documentation
+- gruvbox colorscheme with transparent background
