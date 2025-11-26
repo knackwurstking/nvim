@@ -21,10 +21,9 @@ vim.opt.foldmarker     = "{{{,}}}"
 vim.opt.spelllang      = { "en_us", "de_de" }
 vim.opt.spell          = true
 
--- {{{ CMD
+-- CMD
 vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 vim.cmd("set foldmethod=syntax")
--- }}}
 
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -40,10 +39,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ -- {{{
+require("lazy").setup({
 	{ "neovim/nvim-lspconfig" },
 
-	{ -- {{{ nvim-treesitter/nvim-treesitter
+	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 
@@ -57,9 +56,9 @@ require("lazy").setup({ -- {{{
 				indent = { enable = true },
 			})
 		end
-	}, -- }}}
+	},
 
-	{ -- {{{ hedyhli/outline.nvim
+	{
 		"hedyhli/outline.nvim",
 
 		lazy = true,
@@ -71,9 +70,9 @@ require("lazy").setup({ -- {{{
 
 		opts = {
 		},
-	}, -- }}}
+	},
 
-	{ -- {{{ nvim-telescope/telescope.nvim
+	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.8',
 		dependencies = { 'nvim-lua/plenary.nvim' },
@@ -89,18 +88,18 @@ require("lazy").setup({ -- {{{
 				},
 			},
 		},
-	}, -- }}}
+	},
 
-	{ -- {{{ rmagatti/auto-session
+	{
 		'rmagatti/auto-session',
 		lazy = false,
 
 		opts = {
 			suppressed_dirs = { '~/', '~/Downloads', '/' },
 		}
-	}, -- }}}
+	},
 
-	{ -- {{{ hrsh7th/nvim-cmp
+	{
 		'hrsh7th/nvim-cmp',
 		event = "InsertEnter",
 
@@ -135,27 +134,27 @@ require("lazy").setup({ -- {{{
 				},
 			}
 		end,
-	}, -- }}}
+	},
 
-	{ -- {{{ nvim-lualine/lualine.nvim
+	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 
 		config = function()
 			require("lualine").setup()
 		end,
-	}, -- }}}
+	},
 
-	{ -- {{{ gruvbox
+	{
 		'morhetz/gruvbox',
 		config = function()
 			vim.cmd("colorscheme gruvbox")
 			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 		end
-	}, -- }}}
+	},
 
-	{ -- {{{ nvim-tree/nvim-tree
+	{
 		'nvim-tree/nvim-tree.lua',
 		dependencies = {
 			'nvim-tree/nvim-web-devicons',
@@ -180,47 +179,15 @@ require("lazy").setup({ -- {{{
 				},
 			}
 		end
-	}, -- }}}
+	},
 
-	{ -- {{{ ThePrimeagen/harpoon
+	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 
-		config = function()
-			local harpoon = require('harpoon')
-			harpoon:setup({})
-
-			local conf = require("telescope.config").values
-			local function toggle_telescope(harpoon_files)
-				local file_paths = {}
-				for _, item in ipairs(harpoon_files.items) do
-					table.insert(file_paths, item.value)
-				end
-
-				require("telescope.pickers").new({}, {
-					prompt_title = "Harpoon",
-					finder = require("telescope.finders").new_table({
-						results = file_paths,
-					}),
-					previewer = conf.file_previewer({}),
-					sorter = conf.generic_sorter({}),
-				}):find()
-			end
-
-			vim.keymap.set("n", "<space>hh", function()
-				toggle_telescope(harpoon:list())
-			end, { desc = "Open harpoon window" })
-
-			vim.keymap.set("n", "<space>ha", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
-			vim.keymap.set("n", "<space>hn", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
-			vim.keymap.set("n", "<space>hp", function() harpoon:list():prev() end, { desc = "Previous Harpoon file" })
-			vim.keymap.set("n", "<space>hr", function() harpoon:list():remove() end,
-				{ desc = "Remove file from Harpoon" })
-		end
-	}, -- }}}
-
-	{ -- {{{ "akinsho/bufferline.nvim"
+	{
 		"akinsho/bufferline.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		version = "*",
@@ -250,18 +217,10 @@ require("lazy").setup({ -- {{{
 					themable = true,
 				},
 			})
-
-			vim.keymap.set("n", "<space>bn", "<cmd> BufferLineCycleNext <CR>", { desc = "Next buffer" })
-			vim.keymap.set("n", "<space>bp", "<cmd> BufferLineCyclePrev <CR>", { desc = "Previous buffer" })
-			vim.keymap.set("n", "<space>bl", "<cmd> BufferLineCloseLeft <CR>", { desc = "Close left buffers" })
-			vim.keymap.set("n", "<space>br", "<cmd> BufferLineCloseRight <CR>", { desc = "Close right buffers" })
-			vim.keymap.set("n", "<space>bd", "<cmd> bd! <CR>", { desc = "Delete buffer" })
-			vim.keymap.set("n", "<space>bb", ":e #<CR>", { desc = "Switch to last buffer" })
-			vim.keymap.set("n", "<space>bt", "<cmd> BufferLineTogglePin <CR>", { desc = "Toggle buffer pin" })
 		end,
-	}, -- }}}
+	},
 
-	{ -- {{{ folke/which-key
+	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		config = function()
@@ -293,7 +252,7 @@ require("lazy").setup({ -- {{{
 				{ "<space>a", group = "Avante" },
 			})
 		end
-	}, -- }}}
+	},
 
 	{
 		"mason-org/mason-lspconfig.nvim",
@@ -306,7 +265,7 @@ require("lazy").setup({ -- {{{
 		},
 	},
 
-	{ -- {{{ yetone/avante.nvim
+	{
 		"yetone/avante.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -357,33 +316,9 @@ require("lazy").setup({ -- {{{
 					},
 				},
 			})
-
-			-- Avante keymaps
-			vim.keymap.set('n', '<space>ac', '<cmd>AvanteChat<CR>', {
-				desc = "Open Avante chat",
-			})
-			vim.keymap.set('n', '<space>an', '<cmd>AvanteChatNew<CR>', {
-				desc = "Open new Avante chat",
-			})
-			vim.keymap.set('n', '<space>ai', '<cmd>AvanteIns<CR>', {
-				desc = "Insert text with Avante",
-			})
-			vim.keymap.set('n', '<space>ar', '<cmd>AvanteReplace<CR>', {
-				desc = "Replace text with Avante",
-			})
-			vim.keymap.set('n', '<space>as', '<cmd>AvanteSummarize<CR>', {
-				desc = "Summarize with Avante",
-			})
-			vim.keymap.set('n', '<space>at', '<cmd>AvanteToggle<CR>', {
-				desc = "Toggle Avante",
-			})
-
-			vim.keymap.set('v', '<C-Enter>', '<cmd>AvanteEdit<CR>', {
-				desc = "Avante Edit",
-			})
 		end,
-	}, -- }}}
-})  -- }}}
+	},
+})
 
 -- LSP
 
@@ -443,12 +378,15 @@ vim.lsp.config['lua_ls'] = {
 
 -- Keybindings
 
+-- LSP keymaps
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Go to references" })
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover for documentation" })
 vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, { desc = "Code actions" })
 vim.keymap.set('n', '<space>cd', vim.diagnostic.open_float, { desc = "Show diagnostics" })
+vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } end, { desc = "Format current buffer" })
 
+-- Diagnostic/Quickfix keymaps
 vim.keymap.set("n", "<c-d>", function()
 	vim.diagnostic.setloclist({ open = false })
 
@@ -457,9 +395,21 @@ vim.keymap.set("n", "<c-d>", function()
 	vim.cmd.lwindow()
 	vim.api.nvim_set_current_win(window)
 end, { desc = "Toggle diagnostics location list" })
+vim.keymap.set("n", "<space>ql", function()
+	vim.diagnostic.setqflist()
+	vim.cmd("copen")
+end, { desc = "Open quickfix list with linter errors" })
 
-vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } end, { desc = "Format current buffer" })
+-- Buffer management keymaps
+vim.keymap.set("n", "<space>bn", "<cmd> BufferLineCycleNext <CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<space>bp", "<cmd> BufferLineCyclePrev <CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<space>bl", "<cmd> BufferLineCloseLeft <CR>", { desc = "Close left buffers" })
+vim.keymap.set("n", "<space>br", "<cmd> BufferLineCloseRight <CR>", { desc = "Close right buffers" })
+vim.keymap.set("n", "<space>bd", "<cmd> bd! <CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<space>bb", ":e #<CR>", { desc = "Switch to last buffer" })
+vim.keymap.set("n", "<space>bt", "<cmd> BufferLineTogglePin <CR>", { desc = "Toggle buffer pin" })
 
+-- File operations
 vim.keymap.set("n", "<space>cm", function()
 	local file = vim.api.nvim_buf_get_name(0)
 	if string.match(file, "%.md$") then
@@ -471,26 +421,79 @@ vim.keymap.set("n", "<space>cm", function()
 	end
 end, { desc = "Format markdown with Prettier" })
 
+-- File explorer
+vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>', { desc = "Toggle file explorer" })
+
+-- Telescope/Find commands
 vim.keymap.set('n', '<space>ff',
 	function() require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } }) end,
 	{ desc = "Find files" })
 vim.keymap.set('n', '<space>fb', require('telescope.builtin').buffers, { desc = "Find buffers" })
 vim.keymap.set("n", "<space>fs", '<cmd>Telescope live_grep<CR>', { desc = "Live grep" })
-
-vim.keymap.set('n', '<space>ws', ':SessionSave<CR>', { desc = "Save session" })
-vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>', { desc = "Restore session" })
-
-vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>', { desc = "Toggle file explorer" })
-
 vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen 7<CR>",
 	{ desc = "Find TODO, NOTE, FIXME" })
 
+-- Session management
+vim.keymap.set('n', '<space>ws', ':SessionSave<CR>', { desc = "Save session" })
+vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>', { desc = "Restore session" })
+
+-- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Navigate down window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Navigate up window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate right window" })
 
-vim.keymap.set("n", "<space>ql", function()
-	vim.diagnostic.setqflist()
-	vim.cmd("copen")
-end, { desc = "Open quickfix list with linter errors" })
+-- Avante keymaps
+vim.keymap.set('n', '<space>ac', '<cmd>AvanteChat<CR>', {
+	desc = "Open Avante chat",
+})
+vim.keymap.set('n', '<space>an', '<cmd>AvanteChatNew<CR>', {
+	desc = "Open new Avante chat",
+})
+vim.keymap.set('n', '<space>ai', '<cmd>AvanteIns<CR>', {
+	desc = "Insert text with Avante",
+})
+vim.keymap.set('n', '<space>ar', '<cmd>AvanteReplace<CR>', {
+	desc = "Replace text with Avante",
+})
+vim.keymap.set('n', '<space>as', '<cmd>AvanteSummarize<CR>', {
+	desc = "Summarize with Avante",
+})
+vim.keymap.set('n', '<space>at', '<cmd>AvanteToggle<CR>', {
+	desc = "Toggle Avante",
+})
+vim.keymap.set('v', '<C-Enter>', '<cmd>AvanteEdit<CR>', {
+	desc = "Avante Edit",
+})
+
+-- Harpoon keymaps
+local harpoon = require('harpoon')
+harpoon:setup({})
+
+local conf = require("telescope.config").values
+
+local function toggle_telescope_for_harpoon_files(harpoon_files)
+	local file_paths = {}
+	for _, item in ipairs(harpoon_files.items) do
+		table.insert(file_paths, item.value)
+	end
+
+	require("telescope.pickers").new({}, {
+		prompt_title = "Harpoon",
+		finder = require("telescope.finders").new_table({
+			results = file_paths,
+		}),
+		previewer = conf.file_previewer({}),
+		sorter = conf.generic_sorter({}),
+	}):find()
+end
+
+vim.keymap.set("n", "<space>hh", function()
+	toggle_telescope_for_harpoon_files(harpoon:list())
+end, { desc = "Open harpoon window" })
+
+vim.keymap.set("n", "<space>ha", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
+vim.keymap.set("n", "<space>hn", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
+vim.keymap.set("n", "<space>hp", function() harpoon:list():prev() end, { desc = "Previous Harpoon file" })
+vim.keymap.set("n", "<space>hr", function() harpoon:list():remove() end,
+	{ desc = "Remove file from Harpoon" })
