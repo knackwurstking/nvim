@@ -289,7 +289,9 @@ require("lazy").setup({ -- {{{
 
 			wk.setup({
 				-- Configure to show cleaner display without group indicators
-				icons = {},
+				icons = {
+					group = "", -- Remove the "+" prefix for groups
+				},
 				-- Disable the default key descriptions that might interfere
 				disable = {
 					-- Disable for specific modes if needed
@@ -308,12 +310,11 @@ require("lazy").setup({ -- {{{
 
 			-- Mappings, rename groups
 			wk.add({
-				{ "<space>f", group = "Files" },
+				{ "<space>f", group = "File" },
 				{ "<space>c", group = "Code" },
-				{ "<space>b", group = "Buffers" },
+				{ "<space>b", group = "Buffer" },
 				{ "<space>w", group = "Session" },
 				{ "<space>h", group = "Harpoon" },
-				{ "<space>q", group = "Quickfix" },
 			})
 		end
 	}, -- }}}
@@ -328,7 +329,7 @@ require("lazy").setup({ -- {{{
 			"neovim/nvim-lspconfig",
 		},
 	},
-}) -- }}}
+})  -- }}}
 
 -- LSP
 
@@ -443,15 +444,32 @@ vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } 
 
 -- Markdown formatting with Prettier
 vim.keymap.set("n", "<space>cm", function()
-	local file = vim.api.nvim_buf_get_name(0)
-	if string.match(file, "%.md$") then
-		vim.fn.system("npx prettier --write " .. file)
-		vim.cmd("edit")
-		print("Markdown formatted with Prettier and file reloaded")
-	else
-		print("Not a markdown file")
-	end
+  local file = vim.api.nvim_buf_get_name(0)
+  if string.match(file, "%.md$") then
+    vim.fn.system("npx prettier --write " .. file)
+    vim.cmd("edit")
+    print("Markdown formatted with Prettier and file reloaded")
+  else
+    print("Not a markdown file")
+  end
 end, { desc = "Format markdown with Prettier" })
+
+-- Open quickfix list with linter errors
+vim.keymap.set("n", "<space>ql", function()
+  vim.diagnostic.setqflist()
+  vim.cmd("copen")
+end, { desc = "Open quickfix list with linter errors" })
+
+-- Open quickfix list with linter errors
+vim.keymap.set("n", "<space>ql", vim.diagnostic.setqflist, { desc = "Open quickfix list with linter errors" })
+
+-- Open quickfix list with linter errors
+vim.keymap.set("n", "<space>ql", function()
+  vim.diagnostic.setqflist()
+  vim.cmd("copen")
+end, { desc = "Open quickfix list with linter errors" })
+
+
 
 -- Telescope: Find Files
 vim.keymap.set('n', '<space>ff',
@@ -481,6 +499,12 @@ vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen
 --vim.keymap.set('n', '<space>bp', '<cmd>bprevious<CR>')
 --vim.keymap.set('n', '<space>bd', '<cmd>bdelete<CR>')
 
+-- Open quickfix list with linter errors
+vim.keymap.set("n", "<space>ql", function()
+  vim.diagnostic.setqflist()
+  vim.cmd("copen")
+end, { desc = "Open quickfix list with linter errors" })
+
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate left window" })                                 -- h - Navigate Right
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Navigate down window" })                                 -- j - Navigate Down
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Navigate up window" })                                   -- k - Navigate Up
@@ -488,6 +512,4 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "
 
 -- Open quickfix list with linter errors
 vim.keymap.set("n", "<space>ql", function()
-	vim.diagnostic.setqflist()
-	vim.cmd("copen")
-end, { desc = "Open quickfix list with linter errors" })
+vim.keymap.set("n", "<space>ql", function() vim.diagnostic.setqflist() vim.cmd("copen") end, { desc = "Open quickfix list with linter errors" })
