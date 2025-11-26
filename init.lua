@@ -9,25 +9,19 @@ vim.o.clipboard        = "unnamedplus"
 vim.o.laststatus       = 0
 
 vim.o.tabstop          = 4
---vim.opt.expandtab   = true
 vim.opt.shiftwidth     = 4
---vim.opt.softtabstop = 4
-
 vim.opt.mouse          = "a"
 
 vim.opt.number         = true
 vim.opt.relativenumber = true
-
 vim.opt.syntax         = "enable"
 
 vim.opt.foldmarker     = "{{{,}}}"
---vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.opt.spelllang      = { "en_us", "de_de" }
 vim.opt.spell          = true
 
 -- {{{ CMD
---vim.cmd("syntax off | colorscheme retrobox | highlight Normal guifg=#ffaf00 guibg=#282828")
 vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 vim.cmd("set foldmethod=syntax")
 -- }}}
@@ -47,12 +41,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ -- {{{
-	-- Boilerplate for next steps.
-	-- From now on, all code examples will go to this section.
-	-- {
-	--     "https://gitprovider.com/exampleuser/myplugin",
-	-- },
-
 	{ "neovim/nvim-lspconfig" },
 
 	{ -- {{{ nvim-treesitter/nvim-treesitter
@@ -77,12 +65,11 @@ require("lazy").setup({ -- {{{
 		lazy = true,
 		cmd = { "Outline", "OutlineOpen" },
 
-		keys = { -- Example mapping to toggle outline
+		keys = {
 			{ "<space>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
 		},
 
 		opts = {
-			-- Your setup opts here
 		},
 	}, -- }}}
 
@@ -110,13 +97,12 @@ require("lazy").setup({ -- {{{
 
 		opts = {
 			suppressed_dirs = { '~/', '~/Downloads', '/' },
-			-- log_level = 'debug',
 		}
-	},                   -- }}}
+	}, -- }}}
 
-	{                    -- {{{ hrsh7th/nvim-cmp
+	{ -- {{{ hrsh7th/nvim-cmp
 		'hrsh7th/nvim-cmp',
-		event = "InsertEnter", -- Load on InsertEnter event
+		event = "InsertEnter",
 
 		dependencies = {
 			'hrsh7th/cmp-nvim-lsp',
@@ -205,7 +191,6 @@ require("lazy").setup({ -- {{{
 			local harpoon = require('harpoon')
 			harpoon:setup({})
 
-			-- basic telescope configuration
 			local conf = require("telescope.config").values
 			local function toggle_telescope(harpoon_files)
 				local file_paths = {}
@@ -227,12 +212,9 @@ require("lazy").setup({ -- {{{
 				toggle_telescope(harpoon:list())
 			end, { desc = "Open harpoon window" })
 
-			-- Harpoon keymaps with more intuitive bindings
 			vim.keymap.set("n", "<space>ha", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
 			vim.keymap.set("n", "<space>hn", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
 			vim.keymap.set("n", "<space>hp", function() harpoon:list():prev() end, { desc = "Previous Harpoon file" })
-			--vim.keymap.set("n", "<space>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-			--	{ desc = "Open Harpoon menu" })
 			vim.keymap.set("n", "<space>hr", function() harpoon:list():remove() end,
 				{ desc = "Remove file from Harpoon" })
 		end
@@ -247,9 +229,6 @@ require("lazy").setup({ -- {{{
 				options = {
 					mode = "buffers",
 					separator_style = "slant",
-					--close_command = "bp|sp|bn|bd! %d",
-					--right_mouse_command = "bp|sp|bn|bd! %d",
-					--left_mouse_command = "buffer %d",
 					buffer_close_icon = "✗",
 					modified_icon = "",
 					close_icon = "",
@@ -266,8 +245,6 @@ require("lazy").setup({ -- {{{
 					enforce_regular_tabs = false,
 					view = "multiwindow",
 					show_buffer_close_icons = true,
-					--separator_style = "thin",
-					-- separator_style = "slant",
 					always_show_bufferline = true,
 					diagnostics = false,
 					themable = true,
@@ -291,25 +268,19 @@ require("lazy").setup({ -- {{{
 			local wk = require("which-key")
 
 			wk.setup({
-				-- Configure to show cleaner display without group indicators
 				icons = {},
-				-- Disable the default key descriptions that might interfere
 				disable = {
-					-- Disable for specific modes if needed
-					-- "i", -- Insert mode
 				},
-				-- Add more detailed descriptions for specific commands
 				plugins = {
-					marks = true, -- shows a list of your marks on 'm'
-					registers = true, -- shows your registers on ':'
+					marks = true,
+					registers = true,
 					spelling = {
-						enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-						suggestions = 20, -- how many suggestions should be shown in the list?
+						enabled = true,
+						suggestions = 20,
 					},
 				},
 			})
 
-			-- Mappings, rename groups
 			wk.add({
 				{ "<space>f", group = "Files" },
 				{ "<space>c", group = "Code" },
@@ -340,28 +311,27 @@ require("lazy").setup({ -- {{{
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 		},
-		opts = {
-			provider = "openai", -- or "anthropic"
-			-- You can set your API keys here or via environment variables
-			-- openai = {
-			--   api_key = "your-openai-api-key",
-			-- },
-			-- anthropic = {
-			--   api_key = "your-anthropic-api-key",
-			-- },
-		},
 		config = function()
 			require("avante").setup({
-				-- Your custom configuration here
-				-- For example:
-				-- provider = "anthropic",
-				-- anthropic = {
-				--   api_key = os.getenv("ANTHROPIC_API_KEY"),
-				-- },
+				provider = "openai",
+				providers = {
+					openai = {
+						endpoint = "http://192.168.178.52:1234/api/v0",
+						model = "qwen/qwen3-coder-30b",
+						api_key = "",
+					},
+				},
 			})
+	
+				-- Avante keymaps
+				vim.keymap.set('n', '<space>ac', '<cmd>AvanteChat<CR>', { desc = "Open Avante chat" })
+				vim.keymap.set('n', '<space>ai', '<cmd>AvanteIns<CR>', { desc = "Insert text with Avante" })
+				vim.keymap.set('n', '<space>ar', '<cmd>AvanteReplace<CR>', { desc = "Replace text with Avante" })
+				vim.keymap.set('n', '<space>as', '<cmd>AvanteSummarize<CR>', { desc = "Summarize with Avante" })
+				vim.keymap.set('n', '<space>at', '<cmd>AvanteToggle<CR>', { desc = "Toggle Avante" })
 		end,
 	}, -- }}}
-}) -- }}}
+})  -- }}}
 
 -- LSP
 
@@ -383,12 +353,10 @@ end
 
 lspconfig.gopls.setup {
 	on_attach = function(client, bufnr)
-		-- Enable completion with nvim-cmp if you are using it
 		if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
 			require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
 		end
 
-		-- Enable formatting
 		if client.server_capabilities.documentFormattingProvider then
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = bufnr,
@@ -405,12 +373,10 @@ lspconfig.gopls.setup {
 
 lspconfig.lua_ls.setup {
 	on_attach = function(client, bufnr)
-		-- Enable completion with nvim-cmp if you are using it
 		if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
 			require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
 		end
 
-		-- Enable formatting
 		if client.server_capabilities.documentFormattingProvider then
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = bufnr,
@@ -427,12 +393,10 @@ lspconfig.lua_ls.setup {
 
 lspconfig.markdownls.setup {
 	on_attach = function(client, bufnr)
-		-- Enable completion with nvim-cmp if you are using it
 		if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
 			require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
 		end
 
-		-- Enable formatting
 		if client.server_capabilities.documentFormattingProvider then
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = bufnr,
@@ -447,34 +411,23 @@ lspconfig.markdownls.setup {
 
 -- Keybindings
 
--- Go to definitions
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
-
--- Go to references
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Go to references" })
-
--- Preview on "hover"
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover for documentation" })
-
--- Code action
 vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, { desc = "Code actions" })
-
--- Show diagnostics
 vim.keymap.set('n', '<space>cd', vim.diagnostic.open_float, { desc = "Show diagnostics" })
 
 vim.keymap.set("n", "<c-d>", function()
-	vim.diagnostic.setloclist({ open = false }) -- don't open and focus
+	vim.diagnostic.setloclist({ open = false })
 
 	local window = vim.api.nvim_get_current_win()
 
-	vim.cmd.lwindow()                 -- open+focus loclist if has entries, else close -- this is the magic toggle command
-	vim.api.nvim_set_current_win(window) -- restore focus to window you were editing (delete this if you want to stay in loclist)
+	vim.cmd.lwindow()
+	vim.api.nvim_set_current_win(window)
 end, { desc = "Toggle diagnostics location list" })
 
--- LSP: Format
 vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } end, { desc = "Format current buffer" })
 
--- Markdown formatting with Prettier
 vim.keymap.set("n", "<space>cm", function()
 	local file = vim.api.nvim_buf_get_name(0)
 	if string.match(file, "%.md$") then
@@ -486,40 +439,25 @@ vim.keymap.set("n", "<space>cm", function()
 	end
 end, { desc = "Format markdown with Prettier" })
 
--- Telescope: Find Files
 vim.keymap.set('n', '<space>ff',
 	function() require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } }) end,
 	{ desc = "Find files" })
 vim.keymap.set('n', '<space>fb', require('telescope.builtin').buffers, { desc = "Find buffers" })
 vim.keymap.set("n", "<space>fs", '<cmd>Telescope live_grep<CR>', { desc = "Live grep" })
 
--- Auto Session (Session Manager)
 vim.keymap.set('n', '<space>ws', ':SessionSave<CR>', { desc = "Save session" })
 vim.keymap.set('n', '<space>wr', ':SessionRestore<CR>', { desc = "Restore session" })
-
--- Other keymaps
 
 vim.keymap.set('n', '<space>e', ':NvimTreeToggle<CR>', { desc = "Toggle file explorer" })
 
 vim.keymap.set('n', '<space>ft', ":grep -i -e todo: -e note: -e fixme: * | copen 7<CR>",
 	{ desc = "Find TODO, NOTE, FIXME" })
 
---vim.keymap.set('n', '<space>tt', ':tabnew<CR>')
---vim.keymap.set('n', '<space>tc', ':tabclose<CR>')
---vim.keymap.set('n', '<space>tp', ':tabprevious<CR>')
---vim.keymap.set('n', '<space>tn', ':tabnext<CR>')
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Navigate down window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Navigate up window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate right window" })
 
---vim.keymap.set('n', '<space>bb', '<cmd>:e #<CR>')
---vim.keymap.set('n', '<space>bn', '<cmd>bnext<CR>')
---vim.keymap.set('n', '<space>bp', '<cmd>bprevious<CR>')
---vim.keymap.set('n', '<space>bd', '<cmd>bdelete<CR>')
-
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate left window" })                                 -- h - Navigate Right
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Navigate down window" })                                 -- j - Navigate Down
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Navigate up window" })                                   -- k - Navigate Up
-vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate right window" }) -- l - Navigate Left
-
--- Open quickfix list with linter errors
 vim.keymap.set("n", "<space>ql", function()
 	vim.diagnostic.setqflist()
 	vim.cmd("copen")
