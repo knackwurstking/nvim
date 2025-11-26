@@ -223,16 +223,16 @@ require("lazy").setup({ -- {{{
 				}):find()
 			end
 
-			--vim.keymap.set("n", "<C-e>", function()
-			--    toggle_telescope(harpoon:list())
-			--end, { desc = "Open harpoon window" })
+			vim.keymap.set("n", "<space>hh", function()
+				toggle_telescope(harpoon:list())
+			end, { desc = "Open harpoon window" })
 
 			-- Harpoon keymaps with more intuitive bindings
 			vim.keymap.set("n", "<space>ha", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
 			vim.keymap.set("n", "<space>hn", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
 			vim.keymap.set("n", "<space>hp", function() harpoon:list():prev() end, { desc = "Previous Harpoon file" })
-			vim.keymap.set("n", "<space>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-				{ desc = "Open Harpoon menu" })
+			--vim.keymap.set("n", "<space>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+			--	{ desc = "Open Harpoon menu" })
 			vim.keymap.set("n", "<space>hr", function() harpoon:list():remove() end,
 				{ desc = "Remove file from Harpoon" })
 		end
