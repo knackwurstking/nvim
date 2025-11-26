@@ -353,21 +353,34 @@ require("lazy").setup({ -- {{{
 					openai = {
 						endpoint = "http://192.168.178.52:1234/api/v0",
 						model = "qwen/qwen3-coder-30b",
+						api_key = "",
 					},
 				},
 			})
 
 			-- Avante keymaps
 			vim.keymap.set('n', '<space>ac', '<cmd>AvanteChat<CR>', {
-				desc = "Open Avante chat" })
+				desc = "Open Avante chat",
+			})
+			vim.keymap.set('n', '<space>an', '<cmd>AvanteChatNew<CR>', {
+				desc = "Open new Avante chat",
+			})
 			vim.keymap.set('n', '<space>ai', '<cmd>AvanteIns<CR>', {
-				desc = "Insert text with Avante" })
+				desc = "Insert text with Avante",
+			})
 			vim.keymap.set('n', '<space>ar', '<cmd>AvanteReplace<CR>', {
-				desc = "Replace text with Avante" })
+				desc = "Replace text with Avante",
+			})
 			vim.keymap.set('n', '<space>as', '<cmd>AvanteSummarize<CR>', {
-				desc = "Summarize with Avante" })
+				desc = "Summarize with Avante",
+			})
 			vim.keymap.set('n', '<space>at', '<cmd>AvanteToggle<CR>', {
-				desc = "Toggle Avante" })
+				desc = "Toggle Avante",
+			})
+
+			vim.keymap.set('v', '<C-Enter>', '<cmd>AvanteEdit<CR>', {
+				desc = "Avante Edit",
+			})
 		end,
 	}, -- }}}
 })  -- }}}
