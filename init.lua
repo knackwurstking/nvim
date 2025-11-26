@@ -228,7 +228,7 @@ require("lazy").setup({ -- {{{
 			vim.keymap.set("n", "<space>ha", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
 			vim.keymap.set("n", "<space>hn", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
 			vim.keymap.set("n", "<space>hp", function() harpoon:list():prev() end, { desc = "Previous Harpoon file" })
-			vim.keymap.set("n", "<space>hq", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+			vim.keymap.set("n", "<space>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
 				{ desc = "Open Harpoon menu" })
 			vim.keymap.set("n", "<space>hr", function() harpoon:list():remove() end,
 				{ desc = "Remove file from Harpoon" })
