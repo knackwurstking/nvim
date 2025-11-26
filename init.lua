@@ -181,7 +181,6 @@ require("lazy").setup({ -- {{{
 				update_focused_file = {
 					enable = true,
 				},
-				auto_reload = true,
 				view = {
 					width = 30,
 					side = 'left',
