@@ -488,9 +488,13 @@ local function toggle_telescope_for_harpoon_files(harpoon_files)
 	}):find()
 end
 
-vim.keymap.set("n", "<space>hh", function()
+vim.keymap.set("n", "<space>ht", function()
 	toggle_telescope_for_harpoon_files(harpoon:list())
-end, { desc = "Open harpoon window" })
+end, { desc = "Open harpoon telescope window" })
+
+vim.keymap.set("n", "<space>hh", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Toggle harpoon quick menu" })
 
 vim.keymap.set("n", "<space>ha", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
 vim.keymap.set("n", "<space>hn", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
