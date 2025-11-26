@@ -331,6 +331,36 @@ require("lazy").setup({ -- {{{
 			"neovim/nvim-lspconfig",
 		},
 	},
+
+	{ -- {{{ yetone/avante.nvim
+		"yetone/avante.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"stevearc/dressing.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {
+			provider = "openai", -- or "anthropic"
+			-- You can set your API keys here or via environment variables
+			-- openai = {
+			--   api_key = "your-openai-api-key",
+			-- },
+			-- anthropic = {
+			--   api_key = "your-anthropic-api-key",
+			-- },
+		},
+		config = function()
+			require("avante").setup({
+				-- Your custom configuration here
+				-- For example:
+				-- provider = "anthropic",
+				-- anthropic = {
+				--   api_key = os.getenv("ANTHROPIC_API_KEY"),
+				-- },
+			})
+		end,
+	}, -- }}}
 }) -- }}}
 
 -- LSP
