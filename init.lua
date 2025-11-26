@@ -178,6 +178,10 @@ require("lazy").setup({ -- {{{
 			require('nvim-tree').setup {
 				sync_root_with_cwd = true,
 				respect_buf_cwd = true,
+				update_focused_file = {
+					enable = true,
+				},
+				auto_reload = true,
 				view = {
 					width = 30,
 					side = 'left',
