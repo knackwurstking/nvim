@@ -268,7 +268,9 @@ require("lazy").setup({ -- {{{
 			local wk = require("which-key")
 
 			wk.setup({
-				icons = {},
+				icons = {
+					group = " ", -- This removes the "+" and adds a space instead
+				},
 				disable = {
 				},
 				plugins = {
@@ -288,6 +290,7 @@ require("lazy").setup({ -- {{{
 				{ "<space>w", group = "Session" },
 				{ "<space>h", group = "Harpoon" },
 				{ "<space>q", group = "Quickfix" },
+				{ "<space>a", group = "Avante" },
 			})
 		end
 	}, -- }}}
@@ -306,10 +309,42 @@ require("lazy").setup({ -- {{{
 	{ -- {{{ yetone/avante.nvim
 		"yetone/avante.nvim",
 		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-			"stevearc/dressing.nvim",
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
+			--- The below dependencies are optional,
+			"nvim-mini/mini.pick",  -- for file_selector provider mini.pick
+			"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+			"hrsh7th/nvim-cmp",     -- autocompletion for avante commands and mentions
+			"ibhagwan/fzf-lua",     -- for file_selector provider fzf
+			"stevearc/dressing.nvim", -- for input provider dressing
+			"folke/snacks.nvim",    -- for input provider snacks
+			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+			--"zbirenbaum/copilot.lua", -- for providers='copilot'
+			--{
+			--	-- support for image pasting
+			--	"HakonHarnes/img-clip.nvim",
+			--	event = "VeryLazy",
+			--	opts = {
+			--		-- recommended settings
+			--		default = {
+			--			embed_image_as_base64 = false,
+			--			prompt_for_file_name = false,
+			--			drag_and_drop = {
+			--				insert_mode = true,
+			--			},
+			--			-- required for Windows users
+			--			use_absolute_path = true,
+			--		},
+			--	},
+			--},
+			{
+				-- Make sure to set this up properly if you have lazy=true
+				'MeanderingProgrammer/render-markdown.nvim',
+				opts = {
+					file_types = { "markdown", "Avante" },
+				},
+				ft = { "markdown", "Avante" },
+			},
 		},
 		config = function()
 			require("avante").setup({
@@ -318,17 +353,21 @@ require("lazy").setup({ -- {{{
 					openai = {
 						endpoint = "http://192.168.178.52:1234/api/v0",
 						model = "qwen/qwen3-coder-30b",
-						api_key = "",
 					},
 				},
 			})
-	
-				-- Avante keymaps
-				vim.keymap.set('n', '<space>ac', '<cmd>AvanteChat<CR>', { desc = "Open Avante chat" })
-				vim.keymap.set('n', '<space>ai', '<cmd>AvanteIns<CR>', { desc = "Insert text with Avante" })
-				vim.keymap.set('n', '<space>ar', '<cmd>AvanteReplace<CR>', { desc = "Replace text with Avante" })
-				vim.keymap.set('n', '<space>as', '<cmd>AvanteSummarize<CR>', { desc = "Summarize with Avante" })
-				vim.keymap.set('n', '<space>at', '<cmd>AvanteToggle<CR>', { desc = "Toggle Avante" })
+
+			-- Avante keymaps
+			vim.keymap.set('n', '<space>ac', '<cmd>AvanteChat<CR>', {
+				desc = "Open Avante chat" })
+			vim.keymap.set('n', '<space>ai', '<cmd>AvanteIns<CR>', {
+				desc = "Insert text with Avante" })
+			vim.keymap.set('n', '<space>ar', '<cmd>AvanteReplace<CR>', {
+				desc = "Replace text with Avante" })
+			vim.keymap.set('n', '<space>as', '<cmd>AvanteSummarize<CR>', {
+				desc = "Summarize with Avante" })
+			vim.keymap.set('n', '<space>at', '<cmd>AvanteToggle<CR>', {
+				desc = "Toggle Avante" })
 		end,
 	}, -- }}}
 })  -- }}}
@@ -351,7 +390,7 @@ if not configs.gopls then
 	}
 end
 
-lspconfig.gopls.setup {
+vim.lsp.config['gopls'] = {
 	on_attach = function(client, bufnr)
 		if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
 			require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
@@ -371,27 +410,7 @@ lspconfig.gopls.setup {
 
 -- Lua
 
-lspconfig.lua_ls.setup {
-	on_attach = function(client, bufnr)
-		if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
-			require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
-		end
-
-		if client.server_capabilities.documentFormattingProvider then
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				buffer = bufnr,
-
-				callback = function()
-					vim.lsp.buf.format { bufnr = bufnr }
-				end
-			})
-		end
-	end,
-}
-
--- Markdown
-
-lspconfig.markdownls.setup {
+vim.lsp.config['lua_ls'] = {
 	on_attach = function(client, bufnr)
 		if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
 			require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
