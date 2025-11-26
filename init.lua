@@ -187,40 +187,40 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
-	{
-		"akinsho/bufferline.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		version = "*",
-		config = function()
-			require("bufferline").setup({
-				options = {
-					mode = "buffers",
-					separator_style = "slant",
-					--buffer_close_icon = "✗",
-					buffer_close_icon = "",
-					modified_icon = "",
-					--close_icon = "",
-					close_icon = "",
-					show_close_icon = false,
-					left_trunc_marker = "",
-					right_trunc_marker = "",
-					max_name_length = 14,
-					max_prefix_length = 13,
-					tab_size = 20,
-					show_tab_indicators = true,
-					indicator = {
-						style = "underline",
-					},
-					enforce_regular_tabs = true,
-					--view = "multiwindow",
-					show_buffer_close_icons = false,
-					always_show_bufferline = true,
-					diagnostics = true,
-					themable = false,
-				},
-			})
-		end,
-	},
+	--{
+	--	"akinsho/bufferline.nvim",
+	--	dependencies = { "nvim-tree/nvim-web-devicons" },
+	--	version = "*",
+	--	config = function()
+	--		require("bufferline").setup({
+	--			options = {
+	--				mode = "buffers",
+	--				separator_style = "slant",
+	--				--buffer_close_icon = "✗",
+	--				buffer_close_icon = "",
+	--				modified_icon = "",
+	--				--close_icon = "",
+	--				close_icon = "",
+	--				show_close_icon = false,
+	--				left_trunc_marker = "",
+	--				right_trunc_marker = "",
+	--				max_name_length = 14,
+	--				max_prefix_length = 13,
+	--				tab_size = 20,
+	--				show_tab_indicators = true,
+	--				indicator = {
+	--					style = "underline",
+	--				},
+	--				enforce_regular_tabs = true,
+	--				--view = "multiwindow",
+	--				show_buffer_close_icons = false,
+	--				always_show_bufferline = true,
+	--				diagnostics = true,
+	--				themable = false,
+	--			},
+	--		})
+	--	end,
+	--},
 
 	{
 		"folke/which-key.nvim",
