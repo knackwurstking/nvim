@@ -403,13 +403,19 @@ vim.keymap.set("n", "<space>ql", function()
 end, { desc = "Open quickfix list with linter errors" })
 
 -- Buffer management keymaps
-vim.keymap.set("n", "<space>bn", "<cmd> BufferLineCycleNext <CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<space>bp", "<cmd> BufferLineCyclePrev <CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "<space>bl", "<cmd> BufferLineCloseLeft <CR>", { desc = "Close left buffers" })
-vim.keymap.set("n", "<space>br", "<cmd> BufferLineCloseRight <CR>", { desc = "Close right buffers" })
+vim.keymap.set("n", "<space>bl", "<cmd> ls <CR>", { desc = "List buffers" })
+vim.keymap.set("n", "<space>bn", "<cmd> bnext <CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<space>bp", "<cmd> bprevious <CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<space>bd", "<cmd> bd! <CR>", { desc = "Delete buffer" })
 vim.keymap.set("n", "<space>bb", ":e #<CR>", { desc = "Switch to last buffer" })
-vim.keymap.set("n", "<space>bt", "<cmd> BufferLineTogglePin <CR>", { desc = "Toggle buffer pin" })
+vim.keymap.set("n", "<space>bg", function()
+	local buffers = vim.api.nvim_list_bufs()
+	local current_buf = vim.api.nvim_get_current_buf()
+	local bufnr = vim.fn.input("Enter buffer number: ")
+	if bufnr ~= "" then
+		vim.api.nvim_set_current_buf(tonumber(bufnr))
+	end
+end, { desc = "Goto buffer by number" })
 
 -- File operations
 vim.keymap.set("n", "<space>cm", function()
