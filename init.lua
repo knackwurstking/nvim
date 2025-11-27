@@ -509,7 +509,7 @@ vim.keymap.set('n', '<space>as', '<cmd>AvanteSummarize<CR>', {
 vim.keymap.set('n', '<space>at', '<cmd>AvanteToggle<CR>', {
 	desc = "Toggle Avante",
 })
-vim.keymap.set('v', '<C-Enter>', '<cmd>AvanteEdit<CR>', {
+vim.keymap.set('v', '<C-Enter>', ':AvanteEdit<CR>', {
 	desc = "Avante Edit",
 })
 
