@@ -349,6 +349,11 @@ require("lazy").setup({
 			})
 		end,
 	},
+
+	{
+		"pcolladosoto/tinygo.nvim",
+		opts = {},
+	},
 })
 
 -- LSP
