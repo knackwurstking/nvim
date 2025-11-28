@@ -25,11 +25,11 @@ vim.opt.colorcolumn    = "81"
 -- CMD
 --vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 -- Use treesitter-based folding for better programming language support
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod     = "expr"
+vim.opt.foldexpr       = "nvim_treesitter#foldexpr()"
 
 -- Lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath         = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -348,6 +348,10 @@ require("lazy").setup({
 						model = "qwen/qwen3-coder-30b",
 						api_key = "",
 					},
+				},
+				web_search_engine = {
+					provider = "google",
+					proxy = nil,
 				},
 			})
 		end,
