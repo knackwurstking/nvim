@@ -25,9 +25,7 @@ vim.opt.colorcolumn    = "81"
 
 -- CMD
 --vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
--- Use treesitter-based folding for better programming language support
-vim.opt.foldmethod     = "expr"
-vim.opt.foldexpr       = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod     = "syntax"
 
 -- Lazy
 local lazypath         = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -54,7 +52,20 @@ require("lazy").setup({
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html", "go", "css" },
+				ensure_installed = {
+					"c",
+					"lua",
+					"vim",
+					"vimdoc",
+					"query",
+					"elixir",
+					"heex",
+					"javascript",
+					"html",
+					"go",
+					"css",
+					"templ",
+				},
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -257,7 +268,7 @@ require("lazy").setup({
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-				ensure_installed = { "lua_ls", "gopls", "templ", "marksman", "clangd" }
+			ensure_installed = { "lua_ls", "gopls", "templ", "marksman", "clangd" }
 		},
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
@@ -345,6 +356,15 @@ require("lazy").setup({
 			signature = { enabled = true },
 		},
 	},
+
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				templ = { "templ" },
+			},
+		},
+	},
 })
 
 -- LSP
@@ -406,6 +426,21 @@ vim.lsp.config['lua_ls'] = {
 	end,
 }
 
+vim.lsp.config['lspconfig'] = {
+	opts = {
+		servers = {
+			templ = {
+				filetypes = { "templ" },
+				settings = {
+					templ = {
+						enable_snippets = true,
+					},
+				},
+			},
+		},
+	},
+}
+
 -- Keybindings
 
 -- LSP keymaps
@@ -447,8 +482,8 @@ vim.keymap.set("n", "<space>bD", function()
 end, { desc = "Delete all buffers except current" })
 vim.keymap.set("n", "<space>bb", ":e #<CR>", { desc = "Switch to last buffer" })
 vim.keymap.set("n", "<space>bg", function()
-	local buffers = vim.api.nvim_list_bufs()
-	local current_buf = vim.api.nvim_get_current_buf()
+	--local buffers = vim.api.nvim_list_bufs()
+	--local current_buf = vim.api.nvim_get_current_buf()
 	local bufnr = vim.fn.input("Enter buffer number: ")
 	if bufnr ~= "" then
 		vim.api.nvim_set_current_buf(tonumber(bufnr))
