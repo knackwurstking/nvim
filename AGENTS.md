@@ -53,22 +53,27 @@ This is a Neovim configuration repository with Lua-based plugins using Lazy.nvim
 - **avante.nvim**: AI assistant integration (configured for local OpenAI-compatible endpoint)
 
 ### Development Tools
-- **mason.nvim/mason-lspconfig.nvim**: LSP server management (lua_ls, gopls, templ, marksman)
+- **mason.nvim/mason-lspconfig.nvim**: LSP server management (lua_ls, gopls, templ, marksman, clangd, ts_ls)
 - **tinygo.nvim**: Support for TinyGo development
+- **conform.nvim**: Code formatting with formatters by file type (templ, go)
 
 ## Key Features and Configuration Details
 - Uses gruvbox colorscheme with transparent background
 - Tree-sitter integration for enhanced syntax highlighting and indentation
 - Telescope configured with horizontal layout and custom padding
 - Session management using auto-session plugin (suppressed dirs: ~/Downloads, /)
-- LSP configuration for Go with gopls and Lua with lua_ls
+- LSP configuration for Go with gopls, Lua with lua_ls, Templ with templ, HTML with html, JavaScript/TypeScript with ts_ls, CSS with cssls
 - Markdown formatting capability using Prettier (npm run format:md)
 - Buffer management keybindings (<space>bl, <space>bn, <space>bp, <space>bd, <space>bD, <space>bb)
 - Diagnostic and quickfix integration (<space>ql, <C-d>)
 - Window navigation keybindings (<C-h>, <C-j>, <C-k>, <C-l>)
+- Blink CMP for enhanced autocompletion with signature help
 
 ## Additional Notes
 - This configuration uses a single init.lua file for all Neovim setup
 - Keybindings follow leader key pattern (<space> prefix)
 - Plugins are configured to load lazily where appropriate
 - Uses modern Neovim patterns and Lua best practices for configuration
+- Auto-session plugin configured to suppress specific directories
+- LSP configurations include custom formatting and completion setup for different file types
+- Avante plugin configured to use a local OpenAI-compatible endpoint at http://192.168.178.52:1234/api/v0
