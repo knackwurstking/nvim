@@ -1,7 +1,8 @@
 -- Dependencies:
 --  * luarocks                          -> `api install luarocks`
 --  * gopls                             -> `go install golang.org/x/tools/gopls@latest`
---  * vscode-languageservers-extracted  -> `npm i -g vscode-languageservers-extracted`
+-- * vscode-languageservers-extracted  -> `npm i -g vscode-languageservers-extracted`
+-- * clangd                            -> `sudo apt install clangd` (or brew install clangd on macOS)
 
 -- Options
 vim.o.undofile         = true
@@ -256,7 +257,7 @@ require("lazy").setup({
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls", "gopls", "templ", "marksman" }
+				ensure_installed = { "lua_ls", "gopls", "templ", "marksman", "clangd" }
 		},
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
@@ -487,6 +488,10 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Navigate down window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Navigate up window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate right window" })
+
+-- C-specific keybindings
+vim.keymap.set("n", "<space>cc", "<cmd>ClangdToggleDebugInfo<CR>", { desc = "Toggle Clangd debug info" })
+vim.keymap.set("n", "<space>cf", function() vim.lsp.buf.format { async = true } end, { desc = "Format current C buffer" })
 
 -- Avante keymaps
 vim.keymap.set('n', '<space>ac', '<cmd>AvanteChat<CR>', {
