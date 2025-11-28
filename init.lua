@@ -361,12 +361,31 @@ require("lazy").setup({
 		"pcolladosoto/tinygo.nvim",
 		opts = {},
 	},
+
+	{
+		"saghen/blink.cmp",
+		dependencies = "rafamadriz/friendly-snippets",
+
+		version = "v0.*",
+
+		opts = {
+			keymap = { preset = "default" },
+
+			appearance = {
+				use_nvim_cmp_as_default = true,
+				nerd_font_variant = "mono",
+			},
+
+			signature = { enabled = true },
+		},
+	},
 })
 
 -- LSP
 
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- Golang
 
@@ -382,6 +401,7 @@ if not configs.gopls then
 end
 
 vim.lsp.config['gopls'] = {
+	capabilities = capabilities,
 	on_attach = function(client, bufnr)
 		if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
 			require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
@@ -402,6 +422,7 @@ vim.lsp.config['gopls'] = {
 -- Lua
 
 vim.lsp.config['lua_ls'] = {
+	capabilities = capabilities,
 	on_attach = function(client, bufnr)
 		if vim.tbl_contains(client.server_capabilities.completionProvider.triggerCharacters or {}, '.') then
 			require('cmp').setup.buffer { sources = { { name = 'nvim_lsp' } } }
