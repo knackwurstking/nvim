@@ -20,6 +20,7 @@ vim.opt.foldmarker     = "{{{,}}}"
 
 vim.opt.spelllang      = { "en_us", "de_de" }
 vim.opt.spell          = true
+vim.opt.colorcolumn    = "81"
 
 -- CMD
 --vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
