@@ -2,7 +2,7 @@ require("options.lsp")
 
 vim.o.undofile         = true
 vim.o.clipboard        = "unnamedplus"
-vim.o.laststatus       = 0
+vim.o.laststatus       = 2
 
 vim.o.tabstop          = 4
 vim.opt.shiftwidth     = 4
