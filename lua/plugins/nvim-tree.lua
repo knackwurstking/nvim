@@ -5,13 +5,18 @@ return {
 	},
 	config = function()
 		require('nvim-tree').setup {
+			actions = {
+				open_file = {
+					quit_on_open = true,
+				},
+			},
 			sync_root_with_cwd = true,
 			respect_buf_cwd = true,
 			update_focused_file = {
 				enable = true,
 			},
 			view = {
-				width = 30,
+				width = 45,
 				side = 'left',
 			},
 			git = {
