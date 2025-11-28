@@ -22,7 +22,7 @@ vim.opt.spelllang      = { "en_us", "de_de" }
 vim.opt.spell          = true
 
 -- CMD
-vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
+--vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 vim.cmd("set foldmethod=syntax")
 
 -- Lazy
