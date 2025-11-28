@@ -24,7 +24,9 @@ vim.opt.colorcolumn    = "81"
 
 -- CMD
 --vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
-vim.cmd("set foldmethod=syntax")
+-- Use treesitter-based folding for better programming language support
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
