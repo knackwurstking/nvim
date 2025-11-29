@@ -19,3 +19,6 @@ vim.keymap.set('n', '<space>at', '<cmd>AvanteToggle<CR>', {
 vim.keymap.set('v', '<C-Enter>', ':AvanteEdit<CR>', {
 	desc = "Avante Edit",
 })
+vim.keymap.set('v', '<space>as', ':AvanteStop<CR>', {
+	desc = "Stop Avante",
+})
