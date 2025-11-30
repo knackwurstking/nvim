@@ -18,8 +18,8 @@ vim.opt.spelllang      = { "en_us", "de_de" }
 vim.opt.spell          = true
 vim.opt.colorcolumn    = "81"
 
-vim.opt.scrolloff      = 10
-vim.opt.sidescrolloff  = 10
+vim.opt.scrolloff      = 3
+vim.opt.sidescrolloff  = 3
 
 -- CMD
 --vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
