@@ -21,6 +21,10 @@ vim.opt.colorcolumn    = "81"
 vim.opt.scrolloff      = 3
 vim.opt.sidescrolloff  = 3
 
+-- Search settings
+vim.opt.ignorecase     = true
+vim.opt.smartcase      = false
+
 -- CMD
 --vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
 vim.opt.foldmethod     = "syntax"
