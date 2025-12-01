@@ -52,6 +52,7 @@ return {
 				provider = "google",
 				proxy = nil,
 			},
+			enable_fastapply = true,
 		})
 	end,
 }
