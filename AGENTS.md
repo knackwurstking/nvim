@@ -17,6 +17,11 @@
 - Prefer `require()` over `pcall(require)` for dependencies
 - Use descriptive variable names
 - All code is in a single init.lua file with proper commenting
+- Use snake_case for variables and functions
+- Use PascalCase for plugin names
+- Prefix plugin configurations with `require("plugin").setup()`
+- No explicit error handling patterns found in the codebase
+- Relies on Neovim's built-in error reporting
 
 ## Imports/Formatting
 
@@ -25,17 +30,6 @@
 - Use `require("plugin")` for plugins
 - Use `vim.keymap.set()` for keybindings
 - All configuration in a single init.lua file
-
-## Naming Conventions
-
-- Use snake_case for variables and functions
-- Use PascalCase for plugin names
-- Prefix plugin configurations with `require("plugin").setup()`
-
-## Error Handling
-
-- No explicit error handling patterns found in the codebase
-- Relies on Neovim's built-in error reporting
 
 ## Plugin Ecosystem
 
