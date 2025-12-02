@@ -25,11 +25,12 @@ return {
 	},
 	config = function()
 		require("avante").setup({
-			provider = "ollama",
+			provider = "openai",
 			providers = {
-				ollama = {
+				openai = {
 					endpoint = "http://192.168.178.52:11434/v1",
 					model = "qwen3-coder:30b-a3b-q8_0",
+					api_key = "",
 				},
 			},
 			--provider = "openai",
