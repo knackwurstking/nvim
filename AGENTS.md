@@ -95,3 +95,7 @@ plugin manager. Key plugins include:
   different file types
 - Avante plugin configured to use a local OpenAI-compatible endpoint at
   http://192.168.178.52:1234/api/v0
+
+## Cursor/Copilot Rules
+
+No specific Cursor or Copilot rules found in the repository.

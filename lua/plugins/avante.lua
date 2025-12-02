@@ -1,5 +1,8 @@
 return {
 	"yetone/avante.nvim",
+	event = 'VeryLazy',
+	lazy = false,
+	version = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
@@ -11,24 +14,6 @@ return {
 		"stevearc/dressing.nvim",  -- for input provider dressing
 		"folke/snacks.nvim",       -- for input provider snacks
 		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-		--"zbirenbaum/copilot.lua", -- for providers='copilot'
-		--{
-		--	-- support for image pasting
-		--	"HakonHarnes/img-clip.nvim",
-		--	event = "VeryLazy",
-		--	opts = {
-		--		-- recommended settings
-		--		default = {
-		--			embed_image_as_base64 = false,
-		--			prompt_for_file_name = false,
-		--			drag_and_drop = {
-		--				insert_mode = true,
-		--			},
-		--			-- required for Windows users
-		--			use_absolute_path = true,
-		--		},
-		--	},
-		--},
 		{
 			-- Make sure to set this up properly if you have lazy=true
 			'MeanderingProgrammer/render-markdown.nvim',
@@ -40,19 +25,26 @@ return {
 	},
 	config = function()
 		require("avante").setup({
-			provider = "openai",
+			provider = "ollama",
 			providers = {
-				openai = {
-					endpoint = "http://192.168.178.52:1234/api/v0",
-					model = "qwen/qwen3-coder-30b",
-					api_key = "",
+				ollama = {
+					endpoint = "http://192.168.178.52:11434/v1",
+					model = "qwen3-coder:30b-a3b-q8_0",
 				},
 			},
-			web_search_engine = {
-				provider = "google",
-				proxy = nil,
-			},
-			enable_fastapply = true,
+			--provider = "openai",
+			--providers = {
+			--	openai = {
+			--		endpoint = "http://192.168.178.52:1234/api/v0",
+			--		model = "qwen/qwen3-coder-30b",
+			--		api_key = "",
+			--	},
+			--},
+			--web_search_engine = {
+			--	provider = "google",
+			--	proxy = nil,
+			--},
+			--enable_fastapply = true,
 		})
 	end,
 }
