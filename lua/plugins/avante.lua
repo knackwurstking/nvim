@@ -29,7 +29,7 @@ return {
 			providers = {
 				openai = {
 					endpoint = "http://192.168.178.52:11434/v1",
-					model = "qwen3-coder:30b-a3b-q8_0",
+					model = "qwen3-coder:30b",
 					api_key = "",
 				},
 			},
