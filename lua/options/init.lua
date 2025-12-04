@@ -1,8 +1,5 @@
 require("options.lsp")
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 vim.o.undofile         = true
 vim.o.clipboard        = "unnamedplus"
 vim.o.laststatus       = 2
@@ -30,4 +27,4 @@ vim.opt.smartcase      = false
 
 -- CMD
 --vim.cmd("colorscheme retrobox | highlight Normal guifg=none guibg=none")
-vim.opt.foldmethod     = "syntax"
+vim.cmd("let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'")
