@@ -1,5 +1,8 @@
 require("options.lsp")
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.o.undofile         = true
 vim.o.clipboard        = "unnamedplus"
 vim.o.laststatus       = 2

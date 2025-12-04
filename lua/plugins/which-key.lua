@@ -21,6 +21,7 @@ return {
 		})
 
 		wk.add({
+			{ "<space>e", group = "Explorer" },
 			{ "<space>f", group = "Files" },
 			{ "<space>c", group = "Code" },
 			{ "<space>b", group = "Buffers" },
