@@ -6,6 +6,7 @@ vim.keymap.set("n", "<c-d>", function()
 	vim.cmd.lwindow()
 	vim.api.nvim_set_current_win(window)
 end, { desc = "Toggle diagnostics location list" })
+
 vim.keymap.set("n", "<space>ql", function()
 	vim.diagnostic.setqflist()
 	vim.cmd("copen")
