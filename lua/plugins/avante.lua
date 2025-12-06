@@ -29,8 +29,7 @@ return {
 			providers = {
 				openai = {
 					endpoint = "http://192.168.178.52:11434/v1",
-					--model = "qwen3-coder:30b",
-					model = "mistral-small3.2:24b",
+					model = "gpt-oss:20b",
 					api_key = "",
 				},
 			},
