@@ -2,9 +2,9 @@
 
 ## Build/Lint/Test Commands
 
-- Lint: `nvim --headless -c "lua require('lint').try_all()" -c "qa!"` (for Lua
+- Lint: `nvim --headless -c "lua require('lint').try_all()` -c "qa!"` (for Lua
   files)
-- Format: `nvim --headless -c "lua require('lint').try_all()" -c "qa!"` (for Lua
+- Format: `nvim --headless -c "lua require('lint').try_all()` -c "qa!"` (for Lua
   files)
 - Format markdown: `npm run format:md` (using Prettier)
 
@@ -83,6 +83,15 @@ plugin manager. Key plugins include:
 - Diagnostic and quickfix integration (<space>ql, <C-d>)
 - Window navigation keybindings (<C-h>, <C-j>, <C-k>, <C-l>)
 - Blink CMP for enhanced autocompletion with signature help
+
+## Commit Message Guidelines
+
+- Use semantic commit messages following Conventional Commits.
+- Write a brief subject line (≤72 chars): `type(scope): short description`.
+- Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`,
+  `chore`, `revert`.
+- Provide a body if needed, wrapped to 80 chars per line.
+- Example: `chore: update avante.nvim provider model to gpt-oss`.
 
 ## Additional Notes
 
