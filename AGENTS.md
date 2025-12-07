@@ -1,5 +1,10 @@
 # AGENTS.md
 
+## Project Overview
+- **Purpose**: This repository contains a Neovim configuration with Lua-based plugins, designed to enhance productivity and development workflow with a customizable and modern setup.
+- **Architecture**: The configuration uses a single `init.lua` file to load all plugins and set up Neovim. Plugins are managed using Lazy.nvim for lazy-loading.
+- **Dependencies**: Minimal external dependencies; primarily relies on Neovim's Lua APIs and standard plugin ecosystem.
+
 ## Build/Lint/Test Commands
 
 - Lint: `nvim --headless -c "lua require('lint').try_all()` -c "qa!"` (for Lua
