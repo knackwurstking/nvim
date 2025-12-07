@@ -24,10 +24,16 @@ return {
 	},
 	config = function()
 		require("avante").setup({
+			windows = {
+				position = "right",
+				width = 45,
+			},
+
 			provider = "openai",
 			providers = {
 				openai = {
 					endpoint = "http://192.168.178.52:11434/v1",
+
 					model = "qwen3-vl:30b-a3b-thinking",
 					api_key = "",
 				},
