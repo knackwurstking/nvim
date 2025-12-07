@@ -27,8 +27,9 @@ return {
 			{ "<space>b", group = "Buffers" },
 			{ "<space>w", group = "Session" },
 			{ "<space>h", group = "Harpoon" },
-			{ "<space>q", group = "Quickfix" },
+			--{ "<space>q", group = "Quickfix" },
 			{ "<space>a", group = "Avante" },
+			{ "<space>x", group = "Trouble" },
 		})
 	end
 }
