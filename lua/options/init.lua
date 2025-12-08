@@ -1,9 +1,9 @@
 require("options.lsp")
 
-vim.g.netrw_bufsettings  = 'noma nomod nu nobl nowrap ro'
+vim.g.netrw_bufsettings  = 'noma nomod nonu nobl nowrap ro rnu'
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner       = 0
-vim.g.netrw_winsize      = 25
+--vim.g.netrw_winsize      = 25
 
 vim.o.undofile           = true
 vim.o.clipboard          = "unnamedplus"
