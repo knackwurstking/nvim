@@ -6,7 +6,7 @@ vim.g.netrw_banner       = 0
 vim.g.netrw_winsize      = 25
 
 vim.g.wildmenu           = true
-vim.g.wildmode           = "longest:full,full"
+vim.g.wildmode           = "longest, list, full"
 vim.g.ignorecase         = true
 
 vim.o.showtabline        = 0
