@@ -25,4 +25,3 @@
 
 vim.keymap.set("n", "<space>ee", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<space>er", "<CMD>Oil .<CR>", { desc = "Open root directory" })
-vim.keymap.set("n", "<space>eo", "<CMD>Oil ", { desc = "Open custom directory (No <CR>)" })
