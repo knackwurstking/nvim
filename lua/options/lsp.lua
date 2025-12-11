@@ -33,6 +33,23 @@ vim.lsp.config['gopls'] = {
 	filetypes = { "go" },
 	--capabilities = capabilities,
 	on_attach = on_attach,
+	settings = {
+		Go = {
+			analyses = {
+				unusedparams = true,
+				unusedwrite = true,
+				shadow = true,
+				missingimport = true,
+				noop = true,
+			},
+			diagnostics = {
+				enabled = true,
+			},
+			completeUnimported = true,
+			usePlaceholders = true,
+			staticcheck = true,
+		},
+	},
 }
 
 vim.lsp.config['lua_ls'] = {
