@@ -9,7 +9,7 @@ vim.g.wildmenu           = true
 vim.g.wildmode           = "longest, list, full"
 vim.g.ignorecase         = true
 
-vim.o.showtabline        = 0
+vim.o.showtabline        = 1
 
 vim.o.undofile           = true
 vim.o.clipboard          = "unnamedplus"
