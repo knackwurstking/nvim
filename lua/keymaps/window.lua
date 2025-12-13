@@ -10,7 +10,7 @@ vim.keymap.set('n', '<leader>wv', '<CMD> :split <CR>', { desc = 'Horizontal Spli
 -- Save / Quit
 
 vim.keymap.set('n', '<leader>q', '<CMD> :wq <CR>', { desc = 'Close' })
-vim.keymap.set('n', '<leader>s', '<CMD> :ws <CR>', { desc = 'Save' })
+--vim.keymap.set('n', '<leader>s', '<CMD> :ws <CR>', { desc = 'Save' })
 
 -- Tab Management
 
