@@ -13,7 +13,13 @@ vim.keymap.set('n', '<leader>q', '<CMD> :wq <CR>', { desc = 'Close' })
 vim.keymap.set('n', '<leader>s', '<CMD> :ws <CR>', { desc = 'Save' })
 
 -- Tab Management
+
 vim.keymap.set('n', '<leader>tt', '<CMD> :tabnew <CR>', { desc = 'New tab' })
 vim.keymap.set('n', '<leader>tc', '<CMD> :tabclose <CR>', { desc = 'Close tab' })
 vim.keymap.set('n', '<leader>tp', '<CMD> :tabprevious <CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<leader>tn', '<CMD> :tabnext <CR>', { desc = 'Next tab' })
+
+-- Session Management
+
+vim.keymap.set('n', '<space>ss', '<CMD> :mksession! .session.vim <CR>', { desc = 'Save session' })
+vim.keymap.set('n', '<space>sl', '<CMD> :source .session.vim <CR>', { desc = 'Load session' })
