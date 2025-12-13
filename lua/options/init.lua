@@ -27,7 +27,7 @@ vim.opt.foldmarker       = "{{{,}}}"
 
 vim.opt.spelllang        = { "en_us", "de_de" }
 vim.opt.spell            = true
-vim.opt.colorcolumn      = [[84,124]]
+vim.opt.colorcolumn      = [[80,120]]
 
 vim.opt.scrolloff        = 3
 vim.opt.sidescrolloff    = 3
