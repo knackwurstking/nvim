@@ -1,5 +1,23 @@
 local harpoon = require('harpoon')
-harpoon:setup({})
+
+vim.keymap.set("n", "<space>hh", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Toggle harpoon quick menu" })
+
+vim.keymap.set("n", "<C-e>", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Toggle harpoon quick menu" })
+
+vim.keymap.set("n", "<space>ha", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
+
+vim.keymap.set("n", "<space>hr", function() harpoon:list():remove() end,
+	{ desc = "Remove file from Harpoon" })
+
+-- Telescope navigation for Harpoon files
+vim.keymap.set("n", "<space>hn", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
+vim.keymap.set("n", "<space>hp", function() harpoon:list():prev() end, { desc = "Previous Harpoon file" })
+
+-- Telescope integration for Harpoon
 
 local conf = require("telescope.config").values
 
@@ -19,16 +37,11 @@ local function toggle_telescope_for_harpoon_files(harpoon_files)
 	}):find()
 end
 
-vim.keymap.set("n", "<space>ht", function()
+vim.keymap.set("n", "<space>fh", function()
 	toggle_telescope_for_harpoon_files(harpoon:list())
 end, { desc = "Open harpoon telescope window" })
 
-vim.keymap.set("n", "<space>hh", function()
-	harpoon.ui:toggle_quick_menu(harpoon:list())
-end, { desc = "Toggle harpoon quick menu" })
+-- Highlight current file in Harpoon
 
-vim.keymap.set("n", "<space>ha", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
-vim.keymap.set("n", "<space>hn", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
-vim.keymap.set("n", "<space>hp", function() harpoon:list():prev() end, { desc = "Previous Harpoon file" })
-vim.keymap.set("n", "<space>hr", function() harpoon:list():remove() end,
-	{ desc = "Remove file from Harpoon" })
+local harpoon_extensions = require("harpoon.extensions")
+harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
