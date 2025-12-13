@@ -25,10 +25,12 @@ return {
 			{ "<space>f", group = "Files" },
 			{ "<space>c", group = "Code" },
 			{ "<space>b", group = "Buffers" },
-			{ "<space>w", group = "Session" },
+			{ "<space>w", group = "Window" },
 			{ "<space>h", group = "Harpoon" },
 			{ "<space>a", group = "Avante" },
 			{ "<space>x", group = "Trouble" },
+			{ "<space>s", group = "Session" },
+			{ "<space>t", group = "Tab Management" },
 		})
 	end
 }
