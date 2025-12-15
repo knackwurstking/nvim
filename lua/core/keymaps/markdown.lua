@@ -1,3 +1,6 @@
+-- Markdown keymaps
+-- Markdown-specific operations
+
 vim.keymap.set("n", "<space>cm", function()
 	local file = vim.api.nvim_buf_get_name(0)
 	if string.match(file, "%.md$") then

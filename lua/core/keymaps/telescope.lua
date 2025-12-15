@@ -1,3 +1,6 @@
+-- Telescope keymaps
+-- Fuzzy finder operations
+
 vim.keymap.set('n', '<space>ff',
 	function() require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } }) end,
 	{ desc = "Find files" })

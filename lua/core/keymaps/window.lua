@@ -1,4 +1,7 @@
 -- Window management keymaps
+-- Split and tab operations
+
+-- Window management keymaps
 
 vim.keymap.set('n', '<leader>ww', '<CMD> :tab split <CR>', { desc = 'Split window into new tab' })
 

@@ -1,3 +1,6 @@
+-- Harpoon keymaps
+-- File navigation with harpoon
+
 local harpoon = require('harpoon')
 
 vim.keymap.set("n", "<space>hh", function()

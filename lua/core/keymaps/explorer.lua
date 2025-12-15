@@ -1,7 +1,5 @@
--- Netrw settings (disabled in favor of oil.nvim)
-
---vim.keymap.set('n', '<space>ee', ':Explore<CR>', { desc = "Open explorer" })
---vim.keymap.set('n', '<space>es', ':Lexplore<CR>', { desc = "Open explorer to the side" })
+-- Explorer keymaps
+-- File navigation and exploration
 
 -- oil.nvim
 --
@@ -23,5 +21,5 @@
 -- 	"g."	: Toggle hidden files
 -- 	"g\\"	: Toggle trash
 
-vim.keymap.set("n", "<space>ee", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-vim.keymap.set("n", "<space>er", "<CMD>Oil .<CR>", { desc = "Open root directory" })
+vim.keymap.set("n", "<space>ee", "<cmd>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<space>er", "<cmd>Oil .<CR>", { desc = "Open root directory" })

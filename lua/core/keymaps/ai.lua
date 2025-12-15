@@ -1,3 +1,6 @@
+-- AI-related keymaps
+-- Avante AI assistant bindings
+
 vim.keymap.set('n', '<space>ac', '<cmd>AvanteChat<CR>', {
 	desc = "Open Avante chat",
 })
