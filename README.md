@@ -8,26 +8,57 @@ This Neovim configuration has been refactored for better organization, maintaina
 
 ```
 lua/
-└── core/
-    ├── init.lua              # Main entry point, loads all modules
-    ├── options.lua           # General Neovim options and settings
-    ├── plugins.lua           # Plugin manager configuration with organized groups
-    ├── lsp.lua               # LSP server configurations
-    └── keymaps/
-        ├── init.lua           # Loads all keymap modules
-        ├── ai.lua             # AI-related keymaps (Avante)
-        ├── buffer.lua         # Buffer management
-        ├── code.lua           # Code actions and formatting
-        ├── explorer.lua       # File exploration (oil.nvim)
-        ├── git.lua            # Git operations
-        ├── harpoon.lua        # Harpoon file navigation
-        ├── lsp.lua            # LSP keybindings
-        ├── markdown.lua       # Markdown-specific operations
-        ├── navigation.lua     # Window and split navigation
-        ├── quickfix.lua       # Quickfix list navigation
-        ├── telescope.lua      # Telescope fuzzy finder
-        ├── trouble.lua        # Trouble diagnostics
-        └── window.lua         # Window management and tabs
+├── core/
+│   ├── init.lua              # Main entry point, loads all modules
+│   ├── options.lua           # General Neovim options and settings
+│   ├── plugins.lua           # Plugin manager with dynamic loading
+│   ├── lsp.lua               # LSP server configurations
+│   └── keymaps/
+│       ├── init.lua           # Loads all keymap modules
+│       ├── ai.lua             # AI-related keymaps (Avante)
+│       ├── buffer.lua         # Buffer management
+│       ├── code.lua           # Code actions and formatting
+│       ├── explorer.lua       # File exploration (oil.nvim)
+│       ├── git.lua            # Git operations
+│       ├── harpoon.lua        # Harpoon file navigation
+│       ├── lsp.lua            # LSP keybindings
+│       ├── markdown.lua       # Markdown-specific operations
+│       ├── navigation.lua     # Window and split navigation
+│       ├── quickfix.lua       # Quickfix list navigation
+│       ├── telescope.lua      # Telescope fuzzy finder
+│       ├── trouble.lua        # Trouble diagnostics
+│       └── window.lua         # Window management and tabs
+└── plugins/
+    ├── ai/
+    │   ├── avante.lua         # Avante AI assistant
+    │   └── copilot.lua        # GitHub Copilot
+    ├── core/
+    │   └── plenary.lua        # Core dependency
+    ├── diagnostics/
+    │   └── trouble.lua        # Diagnostic viewer
+    ├── filesystem/
+    │   ├── harpoon.lua        # File navigation
+    │   └── outline.lua        # Code outline
+    ├── git/
+    │   ├── gitsigns.lua       # Git signs
+    │   └── lazygit.lua        # Git client
+    ├── lsp/
+    │   ├── blink.lua          # Enhanced completion
+    │   ├── conform.lua        # Code formatting
+    │   ├── lspconfig.lua      # LSP configuration
+    │   └── nvim-cmp.lua       # Completion engine
+    ├── navigation/
+    │   ├── oil.lua            # File explorer
+    │   └── telescope.lua      # Fuzzy finder
+    ├── specialized/
+    │   └── tinygo.lua         # TinyGo support
+    ├── syntax/
+    │   └── treesitter.lua     # Syntax highlighting
+    ├── ui/
+    │   ├── gruvbox.lua        # Colorscheme
+    │   └── lualine.lua        # Status line
+    └── utility/
+        └── which-key.lua      # Keybinding documentation
 ```
 
 ## Key Improvements

@@ -25,22 +25,45 @@ lua/
 
 ### 2. Plugin Organization
 
-Plugins are now organized by functionality:
-- **Core Dependencies** (plenary.nvim)
-- **UI and Appearance** (gruvbox, lualine)
-- **File Navigation** (telescope, oil)
-- **LSP and Completion** (nvim-lspconfig, nvim-cmp, blink.cmp, conform)
-- **Syntax Highlighting** (nvim-treesitter)
-- **Git Integration** (gitsigns, lazygit)
-- **File Management** (harpoon, outline)
-- **Diagnostics** (trouble)
-- **AI Integration** (avante, copilot)
-- **Specialized Tools** (tinygo)
-- **Utility** (which-key)
+Plugins are now organized by functionality in a hierarchical directory structure:
+
+```
+lua/plugins/
+├── ai/                    # AI integration
+│   ├── avante.lua         # Avante AI assistant
+│   └── copilot.lua        # GitHub Copilot
+├── core/                  # Core dependencies
+│   └── plenary.lua        # Required by many plugins
+├── diagnostics/           # Diagnostic tools
+│   └── trouble.lua        # Diagnostic viewer
+├── filesystem/            # File navigation
+│   ├── harpoon.lua        # Quick file navigation
+│   └── outline.lua        # Code outline
+├── git/                   # Git integration
+│   ├── gitsigns.lua       # Git signs in gutter
+│   └── lazygit.lua        # Git client
+├── lsp/                   # LSP and completion
+│   ├── blink.lua          # Enhanced completion
+│   ├── conform.lua        # Code formatting
+│   ├── lspconfig.lua      # LSP configuration
+│   └── nvim-cmp.lua       # Completion engine
+├── navigation/            # File navigation
+│   ├── oil.lua            # File explorer
+│   └── telescope.lua      # Fuzzy finder
+├── specialized/           # Specialized tools
+│   └── tinygo.lua         # TinyGo support
+├── syntax/                # Syntax highlighting
+│   └── treesitter.lua     # Parser and highlighting
+├── ui/                    # UI and appearance
+│   ├── gruvbox.lua        # Colorscheme
+│   └── lualine.lua        # Status line
+└── utility/               # Utility plugins
+    └── which-key.lua      # Keybinding documentation
+```
 
 ### 3. Keymap Organization
 
-Keybindings are now grouped by category:
+Keybindings are now grouped by category in `lua/core/keymaps/`:
 - `ai.lua` - AI-related keymaps (Avante)
 - `buffer.lua` - Buffer management
 - `code.lua` - Code actions and formatting
@@ -54,6 +77,14 @@ Keybindings are now grouped by category:
 - `telescope.lua` - Telescope fuzzy finder
 - `trouble.lua` - Diagnostics
 - `window.lua` - Window management and tabs
+
+### 4. Dynamic Plugin Loading
+
+The plugin manager now dynamically loads plugins from the directory structure:
+- Plugins are loaded in dependency order (core first, then others)
+- Each plugin file returns a table with the plugin configuration
+- The `load_plugins_from_dir()` function automatically discovers and loads all plugins
+- Error handling ensures failed plugin loads are reported
 
 ### 4. Improved Documentation
 
@@ -140,12 +171,14 @@ Simply replace the old configuration with the new one. All functionality remains
 
 ## Key Statistics
 
-- **Files created**: 18
+- **Files created**: 37 (18 core + 19 plugins)
 - **Files removed**: 39
-- **Net reduction**: 21 files
+- **Net change**: -2 files (but much better organization!)
+- **Directories created**: 11 (core + 10 plugin categories)
 - **Lines of code**: Reduced by ~30%
 - **Complexity**: Significantly reduced
 - **Maintainability**: Greatly improved
+- **Dynamic loading**: 19 individual plugin files loaded dynamically
 
 ## Conclusion
 
