@@ -2,14 +2,15 @@
 -- Treesitter parser
 
 return {
-	'nvim-treesitter/nvim-treesitter',
-	branch = 'main',
+	"nvim-treesitter/nvim-treesitter",
+	tag = "v0.10.0",
 	lazy = false,
 	build = ':TSUpdate',
 	config = function()
 		require("nvim-treesitter").setup({
 			highlight = { enable = true },
 			indent = { enable = true },
+			sync_install = false,
 			ensure_installed = {
 				"bash",
 				"c",
