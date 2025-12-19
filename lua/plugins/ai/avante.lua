@@ -37,6 +37,11 @@ return {
 					--model = "devstral-small-2:latest",
 					model = "qwen3-coder:30b",
 					api_key = "",
+					timeout = 30000,
+					extra_request_body = {
+						temperature = 0.75,
+						max_tokens = 120000,
+					},
 				},
 			},
 		})
