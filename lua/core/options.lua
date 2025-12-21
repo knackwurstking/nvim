@@ -29,21 +29,21 @@ vim.opt.relativenumber   = true
 vim.opt.syntax           = "enable"
 
 -- Folding
-vim.opt.foldmarker       = { "{{{", "}}}" }
-vim.opt.foldmethod       = "expr"
-vim.opt.foldexpr         = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable     = true
-vim.cmd("set foldmethod=expr")
+--vim.opt.foldmarker       = { "{{{", "}}}" }
+--vim.opt.foldmethod       = "expr"
+--vim.opt.foldexpr         = "nvim_treesitter#foldexpr()"
+--vim.opt.foldenable     = true
+--vim.cmd("set foldmethod=expr")
 
 -- Spell checking
-vim.opt.spelllang     = { "en_us", "de_de" }
-vim.opt.spell         = true
-vim.opt.colorcolumn   = [[80,120]]
+vim.opt.spelllang        = { "en_us", "de_de" }
+vim.opt.spell            = true
+vim.opt.colorcolumn      = [[80,120]]
 
 -- Scrolling
-vim.opt.scrolloff     = 3
-vim.opt.sidescrolloff = 3
+vim.opt.scrolloff        = 3
+vim.opt.sidescrolloff    = 3
 
 -- Search settings
-vim.opt.ignorecase    = true
-vim.opt.smartcase     = false
+vim.opt.ignorecase       = true
+vim.opt.smartcase        = false
