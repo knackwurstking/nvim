@@ -32,7 +32,7 @@ vim.opt.syntax           = "enable"
 --vim.opt.foldmarker       = { "{{{", "}}}" }
 --vim.opt.foldmethod       = "expr"
 --vim.opt.foldexpr         = "nvim_treesitter#foldexpr()"
---vim.opt.foldenable     = true
+vim.opt.foldenable       = true
 --vim.cmd("set foldmethod=expr")
 
 -- Spell checking
