@@ -21,6 +21,7 @@ vim.o.laststatus         = 2
 -- Indentation and formatting
 vim.o.tabstop            = 4
 vim.opt.shiftwidth       = 4
+vim.opt.expandtab        = true
 vim.opt.mouse            = "a"
 
 -- Line numbers
