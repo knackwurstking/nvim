@@ -18,6 +18,10 @@ vim.o.undofile           = true
 vim.o.clipboard          = "unnamedplus"
 vim.o.laststatus         = 2
 
+-- Show whitespace characters
+vim.o.list               = true
+vim.o.listchars          = 'tab:→ ,space:·'
+
 -- Indentation and formatting
 vim.o.tabstop            = 4
 vim.opt.shiftwidth       = 4
