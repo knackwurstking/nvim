@@ -2,5 +2,5 @@
 -- GitHub Copilot
 
 return {
-    --"github/copilot.vim",
+    "github/copilot.vim",
 }
