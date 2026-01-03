@@ -25,7 +25,7 @@ vim.o.listchars          = 'tab:→ ,space:·'
 -- Indentation and formatting
 vim.o.tabstop            = 4
 vim.opt.shiftwidth       = 4
-vim.opt.expandtab        = true
+vim.opt.expandtab        = false
 vim.opt.mouse            = "a"
 
 -- Line numbers
