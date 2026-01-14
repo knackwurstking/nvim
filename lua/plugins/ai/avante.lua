@@ -34,14 +34,14 @@ return {
 			providers = {
 				openai = {
 					endpoint = "http://192.168.178.52:11434/v1",
-					model = "devstral-small-2:latest",
-					--model = "qwen3-coder:30b",
+					--model = "devstral-small-2:latest",
+					model = "qwen3-coder:30b",
 					api_key = "",
 					timeout = 30000,
-					extra_request_body = {
-						temperature = 0.75,
-						max_tokens = 120000,
-					},
+					--extra_request_body = {
+					--	temperature = 0.75,
+					--	max_tokens = 120000,
+					--},
 				},
 			},
 		})
