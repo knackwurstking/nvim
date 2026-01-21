@@ -34,14 +34,11 @@ return {
 			providers = {
 				openai = {
 					endpoint = "http://192.168.178.52:1234/api/v0",
-					model = "mistralai/devstral-small-2-2512",
-					--model = "qwen/qwen3-coder-30b",
+					--model = "mistralai/devstral-small-2-2512",
+					model = "qwen/qwen3-coder-30b",
+					--model = "google/gemma-3-27b",
 					api_key = "",
 					timeout = 30000,
-					extra_request_body = {
-						temperature = 0.2,
-						--max_tokens = 262144,
-					},
 				},
 			},
 		})
