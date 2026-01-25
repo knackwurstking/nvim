@@ -36,6 +36,10 @@ return {
 					endpoint = "http://192.168.178.52:1234/v1",
 					model = "qwen/qwen3-coder-30b",
 					api_key = "",
+					extra_request_body = {
+						temperature = 0.7,
+						max_tokens = 262144,
+					},
 				},
 			},
 		})
