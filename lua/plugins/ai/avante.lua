@@ -30,15 +30,12 @@ return {
 				position = "right",
 				width = 45,
 			},
-			provider = "openai",
+			provider = "lmstudio",
 			providers = {
 				openai = {
-					endpoint = "http://192.168.178.52:1234/api/v0",
-					--model = "mistralai/devstral-small-2-2512",
+					endpoint = "http://192.168.178.52:1234/v1",
 					model = "qwen/qwen3-coder-30b",
-					--model = "google/gemma-3-27b",
 					api_key = "",
-					timeout = 30000,
 				},
 			},
 		})
