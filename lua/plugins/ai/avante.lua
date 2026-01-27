@@ -33,7 +33,7 @@ return {
 			provider = "lmstudio",
 			providers = {
 				openai = {
-					endpoint = "http://192.168.178.52:1234/v1",
+					endpoint = "http://192.168.178.52:1234/api/v0",
 					model = "qwen/qwen3-coder-30b",
 					api_key = "",
 					extra_request_body = {
