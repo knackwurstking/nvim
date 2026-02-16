@@ -32,6 +32,8 @@ vim.opt.mouse            = "a"
 vim.opt.number           = true
 vim.opt.relativenumber   = true
 vim.opt.syntax           = "enable"
+vim.opt.cursorline       = true
+vim.opt.cursorcolumn     = false
 
 -- Folding
 --vim.opt.foldmarker       = { "{{{", "}}}" }
