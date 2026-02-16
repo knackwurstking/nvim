@@ -7,7 +7,7 @@ return {
   config = function()
     local function get_lsp_client(msg)
       msg = msg or "LSP Inactive"
-      local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
+      local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
       if next(buf_clients) == nil then
         return msg
       end
@@ -70,7 +70,7 @@ return {
             function()
               local msg = "No AI"
               local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-              local clients = vim.lsp.get_active_clients()
+              local clients = vim.lsp.get_clients()
               if next(clients) == nil then
                 return msg
               end
