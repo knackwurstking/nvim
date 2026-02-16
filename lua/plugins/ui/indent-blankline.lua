@@ -6,15 +6,6 @@ return {
   main = "ibl",
   event = { "BufReadPost", "BufNewFile" },
   config = function()
-    local highlights = require("ibl.config").extend({
-      indent = {
-        char = "│",
-      },
-      scope = {
-        char = "│",
-      },
-    })
-
     require("ibl").setup({
       indent = {
         char = "│",
