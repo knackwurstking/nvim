@@ -34,7 +34,8 @@ return {
 			providers = {
 				openai = {
 					endpoint = "http://192.168.178.52:1234/api/v0",
-					model = "qwen/qwen3-coder-30b",
+					--model = "qwen/qwen3-coder-30b",
+					model = "qwen/qwen3-coder-next",
 					api_key = "",
 					extra_request_body = {
 						temperature = 0.7,
