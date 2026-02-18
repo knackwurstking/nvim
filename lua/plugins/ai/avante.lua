@@ -1,48 +1,23 @@
--- AI integration plugins
--- Avante AI assistant
-
 return {
 	"yetone/avante.nvim",
 	event = "VeryLazy",
 	lazy = false,
-	version = false,
+	version = false, -- set this if you want to always pull the latest change
 	dependencies = {
+		"nvim-treesitter/nvim-treesitter",
+		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
-		"nvim-mini/mini.pick",
-		"nvim-telescope/telescope.nvim",
-		"hrsh7th/nvim-cmp",
-		"ibhagwan/fzf-lua",
-		"stevearc/dressing.nvim",
-		"folke/snacks.nvim",
-		"nvim-tree/nvim-web-devicons",
-		{
-			"MeanderingProgrammer/render-markdown.nvim",
-			opts = {
-				file_types = { "markdown", "Avante" },
+	},
+	opts = {
+		provider = "lmstudio",
+		providers = {
+			lmstudio = {
+				__inherited_from = "openai",
+				endpoint = "192.168.178.52:1234/v1",
+				model = "qwen/qwen3-coder-next",
+				api_key = "",
 			},
-			ft = { "markdown", "Avante" },
 		},
 	},
-	config = function()
-		require("avante").setup({
-			windows = {
-				position = "right",
-				width = 45,
-			},
-			provider = "lmstudio",
-			providers = {
-				openai = {
-					endpoint = "http://192.168.178.52:1234/api/v0",
-					--model = "qwen/qwen3-coder-30b",
-					model = "qwen/qwen3-coder-next",
-					api_key = "",
-					extra_request_body = {
-						temperature = 0.7,
-						max_tokens = 262144,
-					},
-				},
-			},
-		})
-	end,
 }
