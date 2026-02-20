@@ -2,7 +2,7 @@
 -- This file loads the core modules in the correct order
 
 -- Set leader keys first
-vim.g.mapleader      = " "
+vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Load core options
