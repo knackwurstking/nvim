@@ -14,6 +14,7 @@ return {
           "marksman",
           "clangd",
           "ts_ls",
+          "tailwindcss",
         }
       },
       dependencies = {

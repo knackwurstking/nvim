@@ -77,6 +77,11 @@ vim.lsp.config["ts_ls"] = {
 }
 
 vim.lsp.config["cssls"] = {
-	filetypes = { "css" },
-	on_attach = on_attach,
+  filetypes = { "css" },
+  on_attach = on_attach,
+}
+
+vim.lsp.config["tailwindcss"] = {
+  filetypes = { "html", "templ" },
+  on_attach = on_attach,
 }
