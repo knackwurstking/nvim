@@ -77,11 +77,23 @@ vim.lsp.config["ts_ls"] = {
 }
 
 vim.lsp.config["cssls"] = {
-  filetypes = { "css" },
-  on_attach = on_attach,
+	filetypes = { "css" },
+	on_attach = on_attach,
 }
 
 vim.lsp.config["tailwindcss"] = {
-  filetypes = { "html", "templ" },
-  on_attach = on_attach,
+	filetypes = { "html", "templ" },
+	on_attach = on_attach,
 }
+
+-- Go Template LSP configuration
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "html",
+	callback = function()
+		vim.lsp.start({
+			name = "go-template-lsp",
+			cmd = { "go-template-lsp" },
+			root_dir = vim.fs.dirname(vim.fs.find({ "go.mod" }, { upward = true })[1]),
+		})
+	end,
+})
