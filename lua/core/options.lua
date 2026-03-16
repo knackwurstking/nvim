@@ -36,11 +36,9 @@ vim.opt.cursorline       = true
 vim.opt.cursorcolumn     = false
 
 -- Folding
---vim.opt.foldmarker       = { "{{{", "}}}" }
---vim.opt.foldmethod       = "expr"
---vim.opt.foldexpr         = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable       = true
---vim.cmd("set foldmethod=expr")
+vim.opt.foldmethod       = "expr"
+vim.opt.foldexpr         = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable        = true
 
 -- Spell checking
 vim.opt.spelllang        = { "en_us", "de_de" }
