@@ -33,6 +33,8 @@ return {
 			{ "<space>t", group = "Tab Management" },
 			{ "<space>g", group = "Git" },
 			{ "<space>m", group = "Make" },
+			{ "<space>p", group = "Preview" },
+			{ "<space>pm", group = "Markdown" },
 		})
 	end,
 }
