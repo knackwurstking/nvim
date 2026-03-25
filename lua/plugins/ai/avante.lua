@@ -15,7 +15,8 @@ return {
 			lmstudio = {
 				__inherited_from = "openai",
 				endpoint = "192.168.178.52:1234/v1",
-				model = "qwen/qwen3-coder-next",
+				--model = "qwen/qwen3-coder-next",
+				model = "mistralai/devstral-small-2-2512",
 				api_key = "",
 			},
 		},
