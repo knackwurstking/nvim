@@ -6,8 +6,9 @@ vim.keymap.set("n", "<space>cm", function()
 	if string.match(file, "%.md$") then
 		vim.fn.system("npx prettier --write " .. file)
 		vim.cmd("edit")
-		print("Markdown formatted with Prettier and file reloaded")
+		vim.cmd("TableTidyAll")
+		print("Markdown formatted with Prettier and tables tidied")
 	else
 		print("Not a markdown file")
 	end
-end, { desc = "Format markdown with Prettier" })
+end, { desc = "Format markdown with Prettier and tidy all tables" })
