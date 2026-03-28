@@ -2,7 +2,6 @@
 -- All keybindings organized by category
 
 -- Load all keymap modules
-require("core.keymaps.ai")
 require("core.keymaps.buffer")
 require("core.keymaps.code")
 require("core.keymaps.explorer")
