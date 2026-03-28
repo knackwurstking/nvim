@@ -25,7 +25,7 @@ return {
 			desc = "Add file or selection to Agentic to Context",
 		},
 		{
-			"<C-,>",
+			"<space>an",
 			function()
 				require("agentic").new_session()
 			end,
@@ -33,7 +33,7 @@ return {
 			desc = "New Agentic Session",
 		},
 		{
-			"<A-i>r", -- ai Restore
+			"<space>ar", -- ai Restore
 			function()
 				require("agentic").restore_session()
 			end,
