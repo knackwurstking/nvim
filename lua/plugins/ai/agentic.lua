@@ -29,7 +29,7 @@ return {
 			function()
 				require("agentic").new_session()
 			end,
-			mode = { "n", "v", "i" },
+			mode = { "n" },
 			desc = "New Agentic Session",
 		},
 		{
@@ -39,7 +39,7 @@ return {
 			end,
 			desc = "Agentic Restore session",
 			silent = true,
-			mode = { "n", "v", "i" },
+			mode = { "n" },
 		},
 		{
 			"<leader>ad", -- ai Diagnostics
