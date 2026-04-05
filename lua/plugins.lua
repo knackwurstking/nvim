@@ -80,3 +80,6 @@ require("harpoon"):extend(require("harpoon.extensions").builtins.highlight_curre
 
 -- Outline
 
+vim.pack.add({ "https://github.com/hedyhli/outline.nvim" })
+
+require("outline").setup({})
