@@ -62,6 +62,8 @@ require("which-key").add({
 	{ "<space>t", group = "Tabs" },
 	{ "<space>w", group = "Window" },
 	{ "<space>h", group = "Harpoon" },
+	{ "<space>c", group = "Code" },
+	{ "<space>cf", group = "Format" },
 })
 
 -- Harpoon

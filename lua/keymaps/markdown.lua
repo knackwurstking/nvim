@@ -1,13 +1,11 @@
 -- Markdown keymaps
 -- Markdown-specific operations
 
-vim.keymap.set("n", "<space>cm", function()
+vim.keymap.set("n", "<space>cfm", function()
 	local file = vim.api.nvim_buf_get_name(0)
 	if string.match(file, "%.md$") then
 		vim.fn.system("npx prettier --write " .. file)
 		vim.cmd("edit")
-		vim.cmd("TableTidyAll")
-		print("Markdown formatted with Prettier and tables tidied")
 	else
 		print("Not a markdown file")
 	end

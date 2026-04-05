@@ -4,9 +4,9 @@ vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
 -- Then, enable gopls (it will automatically look for the 'gopls' binary in your PATH)
 -- NOTE: Run `:help lspconfig-all` to get a full list of supported servers
 vim.lsp.enable({
-	"gopls",
-	"lua_ls",
-	"templ",
-	"tailwindcss",
-	"marksman",
+	"gopls", 			-- INSTALL: `go install golang.org/x/tools/gopls@latest`
+	"lua_ls", 			-- INSTALL: `brew install lua-language-server`
+	"templ", 			-- INSTALL: `go install github.com/a-h/templ/cmd/templ@latest`
+	"tailwindcss",		-- INSTALL: `npm install -g @tailwindcss/language-server`
+	"marksman", 		-- INSTALL: `brew install marksman`
 })
