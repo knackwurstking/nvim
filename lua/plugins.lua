@@ -9,6 +9,15 @@ vim.pack.add({
 	}
 })
 
+-- Treesitter
+
+vim.pack.add({
+  { 
+    src = "https://github.com/nvim-treesitter/nvim-treesitter", 
+    version = "main" 
+  },
+})
+
 -- Oil
 
 vim.pack.add({
@@ -17,3 +26,39 @@ vim.pack.add({
 })
 
 require("oil").setup()
+
+-- Agentic
+
+vim.pack.add({ "https://github.com/carlos-algms/agentic.nvim" })
+
+require("agentic").setup({
+	provider = "mistral-vibe-acp",
+})
+
+-- Which
+
+vim.pack.add({ "https://github.com/folke/which-key.nvim" })
+
+require("which-key").setup({
+	icons = {
+		group = " ", -- This removes the "+" and adds a space instead
+	},
+	disable = {},
+	plugins = {
+		marks = true,
+		registers = true,
+		spelling = {
+			enabled = true,
+			suggestions = 20,
+		},
+	},
+})
+
+require("which-key").add({
+	{ "<space>a", group = "Agentic" },
+	{ "<space>e", group = "Editor" },
+	{ "<space>e", group = "Find" },
+	{ "<space>s", group = "Session" },
+	{ "<space>t", group = "Tabs" },
+	{ "<space>w", group = "Window" },
+})

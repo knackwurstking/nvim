@@ -12,6 +12,8 @@
 --require("core.keymaps.quickfix")
 --require("core.keymaps.trouble")
 
+require("keymaps.agentic")
 require("keymaps.explorer")
 require("keymaps.telescope")
 require("keymaps.window")
+require("keymaps.navigation")
