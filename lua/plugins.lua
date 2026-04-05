@@ -85,3 +85,12 @@ require("harpoon"):extend(require("harpoon.extensions").builtins.highlight_curre
 vim.pack.add({ "https://github.com/hedyhli/outline.nvim" })
 
 require("outline").setup({})
+
+-- LazyGit
+
+vim.pack.add({
+	"https://github.com/nvim-lua/plenary.nvim",      -- REQUIRED dependency
+	"https://github.com/kdheepak/lazygit.nvim"
+})
+
+-- TODO: Trouble
