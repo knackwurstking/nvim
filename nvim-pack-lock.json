@@ -4,6 +4,11 @@
       "rev": "9c40fc5228d22fbde370b723b5a738cbcb68b084",
       "src": "https://github.com/carlos-algms/agentic.nvim"
     },
+    "harpoon": {
+      "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
+      "src": "https://github.com/ThePrimeagen/harpoon",
+      "version": "'harpoon2'"
+    },
     "mini.icons": {
       "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
       "src": "https://github.com/nvim-mini/mini.icons"

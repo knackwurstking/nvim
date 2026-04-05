@@ -13,6 +13,7 @@
 --require("core.keymaps.trouble")
 
 require("keymaps.agentic")
+require("keymaps.harpoon")
 require("keymaps.explorer")
 require("keymaps.telescope")
 require("keymaps.window")
