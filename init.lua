@@ -2,4 +2,4 @@
 -- Loads the core configuration modules
 
 -- Load core configuration
-require("core.init")
+require("init")
