@@ -106,32 +106,32 @@ require("trouble").setup()
 
 -- In your plugins config file (e.g., lua/plugins/llm.lua)
 -- INSTAll: `brew install llm`
---vim.pack.add({
---	"https://github.com/nvim-lua/plenary.nvim", -- REQUIRED dependency
---	"https://github.com/huggingface/llm.nvim",
---})
---
---
---require('llm').setup({
---	backend = "openai", -- LM Studio uses an OpenAI-compatible API
---	url = "http://192.168.178.52:1234/v1/completions",
---	model = "",       -- Replace with the model currently loaded in LM Studio
---	tokens_to_clear = { "<|endoftext|>" },
---	request_body = {
---		parameters = {
---			max_new_tokens = 60,
---			temperature = 0.2,
---			top_p = 0.95,
---		},
---	},
---	-- Configure FIM (Fill-In-the-Middle) for ghost-text completion
---	fim = {
---		enabled = true,
---		prefix = "<fim_prefix>",
---		middle = "<fim_middle>",
---		suffix = "<fim_suffix>",
---	},
---	debounce_ms = 150,
---	accept_keymap = "<C-Y>", -- Alt+L to accept suggestion
---	dismiss_keymap = "<C-n>",
---})
+vim.pack.add({
+	"https://github.com/nvim-lua/plenary.nvim", -- REQUIRED dependency
+	"https://github.com/huggingface/llm.nvim",
+})
+
+require('llm').setup({
+	backend = "openai", -- LM Studio uses an OpenAI-compatible API
+	url = "http://192.168.178.52:1234/v1/completions",
+	model = "", -- Replace with the model currently loaded in LM Studio
+	tokens_to_clear = { "" },
+	request_body = {
+		parameters = {
+			max_new_tokens = 60,
+			temperature = 0.2,
+			top_p = 0.95,
+		},
+	},
+
+	-- Configure FIM (Fill-In-the-Middle) for ghost-text completion
+	fim = {
+		enabled = true,
+		prefix = "",
+		middle = "",
+		suffix = "",
+	},
+	debounce_ms = 150,
+	accept_keymap = "<C-y>", -- Alt+L to accept suggestion
+	dismiss_keymap = "<C-n>",
+})
