@@ -1,4 +1,3 @@
--- LSP keymaps
 -- Language server protocol bindings
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })

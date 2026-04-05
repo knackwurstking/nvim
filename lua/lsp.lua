@@ -9,4 +9,6 @@ vim.lsp.enable({
 	"templ", 			-- INSTALL: `go install github.com/a-h/templ/cmd/templ@latest`
 	"tailwindcss",		-- INSTALL: `npm install -g @tailwindcss/language-server`
 	"marksman", 		-- INSTALL: `brew install marksman`
+	"llm_ls", 			-- INSTALL: `brew install llm`
+	"jsonls"			-- INSTALL: `npm i -g vscode-langservers-extracted`
 })

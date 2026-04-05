@@ -1,6 +1,3 @@
--- Buffer management keymaps
--- Navigation and manipulation of buffers
-
 vim.keymap.set("n", "<space>bn", "<cmd> bnext <CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<space>bp", "<cmd> bprevious <CR>", { desc = "Previous buffer" })
 

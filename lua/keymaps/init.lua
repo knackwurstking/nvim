@@ -1,17 +1,3 @@
--- Keymaps configuration
--- All keybindings organized by category
-
--- Load all keymap modules
---require("core.keymaps.buffer")
---require("core.keymaps.code")
---require("core.keymaps.git")
---require("core.keymaps.lsp")
---require("core.keymaps.make")
---require("core.keymaps.markdown")
---require("core.keymaps.navigation")
---require("core.keymaps.quickfix")
---require("core.keymaps.trouble")
-
 require("keymaps.agentic")
 require("keymaps.harpoon")
 require("keymaps.explorer")
@@ -21,3 +7,9 @@ require("keymaps.navigation")
 require("keymaps.outline")
 require("keymaps.markdown")
 require("keymaps.git")
+require("keymaps.trouble")
+require("keymaps.lsp")
+require("keymaps.buffer")
+require("keymaps.make")
+require("keymaps.quickfix")
+require("keymaps.code")

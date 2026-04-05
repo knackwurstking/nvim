@@ -1,4 +1,3 @@
--- Quickfix keymaps
 -- Quickfix list navigation
 
 vim.keymap.set('n', '<M-j>', ':cnext<CR>', { desc = "Next quickfix item" })
