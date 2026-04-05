@@ -114,7 +114,7 @@ require("trouble").setup()
 --require('llm').setup({
 --	backend = "openai", -- LM Studio uses an OpenAI-compatible API
 --	url = "http://192.168.178.52:1234/v1/completions",
---	model = "", -- Replace with the model currently loaded in LM Studio
+--	model = "qwen/qwen2.5-coder-14b", -- Replace with the model currently loaded in LM Studio
 --	tokens_to_clear = { "" },
 --	request_body = {
 --		parameters = {
