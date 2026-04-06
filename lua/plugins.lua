@@ -2,10 +2,8 @@
 
 vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim", -- REQUIRED dependency
-	{
-		src = "https://github.com/nvim-telescope/telescope.nvim",
-		version = "main",
-	}
+	"https://github.com/nvim-telescope/telescope-fzf-native.nvim", -- OPTIONAL dependency
+	"https://github.com/nvim-telescope/telescope.nvim",
 })
 
 -- Treesitter
@@ -167,3 +165,5 @@ require("trouble").setup()
 
 -- Theme: Gruvbox
 vim.pack.add({ "https://github.com/morhetz/gruvbox" })
+
+vim.cmd("colorscheme gruvbox")
