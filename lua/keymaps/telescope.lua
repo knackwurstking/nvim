@@ -1,8 +1,8 @@
-vim.keymap.set('n', '<space>ff', function() 
+vim.keymap.set('n', '<space>ff', function()
 	require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } }) 
 end, { desc = "Find files" })
 
-vim.keymap.set('n', '<space>fb', function() 
+vim.keymap.set('n', '<space>fb', function()
 	require('telescope.builtin').buffers()
 end, { desc = "Find buffers" })
 
