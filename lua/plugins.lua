@@ -1,7 +1,7 @@
 -- Telescope
 
 vim.pack.add({
-	"https://github.com/nvim-lua/plenary.nvim", -- REQUIRED dependency
+	"https://github.com/nvim-lua/plenary.nvim",                 -- REQUIRED dependency
 	"https://github.com/nvim-telescope/telescope-fzf-native.nvim", -- OPTIONAL dependency
 	"https://github.com/nvim-telescope/telescope.nvim",
 })
@@ -16,7 +16,16 @@ vim.pack.add({
 })
 
 require("nvim-treesitter").setup({
-	ensure_installed = { "typescript", "css", "javascript", "svelte", "golang" },
+	ensure_installed = {
+		"typescript",
+		"html",
+		"css",
+		"javascript",
+		"svelte",
+		"go",
+		"gomod",
+		"templ",
+	},
 
 	-- This is where the highlight config goes
 	highlight = {
