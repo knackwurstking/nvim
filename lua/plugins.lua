@@ -17,6 +17,21 @@ vim.pack.add({
 	},
 })
 
+require("nvim-treesitter").setup({
+	ensure_installed = { "typescript", "css", "javascript", "svelte", "golang" },
+
+	-- This is where the highlight config goes
+	highlight = {
+		enable = true, -- false will disable the whole extension
+	},
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
+})
+
 -- Oil
 
 vim.pack.add({
@@ -31,7 +46,7 @@ require("oil").setup()
 vim.pack.add({ "https://github.com/carlos-algms/agentic.nvim" })
 
 require("agentic").setup({
-	-- Providers: 
+	-- Providers:
 	--   "claude-agent-acp"
 	--   "gemini-acp"
 	--   "codex-acp"
