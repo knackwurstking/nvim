@@ -116,36 +116,36 @@ require("trouble").setup()
 
 -- In your plugins config file (e.g., lua/plugins/llm.lua)
 -- INSTAll: `brew install llm`
-vim.pack.add({
-	"https://github.com/nvim-lua/plenary.nvim", -- REQUIRED dependency
-	"https://github.com/huggingface/llm.nvim",
-})
-
-require('llm').setup({
-	backend = "openai",
-	url = "http://192.168.178.52:1234/v1/completions",
-	model = "qwen2.5-coder-7b-instruct-mlx",
-
-	-- Specific tokens for Qwen2.5-Coder
-	tokens_to_clear = { "<|endoftext|>", "<|file_separator|>" },
-
-	fim = {
-		enabled = true,
-		prefix = "<|fim_prefix|>",
-		middle = "<|fim_middle|>",
-		suffix = "<|fim_suffix|>",
-	},
-
-	request_body = {
-		parameters = {
-			max_new_tokens = 30, -- Shorter is faster for ghost text
-			temperature = 0.2, -- A Temperature of 0.2 is less likely to generate unexpected characters
-			top_p = 0.95,
-			stop = { "<|file_separator|>", "<|endoftext|>", "\n\n" },
-		},
-	},
-
-	debounce_ms = 250, -- Increased slightly to prevent "spamming" the local server while typing
-	accept_keymap = "<C-y>",
-	dismiss_keymap = "<C-n>",
-})
+--vim.pack.add({
+--	"https://github.com/nvim-lua/plenary.nvim", -- REQUIRED dependency
+--	"https://github.com/huggingface/llm.nvim",
+--})
+--
+--require('llm').setup({
+--	backend = "openai",
+--	url = "http://192.168.178.52:1234/v1/completions",
+--	model = "qwen2.5-coder-7b-instruct-mlx",
+--
+--	-- Specific tokens for Qwen2.5-Coder
+--	tokens_to_clear = { "<|endoftext|>", "<|file_separator|>" },
+--
+--	fim = {
+--		enabled = true,
+--		prefix = "<|fim_prefix|>",
+--		middle = "<|fim_middle|>",
+--		suffix = "<|fim_suffix|>",
+--	},
+--
+--	request_body = {
+--		parameters = {
+--			max_new_tokens = 30, -- Shorter is faster for ghost text
+--			temperature = 0.2, -- A Temperature of 0.2 is less likely to generate unexpected characters
+--			top_p = 0.95,
+--			stop = { "<|file_separator|>", "<|endoftext|>", "\n\n" },
+--		},
+--	},
+--
+--	debounce_ms = 250, -- Increased slightly to prevent "spamming" the local server while typing
+--	accept_keymap = "<C-y>",
+--	dismiss_keymap = "<C-n>",
+--})
