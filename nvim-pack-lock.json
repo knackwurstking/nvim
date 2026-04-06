@@ -4,6 +4,10 @@
       "rev": "9c40fc5228d22fbde370b723b5a738cbcb68b084",
       "src": "https://github.com/carlos-algms/agentic.nvim"
     },
+    "gruvbox": {
+      "rev": "697c00291db857ca0af00ec154e5bd514a79191f",
+      "src": "https://github.com/morhetz/gruvbox"
+    },
     "harpoon": {
       "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
       "src": "https://github.com/ThePrimeagen/harpoon",

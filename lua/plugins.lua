@@ -164,3 +164,6 @@ require("trouble").setup()
 --	accept_keymap = "<C-y>",
 --	dismiss_keymap = "<C-n>",
 --})
+
+-- Theme: Gruvbox
+vim.pack.add({ "https://github.com/morhetz/gruvbox" })

@@ -52,3 +52,6 @@ vim.opt.sidescrolloff = 3
 -- Search settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = false
+
+-- Theme
+vim.cmd("colorscheme gruvbox")
