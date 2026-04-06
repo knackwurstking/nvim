@@ -31,7 +31,17 @@ require("oil").setup()
 vim.pack.add({ "https://github.com/carlos-algms/agentic.nvim" })
 
 require("agentic").setup({
-	-- Any ACP-compatible provider works. Built-in: "claude-agent-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "copilot-acp" | "auggie-acp" | "mistral-vibe-acp" | "cline-acp" | "goose-acp"
+	-- Providers: 
+	--   "claude-agent-acp"
+	--   "gemini-acp"
+	--   "codex-acp"
+	--   "opencode-acp"
+	--   "cursor-acp"
+	--   "copilot-acp"
+	--   "auggie-acp"
+	--   "mistral-vibe-acp"
+	--   "cline-acp"
+	--   "goose-acp"
 	provider = "opencode-acp",
 })
 
@@ -129,10 +139,13 @@ require('llm').setup({
 	request_body = {
 		parameters = {
 			max_new_tokens = 30, -- Shorter is faster for ghost text
-			temperature = 0,     -- 0 (Greedy decoding) is fastest and more logical
+			temperature = 0.2, -- A Temperature of 0.2 is less likely to generate unexpected characters
+			top_p = 0.95,
 			stop = { "<|file_separator|>", "<|endoftext|>", "\n\n" },
 		},
 	},
 
 	debounce_ms = 250, -- Increased slightly to prevent "spamming" the local server while typing
+	accept_keymap = "<C-y>",
+	dismiss_keymap = "<C-n>",
 })
