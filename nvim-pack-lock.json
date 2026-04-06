@@ -1,8 +1,12 @@
 {
   "plugins": {
     "agentic.nvim": {
-      "rev": "9c40fc5228d22fbde370b723b5a738cbcb68b084",
+      "rev": "dd3c3a20d8dd0ab638e6847fb436c3366973bb4e",
       "src": "https://github.com/carlos-algms/agentic.nvim"
+    },
+    "blink.cmp": {
+      "rev": "b4b7cbb52bab6c716b317433fa9348a070cccee5",
+      "src": "https://github.com/saghen/blink.cmp"
     },
     "gruvbox": {
       "rev": "697c00291db857ca0af00ec154e5bd514a79191f",
@@ -16,10 +20,6 @@
     "lazygit.nvim": {
       "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
       "src": "https://github.com/kdheepak/lazygit.nvim"
-    },
-    "llm.nvim": {
-      "rev": "fdc0758187da61612f9d3365f7a1ac45de47471c",
-      "src": "https://github.com/huggingface/llm.nvim"
     },
     "mini.icons": {
       "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",

@@ -21,6 +21,13 @@ npm install -g @tailwindcss/language-server
 npm install -g vscode-langservers-extracted
 ```
 
+## Blink.cmp Installation
+
+```bash
+cd ~/.local/share/nvim/site/pack/core/opt/blink.cmp;
+cargo build --release
+```
+
 ## Notes
 - Use Homebrew for macOS-specific packages
 - Use Go installation for Golang tools
