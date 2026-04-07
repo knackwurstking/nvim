@@ -205,3 +205,9 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 		})
 	end,
 })
+
+-- Git
+
+vim.pack.add({ "https://github.com/nvim-mini/mini.diff" })
+
+require("mini.diff").setup()
