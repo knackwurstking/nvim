@@ -64,7 +64,8 @@ require("agentic").setup({
 	--   "mistral-vibe-acp"
 	--   "cline-acp"
 	--   "goose-acp"
-	provider = "mistral-vibe-acp",
+	--provider = "mistral-vibe-acp",
+	provider = "opencode-acp",
 })
 
 -- Which
