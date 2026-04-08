@@ -221,7 +221,7 @@ require('minuet').setup({
 			api_key = 'TERM',
 			name = 'LMStudio',
 			end_point = 'http://192.168.178.52:1234/v1/completions',
-			model = 'codestral-22b-v0.1',
+			model = 'mistralai/codestral-22b-v0.1',
 
 			optional = {
 				max_tokens = 56,
