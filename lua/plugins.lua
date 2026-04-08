@@ -225,6 +225,7 @@ require('minuet').setup({
 			optional = {
 				max_tokens = 56,
 				top_p = 0.9,
+				temperature = 0.2,
 			},
 			--optional = {
 			--	max_tokens = 64,                              -- Small enough to stay fast, large enough for a full block
