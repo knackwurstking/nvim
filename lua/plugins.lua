@@ -134,7 +134,7 @@ vim.pack.add({ "https://github.com/folke/trouble.nvim" })
 
 require("trouble").setup()
 
--- LLM [DISABLED]
+-- AI: LLM [DISABLED]
 
 -- In your plugins config file (e.g., lua/plugins/llm.lua)
 -- INSTAll: `brew install llm`
@@ -171,6 +171,66 @@ require("trouble").setup()
 --	accept_keymap = "<C-y>",
 --	dismiss_keymap = "<C-n>",
 --})
+
+-- AI: Minuet
+
+vim.pack.add({
+	"https://github.com/nvim-lua/plenary.nvim", -- OPTIONAL dependency
+	"https://github.com/saghen/blink.cmp",   -- OPTIONAL dependency
+	"https://github.com/milanglacier/minuet-ai.nvim",
+})
+
+require('minuet').setup({
+	virtualtext = {
+		auto_trigger_ft = {
+			"lua",
+			"golang",
+			"html",
+			"css",
+		},
+		keymap = {
+			-- accept whole completion
+			accept = '<C-y>',
+			-- accept one line
+			accept_line = '<C-a>',
+			-- accept n lines (prompts for number)
+			-- e.g. "A-z 2 CR" will accept 2 lines
+			accept_n_lines = '<C-z>',
+			-- Cycle to prev completion item, or manually invoke completion
+			prev = '<C-k>',
+			-- Cycle to next completion item, or manually invoke completion
+			next = '<C-j>',
+			dismiss = '<C-n>',
+		},
+	},
+
+	provider = 'openai_fim_compatible', -- Use underscore here
+	n_completions = 1,
+
+	--context_window = 512,
+	context_window = 1024,
+
+	provider_options = {
+		openai_fim_compatible = {
+			-- For Windows users, TERM may not be present in environment variables.
+			-- Consider using APPDATA instead.
+			api_key = 'TERM',
+			name = 'LMStudio',
+			end_point = 'http://192.168.178.52:1234/v1/completions',
+			model = 'codestral-22b-v0.1',
+
+			--optional = {
+			--	max_tokens = 56,
+			--	top_p = 0.9,
+			--},
+			optional = {
+				max_tokens = 64,                              -- Small enough to stay fast, large enough for a full block
+				stop = { '\n\n', '<|file_separator|>', '<|endoftext|>' }, -- Prevents the model from rambling into other functions
+				temperature = 0.2,                            -- Lower temperature (0.1 - 0.3) makes code more deterministic and less "creative" (buggy)
+			}
+		},
+	},
+})
 
 -- Theme: Gruvbox
 vim.pack.add({ "https://github.com/morhetz/gruvbox" })

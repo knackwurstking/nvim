@@ -33,6 +33,10 @@
       "rev": "2431902e78b76f435542d1e606f08475360068ca",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
+    "minuet-ai.nvim": {
+      "rev": "33c6f4ad809bb28347c275cffc3e5700057d1c3c",
+      "src": "https://github.com/milanglacier/minuet-ai.nvim"
+    },
     "nvim-lspconfig": {
       "rev": "a776085e04f7b15d0b59fae2244df07d98360ab4",
       "src": "https://github.com/neovim/nvim-lspconfig"
