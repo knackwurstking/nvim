@@ -187,6 +187,9 @@ require('minuet').setup({
 			"golang",
 			"html",
 			"css",
+			"javascript",
+			"typescript",
+			"python",
 		},
 		keymap = {
 			-- accept whole completion
@@ -219,15 +222,15 @@ require('minuet').setup({
 			end_point = 'http://192.168.178.52:1234/v1/completions',
 			model = 'codestral-22b-v0.1',
 
-			--optional = {
-			--	max_tokens = 56,
-			--	top_p = 0.9,
-			--},
 			optional = {
-				max_tokens = 64,                              -- Small enough to stay fast, large enough for a full block
-				stop = { '\n\n', '<|file_separator|>', '<|endoftext|>' }, -- Prevents the model from rambling into other functions
-				temperature = 0.2,                            -- Lower temperature (0.1 - 0.3) makes code more deterministic and less "creative" (buggy)
-			}
+				max_tokens = 56,
+				top_p = 0.9,
+			},
+			--optional = {
+			--	max_tokens = 64,                              -- Small enough to stay fast, large enough for a full block
+			--	--stop = { '\n\n', '<|file_separator|>', '<|endoftext|>' }, -- Prevents the model from rambling into other functions
+			--	temperature = 0.2,                            -- Lower temperature (0.1 - 0.3) makes code more deterministic and less "creative" (buggy)
+			--}
 		},
 	},
 })
