@@ -188,6 +188,7 @@ require('minuet').setup({
 			"golang",
 			"html",
 			"css",
+			"templ",
 			"javascript",
 			"typescript",
 			"python",
