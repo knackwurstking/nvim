@@ -12,4 +12,5 @@ vim.lsp.enable({
 	"llm_ls", 			-- INSTALL: `brew install llm`
 	"jsonls",			-- INSTALL: `npm i -g vscode-langservers-extracted`
 	"cssls",			-- INSTALL: `npm i -g vscode-langservers-extracted`
+	"html", 			-- INSTALL: `npm i -g vscode-langservers-extracted`
 })
