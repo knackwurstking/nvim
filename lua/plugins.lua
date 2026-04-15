@@ -223,7 +223,8 @@ require('minuet').setup({
 			name = 'LMStudio',
 			end_point = 'http://192.168.178.52:1234/v1/completions',
 			--model = 'mistralai/codestral-22b-v0.1',
-			model = 'google/gemma-4-26b-a4b',
+			--model = 'google/gemma-4-26b-a4b',
+			model = 'google/gemma-4-31b',
 
 			optional = {
 				max_tokens = 56,
