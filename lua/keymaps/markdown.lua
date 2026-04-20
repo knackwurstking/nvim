@@ -1,6 +1,14 @@
 -- Markdown keymaps
 -- Markdown-specific operations
 
+vim.keymap.set("n", "<space>mp", function()
+	vim.cmd("MarkdownPreview")
+end, { desc = "Start markdown preview" })
+
+vim.keymap.set("n", "<space>ms", function()
+	vim.cmd("MarkdownPreviewStop")
+end, { desc = "Stop markdown preview" })
+
 vim.keymap.set("n", "<space>cfm", function()
 	local file = vim.api.nvim_buf_get_name(0)
 	vim.print("Formatting: " .. file)
