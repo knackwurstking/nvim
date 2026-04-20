@@ -3,8 +3,24 @@
 vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",                 -- REQUIRED dependency
 	"https://github.com/nvim-telescope/telescope-fzf-native.nvim", -- OPTIONAL dependency
+	"https://github.com/nvim-telescope/telescope-ui-select.nvim",
 	"https://github.com/nvim-telescope/telescope.nvim",
 })
+
+local telescope = require("telescope")
+
+telescope.setup({
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+        -- Optional: specific UI settings for the dropdown
+      }
+    }
+  }
+})
+
+-- Explicitly load the extension
+telescope.load_extension("ui-select")
 
 -- Treesitter
 
