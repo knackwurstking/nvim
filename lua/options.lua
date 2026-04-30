@@ -52,3 +52,6 @@ vim.opt.sidescrolloff = 3
 -- Search settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = false
+
+-- Sessions
+vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
