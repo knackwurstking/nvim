@@ -54,4 +54,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = false
 
 -- Sessions
-vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.sessionoptions = {
+	"buffers", "curdir", "folds", "help", "tabpages", "winsize", "winpos",
+	"terminal", "localoptions", "globals",
+}
