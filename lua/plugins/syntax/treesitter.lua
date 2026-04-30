@@ -15,6 +15,7 @@ require("nvim-treesitter").setup({
 		"go",
 		"gomod",
 		"templ",
+		"php",
 	},
 	highlight = {
 		enable = true,
