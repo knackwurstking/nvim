@@ -12,6 +12,10 @@
       "rev": "7f23658b127b9a74aae5b388fefcd997be30cbfc",
       "src": "https://github.com/delphinus/budoux.lua"
     },
+    "conform.nvim": {
+      "rev": "dca1a190aa85f9065979ef35802fb77131911106",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "gruvbox": {
       "rev": "697c00291db857ca0af00ec154e5bd514a79191f",
       "src": "https://github.com/morhetz/gruvbox"
