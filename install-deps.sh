@@ -2,6 +2,11 @@
 
 set -e
 
+if [ "$(uname -s)" != "Darwin" ]; then
+    echo "Error: This script is intended for macOS only."
+    exit 1
+fi
+
 echo "Installing Neovim configuration dependencies..."
 echo
 
@@ -36,7 +41,13 @@ echo
 
 # Python packages (using pip3)
 echo "Installing Python packages..."
-pip3 install autotools-language-server
+read -p "Use --break-system-packages for pip3 install? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    pip3 install --break-system-packages autotools-language-server
+else
+    pip3 install autotools-language-server
+fi
 echo "✓ Python packages installed"
 echo
 

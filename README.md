@@ -51,36 +51,7 @@ npm install -g intelephense
 
 ```bash
 pip3 install autotools-language-server
-```
-
-### Blink.cmp Installation
-
-```bash
-cd ~/.local/share/nvim/site/pack/core/opt/blink.cmp
-cargo build --release
-```
-
-### Homebrew Packages (macOS)
-
-```bash
-brew install lua-language-server
-brew install marksman
-brew install llm
-# clangd preinstalled on macOS (Xcode CLT), or: brew install llvm
-```
-
-### npm Packages
-
-```bash
-npm install -g @tailwindcss/language-server
-npm install -g vscode-langservers-extracted
-npm install -g intelephense
-```
-
-### Python Packages
-
-```bash
-pip install autotools-language-server
+# On some systems you may need: pip3 install --break-system-packages autotools-language-server
 ```
 
 ### Blink.cmp Installation
