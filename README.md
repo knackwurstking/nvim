@@ -47,13 +47,6 @@ npm install -g vscode-langservers-extracted
 npm install -g intelephense
 ```
 
-### Python Packages
-
-```bash
-pip3 install autotools-language-server
-# On some systems you may need: pip3 install --break-system-packages autotools-language-server
-```
-
 ### Blink.cmp Installation
 
 ```bash
@@ -76,7 +69,6 @@ cargo build --release
 | `html` | `npm i -g vscode-langservers-extracted` | HTML |
 | `intelephense` | `npm install -g intelephense` | PHP |
 | `clangd` | Preinstalled (macOS) or `brew install llvm` | C/C++ |
-| `autotools_ls` | `pip3 install autotools-language-server` | Makefile |
 
 ### Special LSP Configuration
 

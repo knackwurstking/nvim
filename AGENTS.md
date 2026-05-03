@@ -33,11 +33,6 @@ brew install lua-language-server marksman llm
 npm install -g @tailwindcss/language-server vscode-langservers-extracted intelephense
 ```
 
-### Python
-```bash
-pip3 install autotools-language-server
-```
-
 ### Blink.cmp (completion)
 ```bash
 cd ~/.local/share/nvim/site/pack/core/opt/blink.cmp && cargo build --release
@@ -53,7 +48,7 @@ cd ~/.local/share/nvim/site/pack/core/opt/blink.cmp && cargo build --release
 - `gopls` (Go), `lua_ls` (Lua), `templ` (Templ)
 - `tailwindcss` (Tailwind), `jsonls` (JSON), `cssls` (CSS), `html` (HTML)
 - `marksman` (Markdown), `llm_ls` (LLM), `intelephense` (PHP)
-- `clangd` (C/C++), `autotools_ls` (Makefile)
+- `clangd` (C/C++)
 
 ## AI Integration
 - `agentic.nvim`: main agent interface (provider: opencode-acp)

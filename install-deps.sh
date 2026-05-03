@@ -39,18 +39,6 @@ npm install -g intelephense
 echo "✓ npm packages installed"
 echo
 
-# Python packages (using pip3)
-echo "Installing Python packages..."
-read -p "Use --break-system-packages for pip3 install? [y/N] " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    pip3 install --break-system-packages autotools-language-server
-else
-    pip3 install autotools-language-server
-fi
-echo "✓ Python packages installed"
-echo
-
 # Blink.cmp cargo build
 BLINK_PATH="$HOME/.local/share/nvim/site/pack/core/opt/blink.cmp"
 if [ -d "$BLINK_PATH" ]; then

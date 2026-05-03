@@ -15,7 +15,6 @@ vim.lsp.enable({
 	"html",     -- INSTALL: `npm i -g vscode-langservers-extracted`
 	"intelephense", -- INSTALL: `npm install -g intelephense`
 	"clangd",    -- Preinstalled on macOS (Xcode CLT), or: `brew install llvm`
-	"autotools_ls", -- INSTALL: `pip install autotools-language-server`
 })
 
 vim.lsp.config("html", {
