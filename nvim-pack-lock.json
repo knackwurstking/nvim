@@ -4,6 +4,10 @@
       "rev": "dd3c3a20d8dd0ab638e6847fb436c3366973bb4e",
       "src": "https://github.com/carlos-algms/agentic.nvim"
     },
+    "bigfile.nvim": {
+      "rev": "33eb067e3d7029ac77e081cfe7c45361887a311a",
+      "src": "https://github.com/LunarVim/bigfile.nvim"
+    },
     "blink.cmp": {
       "rev": "b4b7cbb52bab6c716b317433fa9348a070cccee5",
       "src": "https://github.com/saghen/blink.cmp"
