@@ -78,7 +78,8 @@ function usage_log:_refresh_buffer()
 		lines[#lines + 1] = ""
 		lines[#lines + 1] = "  History:"
 		lines[#lines + 1] = string.format("    %-19s │ %8s │ %8s │ %s", "Time", "Used", "Size", "Cost")
-		lines[#lines + 1] = "    " .. string.rep("─", 19) .. "┼" .. string.rep("─", 10) .. "┼" .. string.rep("─", 10) .. "┼" .. string.rep("─", 16)
+		lines[#lines + 1] = "    " ..
+		string.rep("─", 19) .. "┼" .. string.rep("─", 10) .. "┼" .. string.rep("─", 10) .. "┼" .. string.rep("─", 16)
 
 		for _, entry in ipairs(self.entries) do
 			lines[#lines + 1] = string.format("    %-19s │ %8d │ %8d │ %s",
@@ -125,10 +126,15 @@ require("agentic").setup({
 				-- Also show a quick notification with current usage
 				local pct = (u.used / math.max(u.size, 1)) * 100
 				vim.notify(string.format("Tokens: %d / %d (%.1f%%)  Cost: %s",
-					u.used, u.size, pct, format_cost(u.cost)),
+						u.used, u.size, pct, format_cost(u.cost)),
 					vim.log.levels.INFO, { title = "Agentic Usage" })
 			end
 		end,
+	},
+	windows = {
+		position = "bottom", -- "right", "left", or "bottom"
+		width = "45%", -- Sidebar width (position = "right" or "left")
+		height = "35%", -- Panel height (position = "bottom")
 	},
 })
 
@@ -159,17 +165,17 @@ vim.api.nvim_create_user_command("VisionAnalyze", function(args)
 		vim.notify("Usage: :VisionAnalyze <image_path> [prompt]", vim.log.levels.ERROR)
 		return
 	end
-	
+
 	if not vim.loop.fs_stat(img_path) then
 		vim.notify("File not found: " .. img_path, vim.log.levels.ERROR)
 		return
 	end
-	
+
 	local skill_script = os.getenv("HOME") .. "/.config/opencode/skills/vision-analyze/analyze.sh"
 	local prompt = args.bang and ' "' .. args.args:gsub(img_path, ""):gsub("^%s+", '') .. '"' or ''
-	
+
 	vim.notify("Analyzing image with Qwen Vision...", vim.log.levels.INFO)
-	
+
 	vim.fn.jobstart({
 		"bash", "-c",
 		string.format('%s %q%s', skill_script, img_path, prompt),
