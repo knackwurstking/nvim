@@ -28,6 +28,9 @@ require("opencode").setup({
 		icons = {
 			preset = "text",
 		},
+		input = {
+			min_height = 0.25,
+		},
 	},
 	context = {
 		enabled = true,
