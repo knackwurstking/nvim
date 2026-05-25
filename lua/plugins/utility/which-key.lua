@@ -28,4 +28,5 @@ require("which-key").add({
 	{ "<space>g",  group = "Git" },
 	{ "<space>b",  group = "Buffer" },
 	{ "<space>m",  group = "Makefile Commands" },
+	{ "<space>o",  group = "OpenCode" },
 })

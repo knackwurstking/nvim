@@ -1,4 +1,4 @@
-require("plugins.ai.agentic")
+require("plugins.ai.opencode")
 require("plugins.completion.blink")
 require("plugins.diagnostics.todo-comments")
 require("plugins.diagnostics.trouble")

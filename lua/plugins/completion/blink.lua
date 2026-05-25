@@ -14,6 +14,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				['<C-k>'] = { 'select_prev', 'fallback' },
 				['<C-j>'] = { 'select_next', 'fallback' },
 				['<C-y>'] = { 'accept', 'fallback' },
+				['<C-s>'] = false, -- Free up for opencode.nvim submit
 			},
 			appearance = {
 				nerd_font_variant = "mono",

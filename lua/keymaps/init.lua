@@ -1,4 +1,3 @@
-require("keymaps.agentic")
 require("keymaps.harpoon")
 require("keymaps.explorer")
 require("keymaps.telescope")
