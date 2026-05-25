@@ -54,5 +54,5 @@ cd ~/.local/share/nvim/site/pack/core/opt/blink.cmp && cargo build --release
 Markdown code block highlighting uses `markdown` + `markdown_inline` Treesitter parsers with language injection via `vim.treesitter.language.register()`. Common code fence languages (`py`, `js`, `ts`, `sh`, `yml`, etc.) are registered for auto-highlighting.
 
 ## AI Integration
-- `agentic.nvim`: main agent interface (provider: opencode-acp)
+- `opencode.nvim`: main agent interface — shared sessions mit OpenCode CLI (`<leader>o` Prefix, `<C-s>` Submit)
 - `minuet-ai.nvim`: inline completion from LM Studio at `http://192.168.178.52:1234`
