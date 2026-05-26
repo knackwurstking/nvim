@@ -7,6 +7,7 @@ require("opencode").setup({
 	keymap = {
 		input_window = {
 			['<C-s>'] = { 'submit_input_prompt', mode = { 'n', 'i' } },
+			['<esc>'] = { function() end }, -- Esc does nothing in input window
 		},
 	},
 	dependencies = {
