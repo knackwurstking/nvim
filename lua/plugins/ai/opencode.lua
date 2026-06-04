@@ -34,10 +34,10 @@ require("opencode").setup({
 			min_height = 0.25,
 		},
 	},
-	context = {
-		enabled = true,
-		current_file = {
+		context = {
 			enabled = true,
+			current_file = {
+				enabled = false,
 			show_full_path = true,
 		},
 		selection = {
