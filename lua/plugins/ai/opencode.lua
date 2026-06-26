@@ -1,5 +1,5 @@
 vim.pack.add({
-	"nvim-lua/plenary.nvim",
+	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/sudo-tee/opencode.nvim",
 })
 
