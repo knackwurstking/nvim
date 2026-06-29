@@ -1,4 +1,5 @@
-require("plugins.ai.opencode")
+--require("plugins.ai.opencode")
+require("plugins.ai.pi")
 require("plugins.completion.blink")
 require("plugins.diagnostics.todo-comments")
 require("plugins.diagnostics.trouble")

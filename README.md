@@ -83,6 +83,8 @@ cargo build --release
 
 ### AI & Completion
 
+<!-- TODO: Out of Date -->
+
 | Plugin | Source | Description |
 |--------|--------|-------------|
 | **agentic.nvim** | `carlos-algms/agentic.nvim` | AI agent interface (provider: opencode-acp) |
