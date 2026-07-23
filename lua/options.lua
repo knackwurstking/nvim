@@ -44,13 +44,6 @@ vim.opt.foldenable = false
 vim.opt.spelllang = { "en_us", "de_de" }
 vim.opt.spell = true
 
-vim.cmd([[
-    iabbrev ae ä
-    iabbrev oe ö
-    iabbrev ue ü
-    iabbrev ss ß
-]])
-
 vim.opt.colorcolumn = [[80,120]]
 
 -- Scrolling
