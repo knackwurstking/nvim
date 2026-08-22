@@ -40,7 +40,7 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 
--- Spell checking
+-- Spell checking 
 vim.opt.spelllang = { "en_us", "de_de" }
 vim.opt.spell = true
 
