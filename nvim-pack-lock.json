@@ -12,6 +12,10 @@
       "rev": "b4b7cbb52bab6c716b317433fa9348a070cccee5",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "blink.lib": {
+      "rev": "c8fdc12c8a2fab6cf786dd7141a283f8079f902b",
+      "src": "https://github.com/saghen/blink.lib"
+    },
     "budoux.lua": {
       "rev": "7f23658b127b9a74aae5b388fefcd997be30cbfc",
       "src": "https://github.com/delphinus/budoux.lua"
