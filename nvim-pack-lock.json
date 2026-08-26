@@ -118,6 +118,10 @@
       "rev": "cfb85dcf7f822b79224e9e6aef9e8c794211b20b",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
+    "thethethe.nvim": {
+      "rev": "97f3962d466e48871e1b4a99e84b3e47b0180144",
+      "src": "https://github.com/swaits/thethethe.nvim"
+    },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
@@ -125,6 +129,10 @@
     "trouble.nvim": {
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
       "src": "https://github.com/folke/trouble.nvim"
+    },
+    "vim-typo": {
+      "rev": "3222413963c4c03193ce104319f40fb01a86e260",
+      "src": "https://github.com/tani/vim-typo"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
