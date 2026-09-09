@@ -20,9 +20,7 @@ echo
 # Homebrew packages (macOS)
 if command -v brew &> /dev/null; then
     echo "Installing Homebrew packages..."
-    brew install lua-language-server
-    brew install marksman
-    brew install llm
+    brew install lua-language-server marksman llm
     echo "✓ Homebrew packages installed"
     echo
 else
